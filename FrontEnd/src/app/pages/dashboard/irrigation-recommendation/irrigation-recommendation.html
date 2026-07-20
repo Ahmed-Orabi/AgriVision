@@ -1,0 +1,182 @@
+<div class="ambient-layer" aria-hidden="true">
+  <span class="ambient-blob blob-1"></span>
+  <span class="ambient-blob blob-2"></span>
+  <span class="ambient-blob blob-3"></span>
+</div>
+
+<app-sidebar></app-sidebar>
+
+<div class="app-shell main-area">
+  <app-top-navbar></app-top-navbar>
+
+  <main class="content-card" role="main">
+    <div class="content-inner">
+      <div class="page-head">
+        <div>
+          <div class="crumb">
+            <i class="bi bi-water"></i>
+            <span>AgriVision</span>
+            <span style="opacity:.5">/</span>
+            <span>AI Tools</span>
+            <span style="opacity:.5">/</span>
+            <span>Irrigation Recommendation</span>
+          </div>
+          <h1 class="page-title">Irrigation Recommendation</h1>
+          <p class="page-sub">
+            Enter soil, weather, crop, and field conditions to estimate irrigation need.
+          </p>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap align-items-center">
+          <div class="input-toggle" role="tablist" aria-label="Input mode">
+            <button class="toggle-btn active" type="button" aria-pressed="true">Manual Form</button>
+            <button class="toggle-btn" type="button" aria-pressed="false">From Sensors</button>
+          </div>
+          <button class="btn-danger-soft" type="button">
+            <i class="bi bi-trash3"></i> Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-3 recommendation-layout">
+        <div class="col-lg-7 col-xl-8">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Input Parameters</h3>
+                <p class="panel-sub">Use the same fields expected by the irrigation model.</p>
+              </div>
+              <span class="pill"><i class="bi bi-droplet"></i> Water Need Model</span>
+            </div>
+
+            <form id="irrigationForm" class="mt-2">
+              <div class="form-grid">
+                <div>
+                  <label class="form-label">Soil Type</label>
+                  <app-agri-select selectId="gSoil_Type" placeholder="Select soil type" [options]="soilOptions" [required]="true"></app-agri-select>
+                  <div class="hint"><i class="bi bi-info-circle"></i> Dataset field: gSoil_Type</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Soil pH</label>
+                  <input type="number" class="form-control" id="Soil_pH" min="0" max="14" step="0.01" placeholder="e.g. 6.8" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Range: 0 &rarr; 14</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Soil Moisture (%)</label>
+                  <input type="number" class="form-control" id="Soil_Moisture" min="0" max="100" step="0.01" placeholder="e.g. 34.5" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Current field moisture percentage</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Electrical Conductivity</label>
+                  <input type="number" class="form-control" id="Electrical_Conductivity" min="0" step="0.01" placeholder="e.g. 1.25" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Soil salinity indicator</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Temperature (&deg;C)</label>
+                  <input type="number" class="form-control" id="Temperature_C" min="-10" max="60" step="0.01" placeholder="e.g. 29.4" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Dataset field: Temperature_C</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Humidity (%)</label>
+                  <input type="number" class="form-control" id="Humidity" min="0" max="100" step="0.01" placeholder="e.g. 62" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Air humidity percentage</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Rainfall (mm)</label>
+                  <input type="number" class="form-control" id="Rainfall_mm" min="0" step="0.01" placeholder="e.g. 12.5" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Recent or expected rainfall</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Crop Type</label>
+                  <app-agri-select selectId="Crop_Type" placeholder="Select crop" [options]="irrigationCropOptions" [required]="true"></app-agri-select>
+                  <div class="hint"><i class="bi bi-info-circle"></i> Dataset field: Crop_Type</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Crop Growth Stage</label>
+                  <app-agri-select selectId="Crop_Growth_Stage" placeholder="Select stage" [options]="growthStageOptions" [required]="true"></app-agri-select>
+                  <div class="hint"><i class="bi bi-info-circle"></i> Growth stage affects water need</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Season</label>
+                  <app-agri-select selectId="Season" placeholder="Select season" [options]="seasonOptions" [required]="true"></app-agri-select>
+                  <div class="hint"><i class="bi bi-info-circle"></i> Dataset field: Season</div>
+                </div>
+
+                <div>
+                  <label class="form-label">Field Area (hectare)</label>
+                  <input type="number" class="form-control" id="Field_Area_hectare" min="0.01" step="0.01" placeholder="e.g. 2.4" required />
+                  <div class="hint"><i class="bi bi-info-circle"></i> Dataset field: Field_Area_hectare</div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap mt-3">
+                <button type="submit" class="btn-brand">
+                  <i class="bi bi-lightning-charge"></i>
+                  Recommend Irrigation
+                </button>
+                <button type="button" class="btn-soft no-print">
+                  <i class="bi bi-printer"></i>
+                  Print Example
+                </button>
+              </div>
+
+              <div class="api-note">
+                <i class="bi bi-stars"></i>
+                Output target: Irrigation_Need. Connect this form to your irrigation model API when ready.
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-xl-4 fert-aside">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Recommendation</h3>
+                <p class="panel-sub">The predicted irrigation need appears here.</p>
+              </div>
+              <span class="pill"><i class="bi bi-cpu"></i> AI Output</span>
+            </div>
+
+            <div class="result-card mt-2">
+              <div class="result-inner">
+                <div class="rec-list">
+                  <div class="rec-empty">No irrigation recommendation yet</div>
+                </div>
+                <div class="mt-3" style="font-weight:800;color: rgba(97,117,107,.92);">
+                  Submit the form to estimate irrigation need.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel mt-3">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Model Fields</h3>
+                <p class="panel-sub">Inputs aligned with your dataset schema.</p>
+              </div>
+              <span class="pill"><i class="bi bi-table"></i> 11 inputs</span>
+            </div>
+            <div class="d-grid gap-2 mt-2">
+              <div class="rec-empty">Target: Irrigation_Need</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

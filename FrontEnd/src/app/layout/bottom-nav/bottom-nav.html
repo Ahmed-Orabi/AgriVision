@@ -1,0 +1,35 @@
+<nav class="bottom-nav" role="navigation" aria-label="Mobile bottom navigation">
+  <div class="bottom-nav-content">
+    <button class="bottom-nav-item" id="bottomNavSidebar" aria-label="Open menu" data-nav-key="sidebar" [class.active]="ui.sidebarOpen" (click)="ui.openSidebar()">
+      <i class="bi bi-list"></i>
+      <span>Menu</span>
+    </button>
+
+    <a
+      class="bottom-nav-item"
+      id="bottomNavNotifications"
+      aria-label="Notifications"
+      data-nav-key="alerts"
+      routerLink="/dashboard/notifications"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="ui.closeAll()"
+    >
+      <i class="bi bi-bell"></i>
+      <span>Alerts</span>
+    </a>
+
+    <button
+      class="bottom-nav-item"
+      type="button"
+      id="bottomNavTheme"
+      [attr.aria-label]="theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+      [attr.aria-pressed]="theme.isDark"
+      [class.active]="theme.isDark"
+      (click)="theme.toggle()"
+    >
+      <i class="bi" [class.bi-sun-fill]="theme.isDark" [class.bi-moon-stars-fill]="!theme.isDark"></i>
+      <span>{{ theme.isDark ? 'Light' : 'Dark' }}</span>
+    </button>
+  </div>
+</nav>

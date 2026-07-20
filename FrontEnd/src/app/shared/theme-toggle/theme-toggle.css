@@ -1,0 +1,91 @@
+:host {
+  position: fixed;
+  right: clamp(14px, 2vw, 24px);
+  bottom: clamp(84px, 5vw, 24px);
+  z-index: 1500;
+}
+
+:host(.nav-theme-toggle) {
+  position: static;
+  right: auto;
+  bottom: auto;
+  z-index: auto;
+  display: inline-flex;
+}
+
+.theme-toggle {
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(29, 79, 56, 0.18);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 243, 230, 0.88)),
+    radial-gradient(circle at 30% 20%, rgba(211, 164, 27, 0.28), transparent 55%);
+  color: #123024;
+  box-shadow: 0 16px 38px rgba(10, 34, 25, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+:host(.nav-theme-toggle) .theme-toggle {
+  width: 42px;
+  height: 42px;
+  box-shadow: none;
+}
+
+:host(.nav-theme-toggle) .theme-toggle-track {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: rgba(211, 164, 27, 0.48);
+  box-shadow: 0 20px 48px rgba(10, 34, 25, 0.24);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(211, 164, 27, 0.34);
+  outline-offset: 4px;
+}
+
+.theme-toggle-track {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(29, 79, 56, 0.08);
+  font-size: 18px;
+}
+
+:host-context(.theme-dark) .theme-toggle {
+  background:
+    linear-gradient(135deg, rgba(18, 34, 28, 0.94), rgba(13, 24, 21, 0.9)),
+    radial-gradient(circle at 30% 20%, rgba(211, 164, 27, 0.24), transparent 58%);
+  border-color: rgba(211, 164, 27, 0.26);
+  color: #f7e8a6;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.36);
+}
+
+:host-context(.theme-dark) .theme-toggle-track {
+  background: rgba(247, 232, 166, 0.12);
+}
+
+@media (max-width: 768px) {
+  :host {
+    right: 14px;
+    bottom: 82px;
+  }
+
+  .theme-toggle {
+    width: 48px;
+    height: 48px;
+  }
+}

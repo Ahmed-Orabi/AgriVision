@@ -1,0 +1,213 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="app-shell main-area">
+    <app-top-navbar></app-top-navbar>
+
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="form-banner" id="farmFormBanner" role="status" aria-live="polite"></div>
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-grid-1x2-fill"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>Dashboard</span>
+              <span style="opacity:.5">/</span>
+              <span>Edit Farm</span>
+            </div>
+            <h1 class="page-title">Edit Farm</h1>
+            <p class="page-sub">Update farm details and zone layout.</p>
+          </div>
+
+          <div class="head-actions">
+            <a class="btn-soft" routerLink="/dashboard/farm/state">
+              <i class="bi bi-arrow-left"></i> Back
+            </a>
+            <button class="btn-soft" type="button" id="deleteFarmBtn">
+              <i class="bi bi-trash"></i> Delete Farm
+            </button>
+            <button class="btn-brand" type="button" id="saveFarmBtn">
+              <i class="bi bi-check-circle"></i> Save Changes
+            </button>
+          </div>
+        </div>
+
+        <div class="farm-kpis">
+          <div class="kpi-card">
+            <div class="kpi-label">Total area</div>
+            <div class="kpi-value" id="kpiArea">--</div>
+            <div class="kpi-meta" id="kpiUnit">Length x width</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Zones</div>
+            <div class="kpi-value" id="kpiZones">0</div>
+            <div class="kpi-meta">Active fields</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Location</div>
+            <div class="kpi-value" id="kpiLocation">Not set</div>
+            <div class="kpi-meta" id="kpiCoords">Pick a point on map</div>
+          </div>
+        </div>
+
+        <div class="addfarm-layout">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Farm Details</h3>
+                <p class="panel-sub">Edit the basic farm information</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label class="form-label">Farm name</label>
+                <input class="form-control" id="farmName" type="text" value="North Farm" />
+              </div>
+              <div>
+                <label class="form-label">Address</label>
+                <input class="form-control" id="farmAddress" type="text" value="Al Mansoura, Dakahlia" />
+              </div>
+              <div class="grid-span">
+                <label class="form-label">Description</label>
+                <textarea class="form-control form-textarea" id="farmDescription" rows="3">24.5 hectares with 12 crop zones.</textarea>
+              </div>
+              <div>
+                <label class="form-label">Length (units)</label>
+                <input class="form-control" id="farmLength" type="number" min="1" value="20" />
+              </div>
+              <div>
+                <label class="form-label">Width (units)</label>
+                <input class="form-control" id="farmWidth" type="number" min="1" value="10" />
+              </div>
+              <div>
+                <label class="form-label">Length Unit</label>
+                <app-agri-select selectId="farmUnit" placeholder="Select unit" [options]="unitOptions" value="m"></app-agri-select>
+              </div>
+              <input id="farmTemperature" type="hidden" />
+              <input id="farmHumidity" type="hidden" />
+              <input id="farmLatitude" type="hidden" />
+              <input id="farmLongitude" type="hidden" />
+              <div class="grid-span">
+                <label class="form-label">Pick location from map</label>
+                <div class="map-shell">
+                  <div id="farmMap"></div>
+                </div>
+              </div>
+              <div>
+                <label class="form-label">Soil type</label>
+                <app-agri-select selectId="farmSoil" placeholder="Select soil type" [options]="soilOptions" value="Loamy Soil"></app-agri-select>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Fields (Zones)</h3>
+                <p class="panel-sub">Edit zones inside the farm area</p>
+              </div>
+              <button class="btn-brand" type="button" id="addFieldBtn">
+                <i class="bi bi-plus-circle"></i> Add Field
+              </button>
+            </div>
+
+            <div class="field-list" id="fieldList"></div>
+            <div class="field-error" id="fieldError" role="alert"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+  <div class="modal-overlay" id="fieldModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Edit field">
+      <div class="modal-header">
+        <div>
+          <h3 id="fieldModalTitle">Add Field</h3>
+          <p>Define a zone inside the farm</p>
+        </div>
+        <button class="modal-close" type="button" id="fieldModalClose" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <form class="modal-body" id="fieldForm">
+        <div class="modal-grid">
+          <div>
+            <label class="form-label">Zone name</label>
+            <input class="form-control" id="zoneName" type="text" readonly />
+          </div>
+          <div>
+            <label class="form-label">Crop type</label>
+            <app-agri-select selectId="zoneCrop" placeholder="Select crop" [options]="cropOptions" [required]="true"></app-agri-select>
+          </div>
+          <div class="grid-span">
+            <div class="range-grid">
+              <div>
+                <label class="form-label">Length range (start)</label>
+                <input class="range-input" id="xStart" type="range" min="0" max="20" value="0" />
+                <div class="range-value" id="xStartValue">0</div>
+              </div>
+              <div>
+                <label class="form-label">Length range (end)</label>
+                <input class="range-input" id="xEnd" type="range" min="0" max="20" value="20" />
+                <div class="range-value" id="xEndValue">20</div>
+              </div>
+              <div>
+                <label class="form-label">Width range (start)</label>
+                <input class="range-input" id="yStart" type="range" min="0" max="10" value="0" />
+                <div class="range-value" id="yStartValue">0</div>
+              </div>
+              <div>
+                <label class="form-label">Width range (end)</label>
+                <input class="range-input" id="yEnd" type="range" min="0" max="10" value="10" />
+                <div class="range-value" id="yEndValue">10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-soft" type="button" id="fieldCancel">Cancel</button>
+          <button class="btn-brand" type="submit">
+            <i class="bi bi-check2-circle"></i> Save Field
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="deleteFarmModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Delete farm confirmation">
+      <div class="modal-header">
+        <div>
+          <h3>Delete Farm?</h3>
+          <p>This action cannot be undone.</p>
+        </div>
+        <button class="modal-close" type="button" id="deleteFarmModalClose" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-meta">
+          <span>All fields and related data will be removed.</span>
+        </div>
+        <div class="modal-actions" style="justify-content:flex-end;">
+          <button class="btn-soft" type="button" id="deleteFarmCancel">Cancel</button>
+          <button class="btn-brand" type="button" id="deleteFarmConfirm">
+            <i class="bi bi-trash"></i> Yes, delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-bottom-nav></app-bottom-nav>

@@ -1,0 +1,148 @@
+<!-- Ambient Background -->
+    <div class="ambient-layer" aria-hidden="true">
+        <span class="ambient-blob blob-1"></span>
+        <span class="ambient-blob blob-2"></span>
+        <span class="ambient-blob blob-3"></span>
+    </div>
+
+    <!-- Main Page Wrapper -->
+    <div class="page-wrapper">
+        <a routerLink="/" class="auth-back-button" aria-label="Back to landing page"></a>
+
+        <div class="auth-card">
+            <div class="card-content">
+                <!-- Description Section -->
+                <div class="auth-description-panel">
+                    <div class="auth-description-content">
+                        <p class="auth-eyebrow">Secure AgriVision workspace</p>
+                        <h2>Monitor every farm decision from one intelligent dashboard.</h2>
+                        <p>Access crop analytics, sensor readings, disease detection, and recommendations with a protected account built for daily field work.</p>
+                        <div class="auth-feature-list" aria-label="Authentication benefits">
+                            <span>AI insights</span>
+                            <span>Sensor data</span>
+                            <span>Farm control</span>
+                        </div>
+                        <div class="auth-assurance-list" aria-label="Platform security details">
+                            <span><strong>24/7</strong> Field visibility</span>
+                            <span><strong>Secure</strong> Account access</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="form-section">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <img class="logo-img" src="/assets/images/Logo.png" alt="AgriVision Logo"><span class="logo-wordmark">AgriVision</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="page-title">Create an account</h1>
+
+                    <p class="subtitle-text">
+                        Start with a secure account for farm analytics, alerts, and crop planning.
+                    </p>
+
+                    <!-- Registration Form -->
+                    <form id="registerForm" novalidate>
+                        <!-- Full Name Input -->
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="fullName" 
+                                placeholder="Full Name" 
+                                required 
+                                autocomplete="name"
+                                aria-label="Full Name"
+                            >
+                            <div class="error-message" id="fullNameError" role="alert">
+                                Please enter your full name (at least 2 characters)
+                            </div>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="email" 
+                                placeholder="Email" 
+                                required 
+                                autocomplete="email"
+                                aria-label="Email Address"
+                            >
+                            <div class="error-message" id="emailError" role="alert">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+
+                        <!-- Password Input -->
+                        <div class="form-group">
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="password" 
+                                placeholder="Password" 
+                                required 
+                                autocomplete="new-password"
+                                aria-label="Password"
+                            >
+                            <div class="error-message" id="passwordError" role="alert">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password Input -->
+                        <div class="form-group">
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="confirmPassword"
+                                placeholder="Confirm Password" 
+                                required 
+                                autocomplete="new-password"
+                                aria-label="Confirm Password"
+                            >
+                            <div class="error-message" id="confirmPasswordError" role="alert">
+                                Passwords do not match
+                            </div>
+                        </div>
+
+                        <!-- Terms & Conditions Checkbox -->
+                        <div class="checkbox-section">
+                            <input 
+                                type="checkbox" 
+                                id="agreeTerms" 
+                                required 
+                                aria-label="Agree to Terms and Conditions"
+                            >
+                            <label for="agreeTerms">
+                                I agree to the <a href="#">Terms & Conditions</a>
+                            </label>
+                        </div>
+
+                        <!-- Register Button -->
+                        <button type="submit" class="btn-primary" aria-label="Create account">
+                            Register
+                        </button>
+                    </form>
+
+                    <!-- Login Link -->
+                    <div class="text-link">
+                        Already have an account? <a routerLink="/auth/login">Login</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    
+    
+    <!-- Common JS -->
+    
+    
+    <!-- Page Specific JS -->
+

@@ -1,0 +1,161 @@
+<div class="ambient-layer" aria-hidden="true">
+  <span class="ambient-blob blob-1"></span>
+  <span class="ambient-blob blob-2"></span>
+  <span class="ambient-blob blob-3"></span>
+</div>
+
+<app-sidebar></app-sidebar>
+
+<div class="app-shell main-area">
+  <app-top-navbar></app-top-navbar>
+
+  <main class="content-card notifications-page" role="main">
+    <div class="content-inner">
+      <div class="page-head notifications-head">
+        <div>
+          <div class="crumb">
+            <i class="bi bi-bell-fill"></i>
+            <span>AgriVision</span>
+            <span style="opacity:.5">/</span>
+            <span>Notifications</span>
+          </div>
+          <h1 class="page-title">Notifications</h1>
+          <p class="page-sub">Track farm alerts, AI updates, and sensor activity in one place.</p>
+        </div>
+
+        <div class="notifications-actions">
+          <button class="btn-soft" type="button">
+            <i class="bi bi-check2-all"></i>
+            Mark all read
+          </button>
+          <a class="btn-soft" routerLink="/dashboard/analytics">
+            <i class="bi bi-arrow-left"></i>
+            Dashboard
+          </a>
+        </div>
+      </div>
+
+      <section class="notifications-summary" aria-label="Notification summary">
+        <div class="notification-stat stat-critical">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          <div>
+            <span>2</span>
+            <p>Need action</p>
+          </div>
+        </div>
+        <div class="notification-stat stat-warning">
+          <i class="bi bi-cloud-drizzle-fill"></i>
+          <div>
+            <span>4</span>
+            <p>Weather alerts</p>
+          </div>
+        </div>
+        <div class="notification-stat stat-success">
+          <i class="bi bi-check-circle-fill"></i>
+          <div>
+            <span>8</span>
+            <p>Completed today</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="notifications-layout">
+        <div class="notifications-list panel">
+          <div class="notification-day">Today</div>
+
+          <article class="notification-card priority-high unread">
+            <div class="notification-icon danger"><i class="bi bi-droplet-half"></i></div>
+            <div class="notification-content">
+              <div class="notification-topline">
+                <h2>Soil moisture is below safe range</h2>
+                <span>2 min ago</span>
+              </div>
+              <p>Field A moisture dropped to 34%. Start irrigation soon to protect the root zone.</p>
+              <div class="notification-tags">
+                <span>Farm 1 - North</span>
+                <span>Action required</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="notification-card priority-warning unread">
+            <div class="notification-icon warn"><i class="bi bi-cloud-rain-heavy"></i></div>
+            <div class="notification-content">
+              <div class="notification-topline">
+                <h2>Rain expected tonight</h2>
+                <span>1 hour ago</span>
+              </div>
+              <p>Heavy rainfall probability increased to 68%. Review irrigation schedule before sunset.</p>
+              <div class="notification-tags">
+                <span>Weather</span>
+                <span>Schedule check</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="notification-card priority-info">
+            <div class="notification-icon info"><i class="bi bi-cpu-fill"></i></div>
+            <div class="notification-content">
+              <div class="notification-topline">
+                <h2>AI recommendation updated</h2>
+                <span>3 hours ago</span>
+              </div>
+              <p>Fertilizer recommendation model recalculated NPK targets using the latest sensor data.</p>
+              <div class="notification-tags">
+                <span>AI Tools</span>
+                <span>Fertilizer</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="notification-day">Yesterday</div>
+
+          <article class="notification-card priority-success">
+            <div class="notification-icon ok"><i class="bi bi-check2-circle"></i></div>
+            <div class="notification-content">
+              <div class="notification-topline">
+                <h2>Irrigation completed</h2>
+                <span>Yesterday</span>
+              </div>
+              <p>Zone 3 irrigation finished successfully. Moisture returned to the target range.</p>
+              <div class="notification-tags">
+                <span>Automation</span>
+                <span>Completed</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="notification-insights panel" aria-label="Notification insights">
+          <div class="insight-card">
+            <div class="insight-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h2>Recommended next step</h2>
+            <p>Start irrigation for Field A and pause scheduled watering after the expected rainfall window.</p>
+            <a class="btn-brand" routerLink="/dashboard/ai/irrigation-recommendation">
+              <i class="bi bi-water"></i>
+              Irrigation plan
+            </a>
+          </div>
+
+          <div class="insight-mini-list">
+            <div>
+              <span>Unread</span>
+              <strong>2 alerts</strong>
+            </div>
+            <div>
+              <span>Highest risk</span>
+              <strong>Soil moisture</strong>
+            </div>
+            <div>
+              <span>Next check</span>
+              <strong>15 min</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+  <app-bottom-nav></app-bottom-nav>
+</div>

@@ -1,0 +1,12 @@
+<button
+  class="theme-toggle"
+  type="button"
+  [attr.aria-pressed]="theme.isDark"
+  [attr.aria-label]="theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+  [title]="theme.isDark ? 'Light mode' : 'Dark mode'"
+  (click)="theme.toggle()"
+>
+  <span class="theme-toggle-track">
+    <i class="bi" [class.bi-sun-fill]="theme.isDark" [class.bi-moon-stars-fill]="!theme.isDark"></i>
+  </span>
+</button>

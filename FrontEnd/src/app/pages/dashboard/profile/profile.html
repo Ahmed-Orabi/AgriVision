@@ -1,0 +1,264 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="app-shell main-area">
+    <app-top-navbar></app-top-navbar>
+
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-leaf-fill"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>Profile</span>
+            </div>
+            <h1 class="page-title">Profile View</h1>
+            <p class="page-sub">Read-only account overview and farm operations status.</p>
+          </div>
+
+          <div class="head-actions">
+            <a class="btn-brand" routerLink="/dashboard/user/settings">
+              <i class="bi bi-pencil-square"></i> Edit Profile
+            </a>
+          </div>
+        </div>
+
+        <div class="panel profile-hero mb-3">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-auto text-center">
+              <div class="profile-avatar mx-auto" id="profileAvatar">AM</div>
+            </div>
+
+            <div class="col-md">
+              <div class="d-flex flex-wrap align-items-center gap-2">
+                <h2 class="profile-name" id="profileName">Ahmed Mansour</h2>
+                <span class="role-badge" id="profileRole"><i class="bi bi-shield-check"></i> Member</span>
+                <span class="pill" id="profileVerified"><i class="bi bi-patch-check"></i> Unverified</span>
+              </div>
+
+              <p class="page-sub mb-2" id="profileTagline">Smart farmer at AgriVision</p>
+
+              <div class="chip-row">
+                <span class="chip"><i class="bi bi-geo-alt"></i> <span id="profileLocation">--</span></span>
+                <span class="chip"><i class="bi bi-calendar2-week"></i> Joined: <span id="profileJoined">--</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-top">
+              <div>
+                <div class="kpi-label">Farms</div>
+                <div class="kpi-value" id="statFarms">0</div>
+              </div>
+              <div class="kpi-icon">
+                <i class="bi bi-tree"></i>
+              </div>
+            </div>
+            <div class="kpi-meta">Active locations</div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-top">
+              <div>
+                <div class="kpi-label">Robots</div>
+                <div class="kpi-value" id="statRobots">0</div>
+              </div>
+              <div class="kpi-icon sky">
+                <i class="bi bi-robot"></i>
+              </div>
+            </div>
+            <div class="kpi-meta">3 on auto</div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-top">
+              <div>
+                <div class="kpi-label">AI Requests</div>
+                <div class="kpi-value" id="statAi">0</div>
+              </div>
+              <div class="kpi-icon wheat">
+                <i class="bi bi-lightning-charge"></i>
+              </div>
+            </div>
+            <div class="kpi-meta">This month</div>
+          </div>
+        </div>
+
+        <div class="profile-sections">
+          <div class="profile-main">
+            <div class="panel panel-spotlight">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Account Details</h3>
+                  <p class="panel-sub">Identity, access, and billing snapshots</p>
+                </div>
+                <span class="pill"><i class="bi bi-shield-check"></i> Secure</span>
+              </div>
+
+              <ul class="info-list">
+                <li><i class="bi bi-envelope"></i> <span id="profileEmail">--</span></li>
+                <li><i class="bi bi-telephone"></i> <span id="profilePhone">--</span></li>
+                <li><i class="bi bi-geo"></i> <span id="profileLocationDetail">--</span></li>
+                <li><i class="bi bi-clock-history"></i> Last login: <span id="profileLastLogin">--</span></li>
+              </ul>
+            </div>
+
+            <div class="panel mt-3">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Farms Summary</h3>
+                  <p class="panel-sub">Recent farms and field coverage</p>
+                </div>
+                <span class="pill" id="profileFarmCountPill"><i class="bi bi-tree"></i> 0 farms</span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table-clean">
+                  <thead>
+                    <tr>
+                      <th>Farm</th>
+                      <th>Address</th>
+                      <th>Fields</th>
+                      <th>Created</th>
+                    </tr>
+                  </thead>
+                  <tbody id="profileFarmsBody"></tbody>
+                </table>
+              </div>
+
+              <div class="mt-2 d-flex justify-content-end">
+                <a class="btn-soft" routerLink="/dashboard/farm/state">
+                  <i class="bi bi-card-list"></i> View All Farms
+                </a>
+              </div>
+            </div>
+
+            <div class="panel mt-3">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Robots Summary</h3>
+                  <p class="panel-sub">Active automation and fleet status</p>
+                </div>
+                <span class="pill" id="profileRobotsPill"><i class="bi bi-robot"></i> 0 robots</span>
+              </div>
+
+              <div class="d-grid gap-2" id="profileRobotsList"></div>
+              <div class="mt-2 d-flex justify-content-end">
+                <a class="btn-soft" href="#">
+                  <i class="bi bi-robot"></i> View All Robots
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="profile-side">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Subscription Status</h3>
+                  <p class="panel-sub">Plan, usage, and limits</p>
+                </div>
+                <span class="pill plan-pill" id="profilePlanPill"><i class="bi bi-award"></i> Basic</span>
+              </div>
+
+              <ul class="info-list">
+                <li><i class="bi bi-credit-card"></i> Price: <span id="profilePlanPrice">--</span></li>
+                <li><i class="bi bi-tree"></i> Farms: <span id="profilePlanFarms">--</span></li>
+                <li><i class="bi bi-robot"></i> Robots: <span id="profilePlanRobots">--</span></li>
+                <li><i class="bi bi-calendar-event"></i> Ends: <span id="profilePlanEnd">--</span></li>
+                <li><i class="bi bi-credit-card"></i> Next billing: <span id="profilePlanNext">--</span></li>
+              </ul>
+
+              <div class="mt-3">
+                <div class="d-flex align-items-center justify-content-between mb-1 stat-row">
+                  <span>Farms</span><span id="profileFarmsUsage">--</span>
+                </div>
+                <div class="progress mb-2">
+                  <div class="progress-bar" id="profileFarmsBar" style="width:0%"></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-1 stat-row">
+                  <span>Crop Recommendation</span><span id="profileCropUsage">--</span>
+                </div>
+                <div class="progress mb-2">
+                  <div class="progress-bar" id="profileCropBar" style="width:0%"></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-1 stat-row">
+                  <span>Fertilizer Recommendation</span><span id="profileFertilizerUsage">--</span>
+                </div>
+                <div class="progress mb-2">
+                  <div class="progress-bar" id="profileFertilizerBar" style="width:0%"></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-1 stat-row">
+                  <span>Disease &amp; Insect Detection</span><span id="profileDiseaseUsage">--</span>
+                </div>
+                <div class="progress mb-2">
+                  <div class="progress-bar" id="profileDiseaseBar" style="width:0%"></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-1 stat-row">
+                  <span>Robots</span><span id="profileRobotsUsage">--</span>
+                </div>
+                <div class="progress mb-2">
+                  <div class="progress-bar" id="profileRobotsBar" style="width:0%"></div>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <a class="btn-brand w-100" id="profileUpgradeButton" routerLink="/dashboard/user/settings">
+                  <i class="bi bi-stars"></i> Upgrade Plan
+                </a>
+              </div>
+            </div>
+
+            <div class="panel mt-3">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Quick Actions</h3>
+                  <p class="panel-sub">Fast shortcuts for daily work</p>
+                </div>
+              </div>
+              <div class="action-grid">
+                <a class="action-card" routerLink="/dashboard/farm/add">
+                  <i class="bi bi-plus-circle"></i>
+                  <span>Add new farm</span>
+                </a>
+                <a class="action-card" routerLink="/dashboard/ai/crop-recommendation">
+                  <i class="bi bi-flower3"></i>
+                  <span>Run Crop AI</span>
+                </a>
+                <a class="action-card" routerLink="/dashboard/ai/fertilizer-recommendation">
+                  <i class="bi bi-droplet-half"></i>
+                  <span>Run Fertilizer AI</span>
+                </a>
+                <a class="action-card" routerLink="/dashboard/ai/irrigation-recommendation">
+                  <i class="bi bi-water"></i>
+                  <span>Run Irrigation AI</span>
+                </a>
+                <a class="action-card" routerLink="/dashboard/user/settings">
+                  <i class="bi bi-gear"></i>
+                  <span>Edit profile</span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+  <app-bottom-nav></app-bottom-nav>

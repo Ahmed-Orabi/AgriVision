@@ -1,0 +1,127 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="app-shell main-area">
+    <app-top-navbar></app-top-navbar>
+
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-grid-1x2-fill"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>Dashboard</span>
+              <span style="opacity:.5">/</span>
+              <span>Farm State</span>
+            </div>
+            <h1 class="page-title">Farm State</h1>
+            <p class="page-sub">A live grid view of every field and its current status.</p>
+          </div>
+
+          <div class="head-actions">
+            <div class="farm-select">
+              <label class="farm-label" for="farmSelect">Select Farm</label>
+              <app-agri-select selectId="farmSelect" placeholder="Select farm" [options]="farmOptions" value="Farm 1 - North"></app-agri-select>
+            </div>
+            <a class="btn-brand btn-add-farm" routerLink="/dashboard/farm/add">
+              <i class="bi bi-plus-circle"></i> Add Farm
+            </a>
+          </div>
+        </div>
+
+        <div class="farm-layout">
+          <div class="panel farm-panel">
+            <div class="farm-summary">
+              <div class="farm-summary-left">
+                <div class="farm-icon">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                  <div class="farm-head-main">
+                    <h3 id="farmName">North Farm</h3>
+                    <p class="farm-address" id="farmAddress">Al Mansoura, Dakahlia</p>
+                    <p class="farm-location" id="farmLocation">--</p>
+                  </div>
+                  <div class="farm-meta-grid">
+                    <span><i class="bi bi-droplet-half"></i> Soil: <strong id="farmSoil">Loamy Soil</strong></span>
+                    <span><i class="bi bi-rulers"></i> Area: <strong id="farmArea">--</strong></span>
+                    <span><i class="bi bi-arrows-expand"></i> Length: <strong id="farmLength">--</strong></span>
+                    <span><i class="bi bi-arrows-angle-expand"></i> Width: <strong id="farmWidth">--</strong></span>
+                  </div>
+                  <p class="farm-desc" id="farmDescription">--</p>
+                </div>
+              </div>
+              <div class="farm-summary-right">
+                <span class="summary-pill" id="farmTemp"><i class="bi bi-thermometer-sun"></i> --</span>
+                <span class="summary-pill" id="farmMoisture"><i class="bi bi-droplet-half"></i> --</span>
+                <span class="summary-pill" id="farmFieldsPill"><i class="bi bi-grid-3x3-gap"></i> --</span>
+              
+                <a class="btn-soft btn-edit-farm" routerLink="/dashboard/farm/edit">
+                  <i class="bi bi-pencil-square"></i> Edit Farm
+                </a>
+              </div>
+            </div>
+
+            <div class="zone-board">
+              <div class="farm-canvas" id="farmCanvas" aria-label="Farm layout grid"></div>
+              <div class="farm-scale">
+                Farm size: <span id="farmSize">20 x 10 units</span>
+              </div>
+            </div>
+            <div class="farm-details">
+              <div class="farm-insights">
+                <div class="insight-card">
+                  <div class="insight-label">Active zones</div>
+                  <div class="insight-value" id="statZones">--</div>
+                  <div class="insight-meta">Total fields</div>
+                </div>
+                <div class="insight-card">
+                  <div class="insight-label">Coverage</div>
+                  <div class="insight-value" id="statCoverage">--</div>
+                  <div class="insight-meta">Used area</div>
+                </div>
+                <div class="insight-card warn">
+                  <div class="insight-label">Alerts</div>
+                  <div class="insight-value" id="statAlerts">--</div>
+                  <div class="insight-meta">Warning + critical</div>
+                </div>
+              </div>
+              <div class="farm-legend">
+                <span class="legend-item"><span class="legend-dot ok"></span> Healthy</span>
+                <span class="legend-item"><span class="legend-dot irr"></span> Irrigating</span>
+                <span class="legend-item"><span class="legend-dot warn"></span> Warning</span>
+                <span class="legend-item"><span class="legend-dot risk"></span> Critical</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+  <div class="modal-overlay" id="zoneModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Field details">
+      <div class="modal-header">
+        <div>
+          <h3 id="zoneModalTitle">Zone</h3>
+          <p id="zoneModalSub">Crop details</p>
+        </div>
+        <button class="modal-close" type="button" id="zoneModalClose" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="zoneModalBody"></div>
+    </div>
+  </div>
+
+  <app-bottom-nav></app-bottom-nav>

@@ -1,0 +1,553 @@
+<div class="ambient-layer" aria-hidden="true">
+        <span class="ambient-blob blob-1"></span>
+        <span class="ambient-blob blob-2"></span>
+        <span class="ambient-blob blob-3"></span>
+    </div>
+
+    <!-- ====================================
+         DESKTOP NAVIGATION
+         ==================================== -->
+    <nav class="navbar fixed-top desktop-nav d-none d-lg-flex">
+        <div class="container-custom">
+            <div class="d-flex align-items-center justify-content-between w-100">
+
+                <!-- Logo -->
+                <a class="navbar-brand" href="#hero">
+                    <img src="/assets/images/Logo.png" alt="AgriVision logo" />
+                    <span class="logo-wordmark">AgriVision</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="d-flex align-items-center gap-1" id="desktop-links">
+                    <a class="nav-link-custom active" href="#hero">Home</a>
+                    <a class="nav-link-custom" href="#about">About</a>
+                    <a class="nav-link-custom" href="#solutions">Solutions</a>
+                    <a class="nav-link-custom" href="#contact">Contact</a>
+                </div>
+
+                <!-- User Button -->
+                <a id="userBtnDesktop" class="user-btn-desktop" routerLink="/auth/login" aria-label="Go to account">
+                    <i class="bi bi-person-fill fs-5"></i>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====================================
+         MOBILE NAVIGATION
+         ==================================== -->
+    <!-- Top Bar (Logo Only) -->
+    <nav class="navbar fixed-top mobile-top-nav d-lg-none">
+        <div class="container-custom">
+            <a class="navbar-brand m-0" href="#hero">
+                <img src="/assets/images/Logo.png" alt="AgriVision logo" />
+                <span class="logo-wordmark">AgriVision</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation -->
+    <nav class="mobile-bottom-nav fixed-bottom d-lg-none">
+        <a href="#hero" class="bottom-nav-item active" data-nav="home">
+            <i class="bi bi-house-door"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="#about" class="bottom-nav-item" data-nav="about">
+            <i class="bi bi-info-circle"></i>
+            <span>About</span>
+        </a>
+
+        <a href="#solutions" class="bottom-nav-item" data-nav="solutions">
+            <i class="bi bi-cpu"></i>
+            <span>Solutions</span>
+        </a>
+
+        <a href="#contact" class="bottom-nav-item" data-nav="contact">
+            <i class="bi bi-envelope"></i>
+            <span>Contact</span>
+        </a>
+
+        <!-- Mobile Profile Direct Redirect -->
+        <a routerLink="/dashboard/analytics" class="bottom-nav-item" data-nav="profile" id="mobileProfileBtn">
+            <i class="bi bi-person-fill"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- ====================================
+         HERO SECTION
+         ==================================== -->
+    <section id="hero" class="hero-section">
+        <div class="container-custom">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active slide-bg-1">
+                        <div class="carousel-overlay">
+                            <div class="px-3 px-md-5 hero-content">
+                                <span class="hero-kicker">
+                                    <i class="bi bi-robot"></i>
+                                    AI - IoT - Robotics
+                                </span>
+
+                                <div class="hero-text">
+                                    <h1 class="text-white mb-3">AgriVision: Autonomous Smart Agriculture</h1>
+                                    <p class="lead text-white mb-0 opacity-90">
+                                        A unified platform that combines satellite intelligence, IoT sensing, and AI analytics to transform farms into data-driven ecosystems.
+                                    </p>
+                                </div>
+
+                                <div class="hero-actions d-flex flex-wrap gap-3 justify-content-center">
+                                    <a class="btn btn-hero btn-hero-primary" routerLink="/auth/login" id="heroGetStarted">Get Started</a>
+                                    <button class="btn btn-hero btn-hero-outline">
+                                        <i class="bi bi-play-circle me-2"></i>Watch Overview
+                                    </button>
+                                </div>
+
+                                <div class="hero-highlights mx-auto">
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-broadcast me-2"></i>Real-Time Sensing</h5>
+                                        <p>Monitor temperature, humidity, moisture, gas & fire instantly.</p>
+                                    </div>
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-satellite me-2"></i>Satellite Intelligence</h5>
+                                        <p>Crop stress detection & vegetation insights per field.</p>
+                                    </div>
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-shield-check me-2"></i>Early Alerts</h5>
+                                        <p>Detect diseases early and reduce chemical usage.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item slide-bg-2">
+                        <div class="carousel-overlay">
+                            <div class="px-3 px-md-5 hero-content">
+                                <span class="hero-kicker">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                    Predict - Optimize - Automate
+                                </span>
+
+                                <div class="hero-text">
+                                    <h1 class="text-white mb-3">Smarter Decisions, Lower Costs</h1>
+                                    <p class="lead text-white mb-0 opacity-90">
+                                        AgriVision reduces operational costs, enables precision irrigation, and supports sustainable farming aligned with Egypt Vision 2030.
+                                    </p>
+                                </div>
+
+                                <div class="hero-actions d-flex flex-wrap gap-3 justify-content-center">
+                                    <a class="btn btn-hero btn-hero-primary" href="#solutions" id="heroExplorePlans">Explore Plans</a>
+                                    <a class="btn btn-hero btn-hero-outline" href="#contact">Talk to Us</a>
+                                </div>
+
+                                <div class="hero-highlights mx-auto">
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-droplet-half me-2"></i>Water Savings</h5>
+                                        <p>Precision irrigation to minimize waste and improve yields.</p>
+                                    </div>
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-cpu me-2"></i>AI Analytics</h5>
+                                        <p>Predictive insights & recommendation engine.</p>
+                                    </div>
+                                    <div class="hero-highlight">
+                                        <h5><i class="bi bi-grid-1x2 me-2"></i>Central Platform</h5>
+                                        <p>Unified control dashboard for farm management.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         ABOUT SECTION
+         ==================================== -->
+    <section id="about" class="section-surface">
+        <div class="container-custom">
+            <div class="row align-items-center g-5 g-lg-6">
+                <div class="col-lg-6">
+                    <span class="badge bg-accent-gradient text-dark px-4 py-2 rounded-pill mb-3">What is AgriVision?</span>
+                    <h2 class="mb-4">A Smart Agriculture Ecosystem Powered by AI</h2>
+                    <p class="lead text-secondary mb-5">
+                        AgriVision integrates <strong>Artificial Intelligence</strong>, <strong>Robotics</strong>, and <strong>IoT-based environmental sensing</strong>
+                        to modernize agriculture into an autonomous, sustainable, and data-centric system.
+                    </p>
+
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="feature-icon-box">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Instant Smart Actions</h5>
+                                <p class="text-muted mb-0">Automate irrigation, detect threats, and react faster with real-time alerts.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="feature-icon-box" style="background: linear-gradient(135deg, var(--color-accent) 0%, #F4D35E 100%);">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Sustainable + Cost Efficient</h5>
+                                <p class="text-muted mb-0">Reduce chemical usage and operational costs while increasing productivity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="p-4 p-lg-5 bg-bg-alt rounded-4 shadow-card position-relative border-0">
+                        <div class="position-absolute top-0 end-0 translate-middle">
+                            <div class="bg-accent rounded-circle" style="width: 60px; height: 60px; opacity: 0.2;"></div>
+                        </div>
+
+                        <i class="bi bi-globe-americas display-1 text-primary mb-4 d-block"></i>
+                        <h3 class="mb-3">Aligned With Egypt Vision 2030</h3>
+                        <p class="text-muted mb-4">
+                            AgriVision supports sustainable agriculture, food security, and technology transformation through intelligent automation.
+                        </p>
+
+                        <div class="d-flex justify-content-center gap-4 flex-wrap">
+                            <div class="text-center">
+                                <h3 class="text-accent fw-bold">AI</h3>
+                                <p class="small text-muted mb-0">Predictive Analytics</p>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-accent fw-bold">IoT</h3>
+                                <p class="small text-muted mb-0">Live Monitoring</p>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-accent fw-bold">Robotics</h3>
+                                <p class="small text-muted mb-0">Autonomous Farm Tasks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         SOLUTIONS SECTION (PLANS)
+         ==================================== -->
+    <section id="solutions" class="section-soft">
+        <div class="container-custom">
+            <div class="section-header text-center mb-5">
+                <h2 class="mb-3">AgriVision Platform Plans</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">
+                    Start for free, upgrade as your farm grows, and unlock advanced AI + real-time monitoring.
+                </p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Free -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="plan-card h-100">
+                        <h4 class="fw-bold mb-3">Free Plan</h4>
+                        <div class="price mb-2">$0<span>/month</span></div>
+                        <p class="text-muted small mb-4">For students, small farms, and basic monitoring</p>
+
+                        <hr class="my-4 opacity-25">
+
+                        <ul class="list-unstyled mb-4 d-flex flex-column gap-3">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Basic Farm Dashboard</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Weather Overview</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>1 Farm Zone</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Email Support</li>
+                        </ul>
+
+                        <a href="#" class="btn btn-outline-primary w-100 mt-auto" id="planStartNow">Start Now</a>
+                    </div>
+                </div>
+
+                <!-- Basic -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="plan-card highlighted h-100">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0 text-white">Basic</h4>
+                            <span class="badge-popular rounded-pill">Most Popular</span>
+                        </div>
+
+                        <div class="price mb-2">$29<span>/month</span></div>
+                        <p class="text-white-50 small mb-4">Advanced monitoring + smart recommendations</p>
+
+                        <hr class="my-4 opacity-25">
+
+                        <ul class="list-unstyled mb-4 d-flex flex-column gap-3">
+                            <li><i class="bi bi-check-circle-fill text-accent-light me-2"></i>AI Crop Insights</li>
+                            <li><i class="bi bi-check-circle-fill text-accent-light me-2"></i>Up to 5 Zones</li>
+                            <li><i class="bi bi-check-circle-fill text-accent-light me-2"></i>Soil & Irrigation Analytics</li>
+                            <li><i class="bi bi-check-circle-fill text-accent-light me-2"></i>Early Warning Alerts</li>
+                            <li><i class="bi bi-check-circle-fill text-accent-light me-2"></i>Priority Support</li>
+                        </ul>
+
+                        <a href="#" class="btn btn-lg w-100 fw-bold mt-auto" id="planUpgradeBasic">Upgrade Basic</a>
+                    </div>
+                </div>
+
+                <!-- VIP -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="plan-card h-100">
+                        <h4 class="fw-bold mb-3">VIP (Advanced)</h4>
+                        <div class="price mb-2">$79<span>/month</span></div>
+                        <p class="text-muted small mb-4">Full automation + enterprise monitoring</p>
+
+                        <hr class="my-4 opacity-25">
+
+                        <ul class="list-unstyled mb-4 d-flex flex-column gap-3">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Unlimited Zones</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Satellite + NDVI Layers</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>IoT + Sensors Integration</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Robot Task Scheduling</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>24/7 Premium Support</li>
+                        </ul>
+
+                        <a href="#contact" class="btn btn-outline-primary w-100 mt-auto" id="planContactSales">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         FIELD INSIGHTS SECTION
+         ==================================== -->
+    <section id="insights" class="section-surface">
+        <div class="container-custom">
+            <div class="section-header text-center mb-5">
+                <span class="pill-tag mb-3">System Capabilities</span>
+                <h2 class="mb-3">Unified Monitoring for Smart Decisions</h2>
+                <p class="text-secondary mx-auto" style="max-width: 640px;">
+                    AgriVision connects sensors, AI analytics, and automation to protect crops and maximize yield with less waste.
+                </p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5">
+                    <div class="section-glass p-4 p-lg-5 h-100">
+                        <h3 class="mb-3">Always-On Intelligence</h3>
+                        <p class="text-muted mb-4">
+                            Your farm is monitored 24/7: soil moisture, climate, light, fire & gas detection, and real-time health analytics.
+                        </p>
+                        <ul class="list-unstyled feature-list mb-4">
+                            <li><i class="bi bi-check2-circle text-primary me-2"></i>Sensor-based monitoring & alerts</li>
+                            <li><i class="bi bi-check2-circle text-primary me-2"></i>AI-based predictions and decisions</li>
+                            <li><i class="bi bi-check2-circle text-primary me-2"></i>Central dashboard for management</li>
+                        </ul>
+                        <a routerLink="/dashboard/analytics" class="btn btn-primary w-100" id="dashboardPreviewBtn">See Dashboard Preview</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="metric-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="feature-icon-box" style="width: 56px; height: 56px; font-size: 1.4rem;">
+                                        <i class="bi bi-droplet"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Precision Irrigation</h5>
+                                        <p class="small text-muted mb-0">Save water, increase yield</p>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-0">Automate irrigation based on real-time soil moisture thresholds.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="metric-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="feature-icon-box" style="width: 56px; height: 56px; font-size: 1.4rem;">
+                                        <i class="bi bi-bug"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Disease Detection</h5>
+                                        <p class="small text-muted mb-0">Early warning system</p>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-0">Detect crop stress and diseases early to reduce chemical usage.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="metric-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="feature-icon-box" style="width: 56px; height: 56px; font-size: 1.4rem;">
+                                        <i class="bi bi-fire"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Safety Monitoring</h5>
+                                        <p class="small text-muted mb-0">Fire + gas protection</p>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-0">Get instant alerts for fire or harmful gas levels inside farms and greenhouses.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="metric-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="feature-icon-box" style="width: 56px; height: 56px; font-size: 1.4rem;">
+                                        <i class="bi bi-robot"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Autonomous Robot</h5>
+                                        <p class="small text-muted mb-0">Smart tasks execution</p>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-0">Integrate robotics for scouting and automated farm operations.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         CONTACT SECTION
+         ==================================== -->
+    <section id="contact" class="section-surface">
+        <div class="container-custom">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <div class="card border-0 shadow-card rounded-4 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-1 bg-primary-gradient d-none d-md-block"></div>
+                            <div class="col-md-11 p-4 p-lg-5">
+                                <div class="text-center mb-5">
+                                    <h2 class="mb-3">Contact AgriVision Team</h2>
+                                    <p class="text-muted">
+                                        Interested in smart farming automation? Send us your needs and we'll help you build the right setup.
+                                    </p>
+                                </div>
+
+                                <form id="contactForm">
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <label class="form-label-custom">Full Name</label>
+                                            <input type="text" name="name" class="form-control form-control-custom" placeholder="Ahmed Basem" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label-custom">Email Address</label>
+                                            <input type="email" name="email" class="form-control form-control-custom" placeholder="ahmed&#6;4;example.com" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label-custom">Farm Size (Hectares)</label>
+                                            <input type="number" name="farmSize" class="form-control form-control-custom" placeholder="e.g., 50" min="1">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label-custom">Message</label>
+                                            <textarea name="message" class="form-control form-control-custom" rows="5" placeholder="Tell us your farm challenge..." required></textarea>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold" style="background: var(--color-primary); border: none;">
+                                                Send Message
+                                                <i class="bi bi-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <small class="d-block text-center text-muted mt-4">
+                                    Response time: within 24 hours
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         FOOTER
+         ==================================== -->
+    <footer class="footer">
+        <div class="container-custom">
+            <div class="footer-grid mb-4">
+                <div class="footer-brand text-center text-lg-start">
+                    <a href="#hero" class="footer-logo">
+                        <img src="/assets/images/Logo.png" alt="AgriVision logo">
+                        <span class="logo-wordmark">AgriVision</span>
+                    </a>
+                    <p class="mb-4 text-white-75">
+                        AgriVision is an advanced smart agriculture initiative that integrates AI, Robotics, and IoT-based sensing to create sustainable and autonomous farming ecosystems.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="text-center text-lg-start">
+                    <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+                    <div class="d-flex flex-column gap-2 footer-links">
+                        <a href="#hero">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#solutions">Plans</a>
+                        <a href="#insights">Capabilities</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-subscribe">
+                    <div class="footer-card">
+                        <h5 class="fw-bold text-white mb-3">Stay Updated</h5>
+                        <p class="text-white-75 mb-3">News, updates, and smart farming insights.</p>
+                        <div class="d-flex flex-column flex-sm-row gap-2">
+                            <input type="email" class="form-control form-control-custom" placeholder="Your email address">
+                            <button class="btn btn-hero btn-hero-primary">Subscribe</button>
+                        </div>
+                        <small class="text-white-50 d-block mt-2">We respect your privacy. Unsubscribe any time.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-9">
+                    <div class="border-top border-white-10 pt-4">
+                        <p class="small text-white-50 mb-0">
+                            &copy; 2026 AgriVision. All rights reserved.
+                            <span class="d-block d-md-inline mt-2 mt-md-0">
+                                <a href="#" class="text-white-50 text-decoration-none ms-md-3">Privacy Policy</a>
+                                <a href="#" class="text-white-50 text-decoration-none ms-3">Terms of Service</a>
+                                <a href="#" class="text-white-50 text-decoration-none ms-3">Support</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->

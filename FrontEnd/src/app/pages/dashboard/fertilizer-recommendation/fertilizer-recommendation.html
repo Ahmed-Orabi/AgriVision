@@ -1,0 +1,305 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+  <app-sidebar></app-sidebar>
+  <div class="app-shell main-area">
+    <!-- ===== TOP NAVBAR ===== -->
+    <app-top-navbar></app-top-navbar>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content-card" role="main">
+      <div class="content-inner">
+
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-droplet-half"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>AI Tools</span>
+              <span style="opacity:.5">/</span>
+              <span>Fertilizer Recommendation</span>
+            </div>
+            <h1 class="page-title">Fertilizer Recommendation</h1>
+            <p class="page-sub">
+              Enter soil &amp; crop parameters to get the best fertilizer plan powered by AI.
+            </p>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <div class="input-toggle" role="tablist" aria-label="Input mode">
+              <button class="toggle-btn active" type="button" id="modeManual" aria-pressed="true">
+                Manual Form
+              </button>
+              <button class="toggle-btn" type="button" id="modeSensor" aria-pressed="false">
+                From Sensors
+              </button>
+            </div>
+            <button class="btn-danger-soft" type="button" id="btnClear">
+              <i class="bi bi-trash3"></i> Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="panel auto-height print-only" id="printSummary"></div>
+
+        <div class="row g-3 recommendation-layout">
+          <!-- LEFT -->
+          <div class="col-lg-7 col-xl-8">
+            <div class="panel" id="manualPanel">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Input Parameters</h3>
+                  <p class="panel-sub">Use realistic values for better fertilizer recommendations.</p>
+                </div>
+                <span class="pill"><i class="bi bi-shield-check"></i> Model v1</span>
+              </div>
+
+              <form id="fertForm" class="mt-2">
+                <div class="manual-inputs">
+                  <div class="form-grid">
+                    <div>
+                      <label class="form-label">Temperature (&deg;C)</label>
+                      <input type="number" class="form-control" id="Temperature" min="-10" max="60" step="0.01" placeholder="e.g. 25.38" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Range: -10 &rarr; 60</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Moisture (0 &rarr; 1)</label>
+                      <input type="number" class="form-control" id="Moisture" min="0" max="1" step="0.0001" placeholder="e.g. 0.39" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Normalized: 0 (dry) &rarr; 1 (wet)</div>
+
+                      <div class="moist-preview">
+                        <span><i class="bi bi-moisture me-1"></i> Moisture Preview</span>
+                        <span class="moist-badge" id="moistPercent">&mdash;</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Rainfall (mm)</label>
+                      <input type="number" class="form-control" id="Rainfall" min="0" max="500" step="0.01" placeholder="e.g. 182.06" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Range: 0 &rarr; 500</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">PH</label>
+                      <input type="number" class="form-control" id="PH" min="0" max="14" step="0.001" placeholder="e.g. 7.04" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Range: 0 &rarr; 14</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Nitrogen</label>
+                      <input type="number" class="form-control" id="Nitrogen" min="0" max="200" step="0.001" placeholder="e.g. 71.22" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Common range: 0 &rarr; 140</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Phosphorous</label>
+                      <input type="number" class="form-control" id="Phosphorous" min="0" max="200" step="0.001" placeholder="e.g. 135.13" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Common range: 0 &rarr; 150</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Potassium</label>
+                      <input type="number" class="form-control" id="Potassium" min="0" max="250" step="0.001" placeholder="e.g. 147.45" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Common range: 0 &rarr; 200</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Carbon (0 &rarr; 1)</label>
+                      <input type="number" class="form-control" id="Carbon" min="0" max="1" step="0.0001" placeholder="e.g. 0.80" required />
+                      <div class="hint"><i class="bi bi-info-circle"></i> Normalized carbon ratio</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Soil Type</label>
+                      <app-agri-select selectId="Soil" placeholder="Select soil type" [options]="soilOptions" [required]="true"></app-agri-select>
+                      <div class="hint"><i class="bi bi-info-circle"></i> Used to adjust nutrient strategy</div>
+                    </div>
+
+                    <div>
+                      <label class="form-label">Crop</label>
+                      <app-agri-select selectId="Crop" placeholder="Select crop" [options]="cropOptions" [required]="true"></app-agri-select>
+                      <div class="hint"><i class="bi bi-info-circle"></i> Choose the crop you plan to grow</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2 flex-wrap mt-3">
+                  <button type="submit" class="btn-brand" id="btnRecommend">
+                    <i class="bi bi-lightning-charge"></i>
+                    Recommend Fertilizer
+                  </button>
+
+                  <button type="button" class="btn-soft no-print" id="btnSaveSample">
+                    <i class="bi bi-printer"></i>
+                    Print Example
+                  </button>
+                </div>
+
+                <div class="manual-disabled-note hint mt-2">
+                  <i class="bi bi-info-circle"></i>
+                  Manual inputs are disabled while using live sensor data.
+                </div>
+
+                <div class="api-note manual-inputs">
+                  <i class="bi bi-stars"></i>
+                  Tip: Replace the mock logic with your API endpoint to get real ML predictions and store them per farm.
+                </div>
+              </form>
+            </div>
+
+            <div class="panel mt-3 d-none" id="sensorPanel">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Live Sensor Data</h3>
+                  <p class="panel-sub">Realtime readings from field devices.</p>
+                </div>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                  <span class="status-pill" id="sensorStatus">
+                    <span class="status-dot"></span> Connected
+                  </span>
+                  <span class="pill"><i class="bi bi-broadcast"></i> IoT Feed</span>
+                </div>
+              </div>
+
+              <div class="sensor-grid">
+                <div class="sensor-card">
+                  <div class="sensor-label">Temperature</div>
+                  <div class="sensor-value" id="sTemperature">--</div>
+                  <div class="sensor-unit">&deg;C</div>
+                </div>
+                <div class="sensor-card">
+                  <div class="sensor-label">Moisture</div>
+                  <div class="sensor-value" id="sMoisture">--</div>
+                  <div class="sensor-unit">0 &rarr; 1</div>
+                </div>
+                <div class="sensor-card">
+                  <div class="sensor-label">Rainfall</div>
+                  <div class="sensor-value" id="sRainfall">--</div>
+                  <div class="sensor-unit">mm</div>
+                </div>
+                <div class="sensor-card">
+                  <div class="sensor-label">PH</div>
+                  <div class="sensor-value" id="sPH">--</div>
+                  <div class="sensor-unit">pH</div>
+                </div>
+
+                <div class="sensor-card">
+                  <div class="sensor-label">Nitrogen</div>
+                  <div class="sensor-value" id="sNitrogen">--</div>
+                  <div class="sensor-unit">ppm</div>
+                </div>
+                <div class="sensor-card">
+                  <div class="sensor-label">Phosphorous</div>
+                  <div class="sensor-value" id="sPhosphorous">--</div>
+                  <div class="sensor-unit">ppm</div>
+                </div>
+                <div class="sensor-card">
+                  <div class="sensor-label">Potassium</div>
+                  <div class="sensor-value" id="sPotassium">--</div>
+                  <div class="sensor-unit">ppm</div>
+                </div>
+
+                <div class="sensor-card">
+                  <div class="sensor-label">Carbon</div>
+                  <div class="sensor-value" id="sCarbon">--</div>
+                  <div class="sensor-unit">0 &rarr; 1</div>
+                </div>
+
+                <div class="sensor-card" style="grid-column: 1 / -1;">
+                  <div class="sensor-label">Soil Type</div>
+                  <app-agri-select class="mt-2" selectId="SensorSoil" placeholder="Select soil type" [options]="soilOptions"></app-agri-select>
+                </div>
+
+                <div class="sensor-card" style="grid-column: 1 / -1;">
+                  <div class="sensor-label">Crop</div>
+                  <app-agri-select class="mt-2" selectId="SensorCrop" placeholder="Select crop" [options]="cropOptions"></app-agri-select>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap mt-3">
+                <button class="btn-brand" type="button" id="btnFetchSensors">
+                  <i class="bi bi-wifi"></i> Fetch Latest Sensor Data
+                </button>
+              </div>
+
+              <div class="hint mt-2">
+                <i class="bi bi-info-circle"></i>
+                Latest readings will be used for recommendation while sensor mode is active.
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="col-lg-5 col-xl-4 fert-aside">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Recommendation</h3>
+                  <p class="panel-sub">Your top 3 predicted fertilizers appear here.</p>
+                </div>
+                <span class="pill"><i class="bi bi-cpu"></i> AI Output</span>
+              </div>
+
+              <div class="result-card mt-2">
+                <div class="result-inner">
+
+                  <div class="rec-list" id="recList">
+                    <div class="rec-empty">No recommendation yet</div>
+                  </div>
+                  
+                  <div class="mt-3" id="resultNote" style="font-weight:800;color: rgba(97,117,107,.92);">
+                    Submit the form to get your fertilizer plan.
+                  </div>
+
+                  <div class="mt-3" id="loadingRow" style="display:none;">
+                    <span style="font-weight:950;color: var(--color-primary-dark);">
+                      Recommending
+                      <span class="pulse"></span><span class="pulse"></span><span class="pulse"></span>
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="panel mt-3">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Recent Predictions</h3>
+                  <p class="panel-sub">Quick access to your last results.</p>
+                </div>
+                <span class="pill"><i class="bi bi-clock-history"></i> History</span>
+              </div>
+              <div class="d-grid gap-2 mt-2" id="historyList">
+                <div class="rec-empty">No history yet</div>
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <app-footer></app-footer>
+  </div>
+  <div class="modal-overlay" id="historyModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Recommendation details">
+      <div class="modal-header">
+        <div>
+          <h3>Recommendation Details</h3>
+          <p>Saved inputs and fertilizers.</p>
+        </div>
+        <button class="modal-close" type="button" id="historyModalClose" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="historyModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <app-bottom-nav></app-bottom-nav>

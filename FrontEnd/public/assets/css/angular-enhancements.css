@@ -1,0 +1,3923 @@
+/* Angular copy UI refinements and dark mode overrides. Loaded after each page stylesheet. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background 0.28s ease, color 0.28s ease;
+}
+
+body.agri-page-auth {
+  overflow-y: auto !important;
+}
+
+body.agri-page-landing,
+body.agri-page-dashboard {
+  overflow-y: auto;
+}
+
+/* Keep desktop authentication screens centered without page scroll */
+@media (min-width: 901px) {
+  html:has(body.agri-page-auth),
+  body.agri-page-auth {
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden !important;
+  }
+
+  body.agri-page-auth app-root {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .agri-page-auth .page-wrapper {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    padding: clamp(14px, 2vh, 22px) clamp(18px, 2.4vw, 34px) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .agri-page-auth .auth-card {
+    width: min(1040px, calc(100vw - 68px)) !important;
+    max-width: 1040px !important;
+    height: min(668px, calc(100dvh - 44px)) !important;
+    min-height: 0 !important;
+    max-height: calc(100dvh - 44px) !important;
+    margin: auto !important;
+  }
+
+  .agri-page-auth .card-content {
+    height: 100% !important;
+    min-height: 0 !important;
+    grid-template-columns: minmax(300px, 0.86fr) minmax(360px, 1fr) !important;
+  }
+
+  .agri-page-auth .auth-description-panel {
+    margin: clamp(12px, 1.4vw, 16px) !important;
+    padding: clamp(24px, 3vw, 36px) !important;
+    min-height: 0 !important;
+  }
+
+  .agri-page-auth .auth-description-content h2 {
+    font-size: clamp(1.62rem, 2.45vw, 2.25rem) !important;
+  }
+
+  .agri-page-auth .auth-description-content p {
+    font-size: clamp(0.86rem, 1.15vw, 0.96rem) !important;
+    line-height: 1.55 !important;
+  }
+
+  .agri-page-auth .auth-eyebrow {
+    margin-bottom: clamp(12px, 1.6vh, 18px) !important;
+  }
+
+  .agri-page-auth .auth-feature-list {
+    margin-top: clamp(16px, 2.1vh, 22px) !important;
+  }
+
+  .agri-page-auth .auth-assurance-list {
+    margin-top: clamp(14px, 1.9vh, 20px) !important;
+  }
+
+  .agri-page-auth .form-section {
+    padding: clamp(22px, 3.4vh, 34px) clamp(28px, 3.8vw, 48px) !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .agri-page-auth .form-section > * {
+    max-width: 400px !important;
+  }
+
+  .agri-page-auth .form-section .logo {
+    margin-bottom: clamp(10px, 1.6vh, 16px) !important;
+  }
+
+  .agri-page-auth .logo-img {
+    width: clamp(116px, 11vw, 158px) !important;
+  }
+
+  .agri-page-auth .form-section .logo-wordmark {
+    font-size: clamp(1.18rem, 1.65vw, 1.5rem) !important;
+  }
+
+  .agri-page-auth .page-title {
+    font-size: clamp(1.45rem, 2.15vw, 1.92rem) !important;
+    margin-bottom: 8px !important;
+  }
+
+  .agri-page-auth .subtitle-text {
+    margin-bottom: clamp(12px, 1.7vh, 18px) !important;
+    font-size: clamp(0.82rem, 1.12vw, 0.94rem) !important;
+    line-height: 1.48 !important;
+  }
+
+  .agri-page-auth .form-group {
+    margin-bottom: clamp(9px, 1.2vh, 13px) !important;
+  }
+
+  .agri-page-auth .form-control,
+  .agri-page-auth .btn-primary,
+  .agri-page-auth .btn-secondary {
+    height: clamp(42px, 5.4vh, 48px) !important;
+    min-height: clamp(42px, 5.4vh, 48px) !important;
+  }
+
+  .agri-page-auth .btn-primary {
+    margin-top: clamp(10px, 1.5vh, 14px) !important;
+    margin-bottom: clamp(8px, 1.2vh, 12px) !important;
+  }
+
+  .agri-page-auth .btn-secondary {
+    margin-top: 0 !important;
+    margin-bottom: clamp(10px, 1.4vh, 14px) !important;
+  }
+
+  .agri-page-auth .checkbox-section {
+    margin-bottom: clamp(7px, 1vh, 10px) !important;
+  }
+
+  .agri-page-auth .text-link {
+    margin-bottom: clamp(6px, 0.9vh, 10px) !important;
+  }
+}
+
+.desktop-nav,
+.mobile-top-nav,
+.mobile-bottom-nav,
+.top-navbar,
+.sidebar,
+.bottom-nav,
+.auth-card,
+.content-card,
+.panel,
+.kpi-card,
+.plan-card,
+.profile-card,
+.settings-card,
+.solution-card,
+.feature-card,
+.contact-card,
+.hero-highlight,
+.glass-card,
+.analytics-card,
+.weather-panel,
+.modal-card {
+  transition:
+    background-color 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.22s ease,
+    color 0.28s ease;
+}
+
+.panel:hover,
+.kpi-card:hover,
+.solution-card:hover,
+.feature-card:hover,
+.hero-highlight:hover,
+.profile-card:hover,
+.settings-card:hover,
+.plan-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 52px rgba(11, 36, 27, 0.14);
+}
+
+.btn-brand,
+.btn-primary,
+.btn-hero-primary,
+.btn-soft,
+.nav-icon-btn,
+.user-avatar,
+.user-btn-desktop,
+.bottom-nav-item,
+.sidebar-menu a {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.btn-brand:hover,
+.btn-primary:hover,
+.btn-hero-primary:hover,
+.btn-soft:hover,
+.nav-icon-btn:hover,
+.user-avatar:hover,
+.user-btn-desktop:hover {
+  transform: translateY(-2px);
+}
+
+.form-control,
+.form-select,
+.range-input,
+textarea,
+input,
+select {
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus,
+input:focus,
+select:focus {
+  box-shadow: 0 0 0 4px rgba(52, 178, 123, 0.16) !important;
+}
+
+.content-card,
+.auth-card,
+.desktop-nav,
+.top-navbar,
+.sidebar {
+  backdrop-filter: blur(20px) saturate(1.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+}
+
+body.theme-dark {
+  --color-primary-dark: #eef7f1;
+  --color-primary: #42b883;
+  --color-primary-light: #62d39e;
+  --color-secondary: #7fc79e;
+  --color-accent: #f0c84b;
+  --color-accent-light: #f7e8a6;
+  --color-sky: #6fb2c9;
+  --color-cream: #26372f;
+  --color-earth: #d2a66f;
+  --color-fern: #64d49d;
+  --color-meadow: #284a39;
+
+  --color-surface: #25362e;
+  --color-bg: #1a2721;
+  --color-bg-alt: #21332a;
+  --color-line: rgba(215, 232, 222, 0.2);
+
+  --text-primary: #f5fbf7;
+  --text-secondary: #d6e3dc;
+  --text-muted: #bdccc4;
+  --text-light: #9fafa7;
+
+  --shadow-sm: 0 4px 16px rgba(8, 24, 17, 0.16);
+  --shadow-md: 0 14px 36px rgba(8, 24, 17, 0.2);
+  --shadow-lg: 0 24px 70px rgba(8, 24, 17, 0.26);
+  --shadow-hover: 0 28px 80px rgba(8, 24, 17, 0.3);
+
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(113, 196, 149, 0.2), transparent 62%),
+    radial-gradient(820px 520px at 104% 7%, rgba(240, 200, 75, 0.16), transparent 60%),
+    radial-gradient(760px 460px at 66% 94%, rgba(130, 190, 207, 0.16), transparent 65%),
+    linear-gradient(180deg, #1c2a23 0%, #203229 50%, #1a2821 100%) !important;
+  color: var(--text-primary);
+}
+
+body.theme-dark::before {
+  opacity: 0.48;
+}
+
+body.theme-dark::after {
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 13px),
+    repeating-linear-gradient(45deg, rgba(240, 200, 75, 0.018) 0 1px, transparent 1px 18px);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+body.theme-dark .ambient-blob {
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+body.theme-dark .desktop-nav,
+body.theme-dark .mobile-top-nav,
+body.theme-dark .mobile-bottom-nav,
+body.theme-dark .top-navbar,
+body.theme-dark .bottom-nav,
+body.theme-dark .sidebar,
+body.theme-dark .auth-card,
+body.theme-dark .content-card,
+body.theme-dark .panel,
+body.theme-dark .card,
+body.theme-dark .kpi-card,
+body.theme-dark .kpi,
+body.theme-dark .plan-card,
+body.theme-dark .profile-card,
+body.theme-dark .settings-card,
+body.theme-dark .solution-card,
+body.theme-dark .feature-card,
+body.theme-dark .contact-card,
+body.theme-dark .hero-highlight,
+body.theme-dark .glass-card,
+body.theme-dark .analytics-card,
+body.theme-dark .weather-panel,
+body.theme-dark .farm-select,
+body.theme-dark .modal-card,
+body.theme-dark .notif-dropdown,
+body.theme-dark .notif-item,
+body.theme-dark .sidebar-footer,
+body.theme-dark .main-footer,
+body.theme-dark .metric-card,
+body.theme-dark .sensor-card,
+body.theme-dark .sensor-tile,
+body.theme-dark .farm-card,
+body.theme-dark .field-card,
+body.theme-dark .history-card,
+body.theme-dark .history-item,
+body.theme-dark .result-card,
+body.theme-dark .recommendation-card,
+body.theme-dark .crop-card,
+body.theme-dark .media-card,
+body.theme-dark .media-shell,
+body.theme-dark .result-modal__content,
+body.theme-dark .confirm-card,
+body.theme-dark .table-responsive,
+body.theme-dark .dropdown-menu {
+  background: rgba(38, 55, 47, 0.88) !important;
+  border-color: rgba(215, 232, 222, 0.18) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 18px 48px rgba(8, 24, 17, 0.18) !important;
+}
+
+body.theme-dark .section-surface,
+body.theme-dark .section-soft,
+body.theme-dark .section-contrast {
+  background:
+    radial-gradient(700px 360px at 10% 0%, rgba(113, 196, 149, 0.14), transparent 62%),
+    linear-gradient(180deg, rgba(30, 46, 38, 0.98), rgba(35, 55, 45, 0.96)) !important;
+  color: var(--text-primary);
+}
+
+body.theme-dark .carousel-overlay {
+  background:
+    linear-gradient(90deg, rgba(3, 12, 8, 0.82), rgba(5, 18, 12, 0.48)),
+    radial-gradient(600px 420px at 70% 20%, rgba(240, 200, 75, 0.18), transparent 60%) !important;
+}
+
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark h4,
+body.theme-dark h5,
+body.theme-dark h6,
+body.theme-dark .page-title,
+body.theme-dark .section-title,
+body.theme-dark .panel-title,
+body.theme-dark .kpi-value,
+body.theme-dark .profile-name,
+body.theme-dark .card-title,
+body.theme-dark .modal-title,
+body.theme-dark .modal-header h3,
+body.theme-dark .notif-head strong,
+body.theme-dark .notif-item strong,
+body.theme-dark .sidebar-header h5,
+body.theme-dark .sidebar-user h6,
+body.theme-dark .footer-info h6,
+body.theme-dark .sensor-value,
+body.theme-dark .metric-value,
+body.theme-dark .weather-temp,
+body.theme-dark .temp-value,
+body.theme-dark .stat-value,
+body.theme-dark .plan-name,
+body.theme-dark .hero-card-title,
+body.theme-dark .form-title,
+body.theme-dark .page-title * {
+  color: var(--text-primary) !important;
+}
+
+body.theme-dark p,
+body.theme-dark .page-sub,
+body.theme-dark .section-sub,
+body.theme-dark .panel-sub,
+body.theme-dark .kpi-meta,
+body.theme-dark .text-secondary,
+body.theme-dark .text-muted,
+body.theme-dark .text-dark,
+body.theme-dark .text-body,
+body.theme-dark .card-text,
+body.theme-dark .modal-header p,
+body.theme-dark .modal-meta,
+body.theme-dark .notif-head small,
+body.theme-dark .notif-item p,
+body.theme-dark .notif-item span,
+body.theme-dark .sidebar-user small,
+body.theme-dark .footer-info p,
+body.theme-dark .footer-links a,
+body.theme-dark .sensor-meta,
+body.theme-dark .metric-label,
+body.theme-dark .kpi-label,
+body.theme-dark .form-hint,
+body.theme-dark .help-text,
+body.theme-dark .empty-state,
+body.theme-dark .field-empty,
+body.theme-dark small,
+body.theme-dark label {
+  color: var(--text-secondary) !important;
+}
+
+body.theme-dark [style*="color: rgba(97,117,107"],
+body.theme-dark [style*="color: rgba(97, 117, 107"],
+body.theme-dark [style*="color: var(--color-primary-dark"],
+body.theme-dark [style*="color:var(--color-primary-dark"],
+body.theme-dark [style*="color: #122016"],
+body.theme-dark [style*="color:#122016"],
+body.theme-dark [style*="color: #0A2219"],
+body.theme-dark [style*="color:#0A2219"] {
+  color: var(--text-secondary) !important;
+}
+
+body.theme-dark .text-white,
+body.theme-dark .hero-section .text-white,
+body.theme-dark .carousel-overlay .text-white {
+  color: #ffffff !important;
+}
+
+body.theme-dark a {
+  color: inherit;
+}
+
+body.theme-dark .sidebar-menu a,
+body.theme-dark .bottom-nav-item,
+body.theme-dark .nav-link-custom {
+  color: rgba(237, 248, 239, 0.78) !important;
+}
+
+body.theme-dark .sidebar-menu a:hover,
+body.theme-dark .sidebar-menu a.active,
+body.theme-dark .bottom-nav-item:hover,
+body.theme-dark .bottom-nav-item.active,
+body.theme-dark .nav-link-custom:hover,
+body.theme-dark .nav-link-custom.active {
+  background: rgba(66, 184, 131, 0.14) !important;
+  color: #f7e8a6 !important;
+}
+
+body.theme-dark .btn-brand,
+body.theme-dark .btn-primary,
+body.theme-dark .btn-hero-primary {
+  background: linear-gradient(135deg, #4bd391, #f0c84b) !important;
+  border-color: rgba(240, 200, 75, 0.32) !important;
+  color: #06130f !important;
+  box-shadow: 0 16px 36px rgba(66, 184, 131, 0.22) !important;
+}
+
+body.theme-dark .btn-soft,
+body.theme-dark .btn-secondary,
+body.theme-dark .btn-hero-outline,
+body.theme-dark .nav-icon-btn,
+body.theme-dark .user-avatar,
+body.theme-dark .user-btn-desktop {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(189, 223, 202, 0.14) !important;
+  color: var(--text-primary) !important;
+}
+
+body.theme-dark .form-control,
+body.theme-dark .form-select,
+body.theme-dark input,
+body.theme-dark textarea,
+body.theme-dark select {
+  background-color: rgba(245, 251, 247, 0.12) !important;
+  border-color: rgba(215, 232, 222, 0.22) !important;
+  color: var(--text-primary) !important;
+}
+
+body.theme-dark .form-control::placeholder,
+body.theme-dark input::placeholder,
+body.theme-dark textarea::placeholder {
+  color: rgba(200, 216, 207, 0.58) !important;
+}
+
+body.theme-dark .form-control:focus,
+body.theme-dark .form-select:focus,
+body.theme-dark input:focus,
+body.theme-dark textarea:focus,
+body.theme-dark select:focus {
+  border-color: rgba(240, 200, 75, 0.5) !important;
+  box-shadow: 0 0 0 4px rgba(240, 200, 75, 0.14) !important;
+}
+
+body.theme-dark .table,
+body.theme-dark table {
+  color: var(--text-secondary) !important;
+}
+
+body.theme-dark tr,
+body.theme-dark td,
+body.theme-dark th {
+  border-color: rgba(189, 223, 202, 0.11) !important;
+}
+
+body.theme-dark .badge,
+body.theme-dark .pill,
+body.theme-dark .lock-badge,
+body.theme-dark .crumb,
+body.theme-dark .section-pill,
+body.theme-dark .status-pill,
+body.theme-dark .role-badge,
+body.theme-dark .plan-pill,
+body.theme-dark .media-badge,
+body.theme-dark .moist-badge,
+body.theme-dark .soft-pill,
+body.theme-dark .modal-tag {
+  background: rgba(240, 200, 75, 0.11) !important;
+  border-color: rgba(189, 223, 202, 0.14) !important;
+  color: #f7e8a6 !important;
+}
+
+body.theme-dark .status-pill.disconnected,
+body.theme-dark .danger,
+body.theme-dark .text-danger,
+body.theme-dark .dd-danger,
+body.theme-dark .sidebar-logout {
+  color: #ffb4a8 !important;
+  background: rgba(255, 99, 71, 0.12) !important;
+  border-color: rgba(255, 180, 168, 0.18) !important;
+}
+
+body.theme-dark .status-pill.connected,
+body.theme-dark .success,
+body.theme-dark .text-success {
+  color: #93f0b7 !important;
+  background: rgba(66, 184, 131, 0.14) !important;
+  border-color: rgba(147, 240, 183, 0.18) !important;
+}
+
+body.theme-dark .bg-white,
+body.theme-dark .bg-light,
+body.theme-dark .bg-body,
+body.theme-dark .bg-accent-gradient {
+  background: rgba(38, 55, 47, 0.92) !important;
+  color: var(--text-primary) !important;
+}
+
+body.theme-dark .bg-dark {
+  background: #1b2922 !important;
+}
+
+body.theme-dark .border,
+body.theme-dark .border-top,
+body.theme-dark .border-bottom,
+body.theme-dark .border-start,
+body.theme-dark .border-end {
+  border-color: rgba(189, 223, 202, 0.14) !important;
+}
+
+body.theme-dark img.logo-image,
+body.theme-dark .navbar-brand img,
+body.theme-dark .logo-img {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.24));
+}
+
+body.theme-dark .logo-wordmark {
+  color: #8CCFAC !important;
+}
+
+body.theme-dark .image-section {
+  filter: saturate(0.92) brightness(0.78);
+}
+
+body.theme-dark .map-shell,
+body.theme-dark #farmMap {
+  background: #22342b !important;
+  border-color: rgba(215, 232, 222, 0.18) !important;
+}
+
+body.theme-dark .notif-icon,
+body.theme-dark .kpi-icon,
+body.theme-dark .footer-logo,
+body.theme-dark .social-icon,
+body.theme-dark .feature-icon,
+body.theme-dark .solution-icon,
+body.theme-dark .sensor-icon,
+body.theme-dark .weather-icon-wrap,
+body.theme-dark .modal-close {
+  background: rgba(66, 184, 131, 0.13) !important;
+  border-color: rgba(189, 223, 202, 0.14) !important;
+  color: #93f0b7 !important;
+}
+
+body.theme-dark .notif-icon.warn,
+body.theme-dark .kpi-icon.wheat,
+body.theme-dark .warning,
+body.theme-dark .text-warning {
+  background: rgba(240, 200, 75, 0.14) !important;
+  border-color: rgba(240, 200, 75, 0.24) !important;
+  color: #f7e8a6 !important;
+}
+
+body.theme-dark .notif-icon.info,
+body.theme-dark .kpi-icon.sky,
+body.theme-dark .info,
+body.theme-dark .text-info {
+  background: rgba(111, 178, 201, 0.15) !important;
+  border-color: rgba(111, 178, 201, 0.24) !important;
+  color: #b9e8f5 !important;
+}
+
+body.theme-dark .table-clean,
+body.theme-dark .table-clean thead,
+body.theme-dark .table-clean tbody,
+body.theme-dark .table-clean tr,
+body.theme-dark .table-clean td,
+body.theme-dark .table-clean th {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+}
+
+body.theme-dark .table-clean th,
+body.theme-dark thead th {
+  color: var(--text-primary) !important;
+}
+
+body.theme-dark option {
+  background: #111b17 !important;
+  color: #edf8ef !important;
+}
+
+body.theme-dark input[type="range"] {
+  accent-color: #f0c84b;
+}
+
+body.theme-dark hr,
+body.theme-dark .divider,
+body.theme-dark .section-divider {
+  border-color: rgba(189, 223, 202, 0.13) !important;
+  background-color: rgba(189, 223, 202, 0.13) !important;
+}
+
+/* Performance and visual polish pass */
+body.agri-page-dashboard .ambient-blob {
+  animation: none !important;
+  filter: blur(12px);
+  opacity: 0.16;
+}
+
+body.agri-page-landing .ambient-blob,
+body.agri-page-auth .ambient-blob {
+  animation-duration: 28s !important;
+}
+
+.content-card,
+.auth-card,
+.desktop-nav,
+.top-navbar,
+.sidebar {
+  backdrop-filter: blur(12px) saturate(1.04);
+  -webkit-backdrop-filter: blur(12px) saturate(1.04);
+}
+
+.content-card {
+  border-radius: 22px !important;
+  border: 1px solid rgba(26, 71, 49, 0.09) !important;
+  box-shadow: 0 14px 34px rgba(11, 36, 27, 0.08) !important;
+}
+
+.top-navbar,
+.desktop-nav,
+.mobile-top-nav {
+  border-radius: 18px !important;
+  box-shadow: 0 10px 26px rgba(11, 36, 27, 0.08) !important;
+}
+
+.sidebar {
+  border-radius: 0 22px 22px 0 !important;
+  box-shadow: 0 12px 30px rgba(11, 36, 27, 0.09) !important;
+}
+
+.panel,
+.kpi-card,
+.kpi,
+.plan-card,
+.profile-card,
+.settings-card,
+.solution-card,
+.feature-card,
+.contact-card,
+.weather-panel,
+.farm-card,
+.field-card,
+.history-item,
+.result-card,
+.recommendation-card,
+.media-shell,
+.table-responsive {
+  border-radius: 18px !important;
+  border: 1px solid rgba(26, 71, 49, 0.08) !important;
+  box-shadow: 0 10px 24px rgba(11, 36, 27, 0.065) !important;
+}
+
+.panel:hover,
+.kpi-card:hover,
+.kpi:hover,
+.solution-card:hover,
+.feature-card:hover,
+.hero-highlight:hover,
+.profile-card:hover,
+.settings-card:hover,
+.plan-card:hover,
+.farm-card:hover,
+.field-card:hover,
+.history-item:hover,
+.result-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(11, 36, 27, 0.09) !important;
+}
+
+.page-head {
+  gap: 18px !important;
+  margin-bottom: 20px !important;
+}
+
+.page-title {
+  letter-spacing: 0 !important;
+  line-height: 1.08 !important;
+}
+
+.page-sub,
+.section-sub,
+.panel-sub {
+  line-height: 1.55 !important;
+}
+
+.btn-brand,
+.btn-primary,
+.btn-hero-primary {
+  box-shadow: 0 10px 22px rgba(52, 178, 123, 0.18) !important;
+}
+
+.btn-brand:hover,
+.btn-primary:hover,
+.btn-hero-primary:hover,
+.btn-soft:hover,
+.nav-icon-btn:hover,
+.user-avatar:hover,
+.user-btn-desktop:hover {
+  transform: translateY(-1px);
+}
+
+.form-control,
+.form-select,
+textarea,
+input,
+select {
+  border-radius: 14px !important;
+}
+
+.sidebar-menu a,
+.bottom-nav-item {
+  border-radius: 14px !important;
+}
+
+.pill,
+.badge,
+.section-pill,
+.status-pill,
+.role-badge,
+.media-badge,
+.lock-badge {
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+body.theme-dark .content-card,
+body.theme-dark .top-navbar,
+body.theme-dark .desktop-nav,
+body.theme-dark .mobile-top-nav,
+body.theme-dark .sidebar {
+  background: rgba(38, 55, 47, 0.9) !important;
+  box-shadow: 0 14px 34px rgba(8, 24, 17, 0.18) !important;
+}
+
+body.theme-dark .panel,
+body.theme-dark .kpi-card,
+body.theme-dark .kpi,
+body.theme-dark .plan-card,
+body.theme-dark .profile-card,
+body.theme-dark .settings-card,
+body.theme-dark .solution-card,
+body.theme-dark .feature-card,
+body.theme-dark .contact-card,
+body.theme-dark .weather-panel,
+body.theme-dark .farm-card,
+body.theme-dark .field-card,
+body.theme-dark .history-item,
+body.theme-dark .result-card,
+body.theme-dark .recommendation-card,
+body.theme-dark .media-shell,
+body.theme-dark .table-responsive {
+  background: rgba(44, 63, 54, 0.86) !important;
+  box-shadow: 0 12px 28px rgba(8, 24, 17, 0.16) !important;
+}
+
+body.theme-dark .panel:hover,
+body.theme-dark .kpi-card:hover,
+body.theme-dark .kpi:hover,
+body.theme-dark .plan-card:hover,
+body.theme-dark .profile-card:hover,
+body.theme-dark .settings-card:hover {
+  box-shadow: 0 16px 34px rgba(8, 24, 17, 0.2) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel:hover,
+  .kpi-card:hover,
+  .solution-card:hover,
+  .feature-card:hover,
+  .hero-highlight:hover,
+  .profile-card:hover,
+  .settings-card:hover,
+  .plan-card:hover {
+    transform: none;
+  }
+}
+
+/* Final calm dark theme pass */
+body.theme-dark {
+  --color-primary-dark: #dce8df;
+  --color-primary: #8ccfac;
+  --color-primary-light: #a8dec0;
+  --color-secondary: #7fb091;
+  --color-accent: #d6b45d;
+  --color-accent-light: #e5cf8a;
+  --color-sky: #87b8c6;
+  --color-cream: #2b3b33;
+  --color-earth: #b99a73;
+  --color-fern: #8ccfac;
+  --color-meadow: #314f3e;
+
+  --color-surface: #2a3d34;
+  --color-bg: #1d2b24;
+  --color-bg-alt: #263a31;
+  --color-line: rgba(215, 232, 222, 0.19);
+
+  --text-primary: #f4faf6;
+  --text-secondary: #d5e1da;
+  --text-muted: #bdcbc4;
+  --text-light: #a1b1a9;
+
+  background:
+    radial-gradient(780px 480px at 12% -12%, rgba(140, 207, 172, 0.17), transparent 62%),
+    radial-gradient(760px 460px at 105% 4%, rgba(135, 184, 198, 0.13), transparent 62%),
+    radial-gradient(720px 420px at 62% 100%, rgba(214, 180, 93, 0.08), transparent 65%),
+    linear-gradient(180deg, #1d2c25 0%, #24382f 48%, #1c2b24 100%) !important;
+}
+
+body.theme-dark::before {
+  background:
+    radial-gradient(360px 240px at 14% 22%, rgba(140, 207, 172, 0.08), transparent 62%),
+    radial-gradient(420px 280px at 84% 24%, rgba(135, 184, 198, 0.06), transparent 62%) !important;
+  filter: blur(4px);
+  opacity: 0.52;
+}
+
+body.theme-dark::after {
+  background:
+    repeating-linear-gradient(135deg, rgba(237, 245, 239, 0.018) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(45deg, rgba(140, 207, 172, 0.012) 0 1px, transparent 1px 18px) !important;
+  mix-blend-mode: screen;
+  opacity: 0.38;
+}
+
+body.theme-dark .ambient-blob {
+  opacity: 0.16 !important;
+  filter: blur(16px) !important;
+  mix-blend-mode: screen;
+}
+
+body.theme-dark .desktop-nav,
+body.theme-dark .mobile-top-nav,
+body.theme-dark .mobile-bottom-nav,
+body.theme-dark .top-navbar,
+body.theme-dark .bottom-nav,
+body.theme-dark .sidebar,
+body.theme-dark .auth-card,
+body.theme-dark .content-card,
+body.theme-dark .main-footer,
+body.theme-dark .notif-dropdown,
+body.theme-dark .modal-card,
+body.theme-dark .result-modal__content,
+body.theme-dark .confirm-card {
+  background: rgba(39, 57, 48, 0.92) !important;
+  border-color: rgba(215, 232, 222, 0.18) !important;
+  box-shadow: 0 18px 44px rgba(8, 24, 17, 0.18) !important;
+}
+
+body.theme-dark .auth-description-panel {
+  background:
+    linear-gradient(145deg, rgba(44, 85, 66, 0.96), rgba(38, 70, 57, 0.9)),
+    radial-gradient(380px 260px at 12% 12%, rgba(214, 180, 93, 0.24), transparent 62%),
+    radial-gradient(420px 280px at 92% 8%, rgba(166, 220, 190, 0.2), transparent 64%),
+    linear-gradient(180deg, #315b46, #263f35) !important;
+  border: 1px solid rgba(215, 232, 222, 0.16);
+}
+
+body.theme-dark .auth-assurance-list span {
+  background: rgba(244, 250, 246, 0.09) !important;
+  border-color: rgba(215, 232, 222, 0.15) !important;
+}
+
+body.theme-dark .checkbox-section {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+body.theme-dark .success-message {
+  color: #bde8cc !important;
+  background: rgba(140, 207, 172, 0.11) !important;
+  border-color: rgba(140, 207, 172, 0.2) !important;
+}
+
+body.theme-dark .panel,
+body.theme-dark .card,
+body.theme-dark .kpi-card,
+body.theme-dark .kpi,
+body.theme-dark .plan-card,
+body.theme-dark .profile-card,
+body.theme-dark .settings-card,
+body.theme-dark .solution-card,
+body.theme-dark .feature-card,
+body.theme-dark .contact-card,
+body.theme-dark .hero-highlight,
+body.theme-dark .glass-card,
+body.theme-dark .analytics-card,
+body.theme-dark .weather-panel,
+body.theme-dark .farm-select,
+body.theme-dark .notif-item,
+body.theme-dark .sidebar-footer,
+body.theme-dark .metric-card,
+body.theme-dark .sensor-card,
+body.theme-dark .sensor-tile,
+body.theme-dark .farm-card,
+body.theme-dark .field-card,
+body.theme-dark .history-card,
+body.theme-dark .history-item,
+body.theme-dark .result-card,
+body.theme-dark .recommendation-card,
+body.theme-dark .crop-card,
+body.theme-dark .media-card,
+body.theme-dark .media-shell,
+body.theme-dark .table-responsive,
+body.theme-dark .dropdown-menu {
+  background: rgba(45, 65, 55, 0.88) !important;
+  border-color: rgba(215, 232, 222, 0.16) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 12px 30px rgba(8, 24, 17, 0.14) !important;
+}
+
+body.theme-dark .panel:hover,
+body.theme-dark .kpi-card:hover,
+body.theme-dark .kpi:hover,
+body.theme-dark .plan-card:hover,
+body.theme-dark .profile-card:hover,
+body.theme-dark .settings-card:hover,
+body.theme-dark .farm-card:hover,
+body.theme-dark .history-item:hover {
+  background: rgba(51, 76, 63, 0.92) !important;
+  border-color: rgba(166, 220, 190, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(8, 24, 17, 0.18) !important;
+}
+
+body.theme-dark .section-surface,
+body.theme-dark .section-soft,
+body.theme-dark .section-contrast {
+  background:
+    radial-gradient(620px 320px at 12% 0%, rgba(140, 207, 172, 0.12), transparent 64%),
+    linear-gradient(180deg, rgba(33, 50, 42, 0.98), rgba(39, 59, 49, 0.97)) !important;
+}
+
+body.theme-dark .carousel-overlay {
+  background:
+    linear-gradient(90deg, rgba(4, 10, 8, 0.78), rgba(8, 18, 14, 0.48)),
+    radial-gradient(620px 420px at 70% 18%, rgba(140, 207, 172, 0.12), transparent 62%) !important;
+}
+
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark h4,
+body.theme-dark h5,
+body.theme-dark h6,
+body.theme-dark .page-title,
+body.theme-dark .section-title,
+body.theme-dark .panel-title,
+body.theme-dark .kpi-value,
+body.theme-dark .profile-name,
+body.theme-dark .card-title,
+body.theme-dark .modal-title,
+body.theme-dark .sensor-value,
+body.theme-dark .metric-value,
+body.theme-dark .temp-value,
+body.theme-dark .stat-value,
+body.theme-dark .plan-name {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark p,
+body.theme-dark .page-sub,
+body.theme-dark .section-sub,
+body.theme-dark .panel-sub,
+body.theme-dark .kpi-meta,
+body.theme-dark .kpi-label,
+body.theme-dark .sensor-meta,
+body.theme-dark .metric-label,
+body.theme-dark .text-secondary,
+body.theme-dark .text-muted,
+body.theme-dark .card-text,
+body.theme-dark small,
+body.theme-dark label {
+  color: #d3ded8 !important;
+}
+
+body.theme-dark .sidebar-menu a,
+body.theme-dark .bottom-nav-item,
+body.theme-dark .nav-link-custom,
+body.theme-dark .footer-links a {
+  color: rgba(244, 250, 246, 0.82) !important;
+}
+
+body.theme-dark .sidebar-menu a:hover,
+body.theme-dark .sidebar-menu a.active,
+body.theme-dark .bottom-nav-item:hover,
+body.theme-dark .bottom-nav-item.active,
+body.theme-dark .nav-link-custom:hover,
+body.theme-dark .nav-link-custom.active {
+  background: rgba(140, 207, 172, 0.105) !important;
+  color: #d7f0df !important;
+}
+
+body.theme-dark .btn-brand,
+body.theme-dark .btn-primary,
+body.theme-dark .btn-hero-primary {
+  background: linear-gradient(135deg, #89cfa8, #6fb895) !important;
+  border-color: rgba(168, 222, 192, 0.28) !important;
+  color: #07100c !important;
+  box-shadow: 0 12px 26px rgba(91, 164, 123, 0.18) !important;
+}
+
+body.theme-dark .btn-soft,
+body.theme-dark .btn-secondary,
+body.theme-dark .btn-hero-outline,
+body.theme-dark .nav-icon-btn,
+body.theme-dark .user-avatar,
+body.theme-dark .user-btn-desktop,
+body.theme-dark .modal-close {
+  background: rgba(244, 250, 246, 0.12) !important;
+  border-color: rgba(215, 232, 222, 0.2) !important;
+  color: #edf6f1 !important;
+}
+
+body.theme-dark .btn-soft:hover,
+body.theme-dark .btn-secondary:hover,
+body.theme-dark .btn-hero-outline:hover,
+body.theme-dark .nav-icon-btn:hover,
+body.theme-dark .user-avatar:hover,
+body.theme-dark .user-btn-desktop:hover {
+  background: rgba(140, 207, 172, 0.12) !important;
+  border-color: rgba(140, 207, 172, 0.24) !important;
+}
+
+body.theme-dark .form-control,
+body.theme-dark .form-select,
+body.theme-dark input,
+body.theme-dark textarea,
+body.theme-dark select {
+  background-color: rgba(244, 250, 246, 0.13) !important;
+  border-color: rgba(215, 232, 222, 0.23) !important;
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark .form-control:focus,
+body.theme-dark .form-select:focus,
+body.theme-dark input:focus,
+body.theme-dark textarea:focus,
+body.theme-dark select:focus {
+  border-color: rgba(140, 207, 172, 0.45) !important;
+  box-shadow: 0 0 0 4px rgba(140, 207, 172, 0.12) !important;
+}
+
+body.theme-dark .badge,
+body.theme-dark .pill,
+body.theme-dark .lock-badge,
+body.theme-dark .crumb,
+body.theme-dark .section-pill,
+body.theme-dark .status-pill,
+body.theme-dark .role-badge,
+body.theme-dark .plan-pill,
+body.theme-dark .media-badge,
+body.theme-dark .moist-badge,
+body.theme-dark .soft-pill,
+body.theme-dark .modal-tag {
+  background: rgba(140, 207, 172, 0.095) !important;
+  border-color: rgba(140, 207, 172, 0.18) !important;
+  color: #cfe9d8 !important;
+}
+
+body.theme-dark .notif-icon,
+body.theme-dark .kpi-icon,
+body.theme-dark .footer-logo,
+body.theme-dark .social-icon,
+body.theme-dark .feature-icon,
+body.theme-dark .solution-icon,
+body.theme-dark .sensor-icon,
+body.theme-dark .weather-icon-wrap {
+  background: rgba(140, 207, 172, 0.11) !important;
+  border-color: rgba(140, 207, 172, 0.17) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark .notif-icon.warn,
+body.theme-dark .kpi-icon.wheat,
+body.theme-dark .warning,
+body.theme-dark .text-warning {
+  background: rgba(214, 180, 93, 0.105) !important;
+  border-color: rgba(214, 180, 93, 0.18) !important;
+  color: #e7cf91 !important;
+}
+
+body.theme-dark .notif-icon.info,
+body.theme-dark .kpi-icon.sky,
+body.theme-dark .info,
+body.theme-dark .text-info {
+  background: rgba(135, 184, 198, 0.11) !important;
+  border-color: rgba(135, 184, 198, 0.18) !important;
+  color: #b8dce5 !important;
+}
+
+body.theme-dark .status-pill.disconnected,
+body.theme-dark .danger,
+body.theme-dark .text-danger,
+body.theme-dark .dd-danger,
+body.theme-dark .sidebar-logout {
+  color: #e7aaa0 !important;
+  background: rgba(194, 102, 91, 0.11) !important;
+  border-color: rgba(231, 170, 160, 0.16) !important;
+}
+
+body.theme-dark .status-pill.connected,
+body.theme-dark .success,
+body.theme-dark .text-success {
+  color: #bde8cc !important;
+  background: rgba(140, 207, 172, 0.11) !important;
+  border-color: rgba(140, 207, 172, 0.18) !important;
+}
+
+body.theme-dark .bg-white,
+body.theme-dark .bg-light,
+body.theme-dark .bg-body,
+body.theme-dark .bg-accent-gradient {
+  background: rgba(45, 65, 55, 0.92) !important;
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark option {
+  background: #2b3f35 !important;
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark input[type="range"] {
+  accent-color: #8ccfac;
+}
+
+body.theme-dark .theme-toggle {
+  background:
+    linear-gradient(135deg, rgba(47, 69, 58, 0.96), rgba(35, 53, 44, 0.92)),
+    radial-gradient(circle at 30% 20%, rgba(140, 207, 172, 0.16), transparent 58%) !important;
+  border-color: rgba(166, 220, 190, 0.28) !important;
+  color: #e5f3eb !important;
+}
+
+body.theme-dark .auth-back-button {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(215, 232, 222, 0.32) !important;
+  box-shadow: 0 14px 30px rgba(7, 19, 13, 0.28) !important;
+}
+
+body.theme-dark .auth-back-button:hover,
+body.theme-dark .auth-back-button:focus-visible {
+  background: #1F7A4D !important;
+}
+
+/* Site-wide color refresh */
+body:not(.theme-dark) {
+  --color-primary-dark: #0B2E22;
+  --color-primary: #1F7A4D;
+  --color-primary-light: #34A86F;
+  --color-secondary: #D7EBD9;
+  --color-accent: #E0B23A;
+  --color-accent-light: #F8E9A8;
+  --color-sky: #A7D8E8;
+  --color-earth: #A36F3F;
+  --color-fern: #247A55;
+  --color-meadow: #E2F3E8;
+  --color-cream: #F8F4E8;
+  --color-surface: #FFFFFF;
+  --color-bg: #F5FBF7;
+  --color-bg-alt: #E6F3E9;
+  --color-line: rgba(31, 122, 77, 0.12);
+  --text-primary: #10261C;
+  --text-secondary: #3B5147;
+  --text-muted: #687B72;
+}
+
+body:not(.theme-dark) .btn-brand,
+body:not(.theme-dark) .btn-primary,
+body:not(.theme-dark) .btn-hero-primary,
+body:not(.theme-dark) .user-avatar,
+body:not(.theme-dark) .footer-logo {
+  background: linear-gradient(135deg, #34A86F, #1F7A4D) !important;
+  box-shadow: 0 14px 30px rgba(31, 122, 77, 0.2) !important;
+}
+
+body:not(.theme-dark) .pill,
+body:not(.theme-dark) .section-pill,
+body:not(.theme-dark) .badge,
+body:not(.theme-dark) .soft-pill,
+body:not(.theme-dark) .lock-badge,
+body:not(.theme-dark) .modal-tag {
+  background: rgba(31, 122, 77, 0.08);
+  border-color: rgba(31, 122, 77, 0.16);
+  color: #1F7A4D;
+}
+
+body:not(.theme-dark) .sensor-icon.sky,
+body:not(.theme-dark) .kpi-icon.sky,
+body:not(.theme-dark) .weather-icon-wrap,
+body:not(.theme-dark) .notif-icon.info {
+  background: linear-gradient(135deg, rgba(118, 190, 212, 0.28), rgba(118, 190, 212, 0.08)) !important;
+  border-color: rgba(118, 190, 212, 0.36) !important;
+  color: #1E6E8C !important;
+}
+
+body:not(.theme-dark) .sensor-icon.soil,
+body:not(.theme-dark) .kpi-icon.wheat,
+body:not(.theme-dark) .notif-icon.warn {
+  background: linear-gradient(135deg, rgba(224, 178, 58, 0.24), rgba(224, 178, 58, 0.08)) !important;
+  border-color: rgba(224, 178, 58, 0.34) !important;
+  color: #8C6712 !important;
+}
+
+body.theme-dark .chart-canvas {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(215, 232, 222, 0.08) 24px),
+    repeating-linear-gradient(90deg, transparent 0 31px, rgba(215, 232, 222, 0.06) 32px),
+    linear-gradient(180deg, rgba(49, 72, 61, 0.94), rgba(39, 59, 49, 0.92)) !important;
+  border-color: rgba(215, 232, 222, 0.18) !important;
+}
+
+body.theme-dark .chart-line-temp { stroke: #FF9A66 !important; }
+body.theme-dark .chart-line-humidity { stroke: #68C5F3 !important; }
+body.theme-dark .chart-line-soil-temp { stroke: #E3B86D !important; }
+body.theme-dark .chart-line-moisture { stroke: #69DDA1 !important; }
+
+body.theme-dark .chart-area-temp { fill: #FF9A66 !important; }
+body.theme-dark .chart-area-humidity { fill: #68C5F3 !important; }
+body.theme-dark .chart-area-soil-temp { fill: #E3B86D !important; }
+body.theme-dark .chart-area-moisture { fill: #69DDA1 !important; }
+
+/* Dashboard dark-mode contrast fixes */
+body.theme-dark.agri-page-dashboard .crumb {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #dbe9e1 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.theme-dark.agri-page-dashboard .crumb i {
+  color: #9fddb9 !important;
+}
+
+body.theme-dark.agri-page-dashboard .crumb span {
+  color: inherit !important;
+}
+
+body.theme-dark.agri-page-dashboard .farm-label {
+  color: #f1f8f4 !important;
+  letter-spacing: 0.04em;
+}
+
+body.theme-dark.agri-page-dashboard .farm-select {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.theme-dark.agri-page-dashboard .form-select {
+  background-color: rgba(232, 245, 238, 0.12) !important;
+  border-color: rgba(189, 232, 204, 0.34) !important;
+  color: #f6fbf8 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 26px rgba(7, 18, 13, 0.16) !important;
+  background-image:
+    linear-gradient(135deg, rgba(140, 207, 172, 0.1), rgba(140, 207, 172, 0)),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 20 20' fill='none'><path d='M5 7L10 12L15 7' stroke='%237bdbac' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+}
+
+body.theme-dark.agri-page-dashboard .form-select:focus {
+  border-color: rgba(125, 219, 172, 0.58) !important;
+  box-shadow: 0 0 0 4px rgba(125, 219, 172, 0.14), 0 14px 28px rgba(7, 18, 13, 0.18) !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar {
+  background:
+    linear-gradient(180deg, rgba(34, 53, 44, 0.96), rgba(30, 47, 39, 0.94)),
+    radial-gradient(260px 220px at 10% 0%, rgba(125, 219, 172, 0.09), transparent 65%) !important;
+  border-color: rgba(157, 216, 183, 0.24) !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-title {
+  color: #dcebe3 !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-title::after {
+  background: linear-gradient(90deg, rgba(125, 219, 172, 0.32), rgba(125, 219, 172, 0.1), transparent) !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-section {
+  border-bottom-color: rgba(189, 232, 204, 0.12) !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-menu a {
+  color: #e8f3ed !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-menu a i {
+  color: #a9e4c0 !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-menu a:hover,
+body.theme-dark.agri-page-dashboard .sidebar-menu a.active {
+  background: rgba(125, 219, 172, 0.14) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  color: #ffffff !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-link-locked {
+  opacity: 0.68 !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-link-locked i,
+body.theme-dark.agri-page-dashboard .sidebar-link-locked {
+  color: #a9b8b0 !important;
+}
+
+body.theme-dark.agri-page-dashboard .lock-badge {
+  background: rgba(232, 245, 238, 0.08) !important;
+  border-color: rgba(232, 245, 238, 0.15) !important;
+  color: #bdcbc4 !important;
+}
+
+body.theme-dark[data-page="crop"] .input-toggle,
+body.theme-dark[data-page="fertilizer"] .input-toggle,
+body.theme-dark[data-page="irrigation"] .input-toggle {
+  gap: 5px !important;
+  padding: 5px !important;
+  background: linear-gradient(180deg, #182a22, #21372d) !important;
+  border: 1px solid rgba(139, 206, 168, 0.24) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 14px 30px rgba(4, 14, 9, 0.2) !important;
+}
+
+body.theme-dark[data-page="crop"] .toggle-btn,
+body.theme-dark[data-page="fertilizer"] .toggle-btn,
+body.theme-dark[data-page="irrigation"] .toggle-btn {
+  height: 38px !important;
+  min-width: 148px !important;
+  background: #2b4035 !important;
+  border: 1px solid rgba(198, 224, 210, 0.12) !important;
+  color: #d7e7de !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+body.theme-dark[data-page="crop"] .toggle-btn.active,
+body.theme-dark[data-page="fertilizer"] .toggle-btn.active,
+body.theme-dark[data-page="irrigation"] .toggle-btn.active {
+  background: linear-gradient(135deg, #208b62, #176b4d) !important;
+  border-color: rgba(128, 224, 170, 0.42) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px rgba(16, 93, 63, 0.3) !important;
+}
+
+body.theme-dark[data-page="crop"] .toggle-btn:not(.active):hover,
+body.theme-dark[data-page="fertilizer"] .toggle-btn:not(.active):hover,
+body.theme-dark[data-page="irrigation"] .toggle-btn:not(.active):hover {
+  background: #344e40 !important;
+  border-color: rgba(139, 206, 168, 0.24) !important;
+  color: #ffffff !important;
+}
+
+body.theme-dark[data-page="crop"] .btn-danger-soft,
+body.theme-dark[data-page="fertilizer"] .btn-danger-soft,
+body.theme-dark[data-page="irrigation"] .btn-danger-soft {
+  background: linear-gradient(180deg, #3b211f, #4a2421) !important;
+  border-color: rgba(255, 111, 96, 0.28) !important;
+  color: #ffb4aa !important;
+  box-shadow: 0 12px 26px rgba(70, 18, 14, 0.18) !important;
+}
+
+body.theme-dark[data-page="crop"] .btn-danger-soft i,
+body.theme-dark[data-page="fertilizer"] .btn-danger-soft i,
+body.theme-dark[data-page="irrigation"] .btn-danger-soft i {
+  color: #ff6f60 !important;
+}
+
+body.theme-dark[data-page="crop"] .btn-danger-soft:hover,
+body.theme-dark[data-page="fertilizer"] .btn-danger-soft:hover,
+body.theme-dark[data-page="irrigation"] .btn-danger-soft:hover {
+  background: linear-gradient(180deg, #4a2724, #5a2b27) !important;
+  border-color: rgba(255, 132, 118, 0.36) !important;
+}
+
+@media (max-width: 576px) {
+  body.theme-dark[data-page="crop"] .toggle-btn,
+  body.theme-dark[data-page="fertilizer"] .toggle-btn,
+  body.theme-dark[data-page="irrigation"] .toggle-btn {
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+    padding-inline: 12px !important;
+  }
+
+  body.theme-dark[data-page="crop"] .input-toggle,
+  body.theme-dark[data-page="fertilizer"] .input-toggle,
+  body.theme-dark[data-page="irrigation"] .input-toggle {
+    width: 100% !important;
+  }
+}
+
+/* Keep dashboard sidebar dimensions stable across page stylesheets */
+body.agri-page-dashboard {
+  --sidebar-w: 300px;
+  --sidebar-gap: 36px;
+  --sidebar-item-font: 14px;
+  --sidebar-item-pad-y: 9px;
+  --sidebar-item-pad-x: 12px;
+  --sidebar-item-gap: 12px;
+  --sidebar-icon-size: 20px;
+  --sidebar-title-font: 11px;
+  --sidebar-title-letter: 0.18em;
+  --sidebar-footer-pad: 12px;
+  --sidebar-avatar-size: 40px;
+  --sidebar-user-font: 14px;
+  --sidebar-user-sub: 11px;
+}
+
+body.agri-page-dashboard .sidebar {
+  top: 14px !important;
+  left: 18px !important;
+  bottom: 14px !important;
+  width: var(--sidebar-w) !important;
+  height: auto !important;
+  max-height: calc(100vh - 28px) !important;
+  overflow: hidden !important;
+  padding: 12px 10px 10px !important;
+  border-radius: 18px !important;
+  gap: 10px !important;
+}
+
+body.agri-page-dashboard .sidebar-nav {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  padding-right: 3px !important;
+  margin-right: -3px !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(125, 219, 172, 0.32) transparent;
+}
+
+body.agri-page-dashboard .sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+body.agri-page-dashboard .sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.agri-page-dashboard .sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(52, 178, 123, 0.28);
+  border-radius: 999px;
+}
+
+body.agri-page-dashboard .main-area {
+  margin-left: calc(var(--sidebar-w) + var(--sidebar-gap)) !important;
+  margin-right: var(--sidebar-gap) !important;
+  width: calc(100% - var(--sidebar-w) - (var(--sidebar-gap) * 2)) !important;
+}
+
+body.agri-page-dashboard .sidebar-section {
+  padding-bottom: 7px !important;
+  margin-bottom: 7px !important;
+}
+
+body.agri-page-dashboard .sidebar-title {
+  font-size: var(--sidebar-title-font) !important;
+  letter-spacing: var(--sidebar-title-letter) !important;
+  padding: 2px 10px 5px !important;
+  margin-bottom: 3px !important;
+}
+
+body.agri-page-dashboard .sidebar-menu {
+  gap: 3px !important;
+}
+
+body.agri-page-dashboard .sidebar-menu a {
+  padding: calc(var(--sidebar-item-pad-y) - 2px) var(--sidebar-item-pad-x) !important;
+  font-size: var(--sidebar-item-font) !important;
+  gap: var(--sidebar-item-gap) !important;
+  border-radius: 14px !important;
+}
+
+body.agri-page-dashboard .sidebar-menu a i {
+  width: var(--sidebar-icon-size) !important;
+  height: var(--sidebar-icon-size) !important;
+  font-size: var(--sidebar-icon-size) !important;
+}
+
+body.agri-page-dashboard .sidebar-footer {
+  flex: 0 0 auto !important;
+  margin-top: 0 !important;
+  padding: calc(var(--sidebar-footer-pad) - 2px) !important;
+  border-radius: 14px !important;
+}
+
+body.agri-page-dashboard .sidebar-avatar {
+  width: var(--sidebar-avatar-size) !important;
+  height: var(--sidebar-avatar-size) !important;
+  font-size: 13px !important;
+}
+
+body.agri-page-dashboard .sidebar-user h6 {
+  font-size: var(--sidebar-user-font) !important;
+}
+
+body.agri-page-dashboard .sidebar-user small {
+  font-size: var(--sidebar-user-sub) !important;
+}
+
+@media (max-width: 1200px) {
+  body.agri-page-dashboard {
+    --sidebar-w: 270px;
+    --sidebar-gap: 30px;
+    --sidebar-item-font: 13.5px;
+    --sidebar-item-pad-y: 8px;
+    --sidebar-item-pad-x: 10px;
+    --sidebar-item-gap: 10px;
+    --sidebar-icon-size: 18px;
+    --sidebar-title-font: 10px;
+    --sidebar-title-letter: 0.16em;
+    --sidebar-footer-pad: 10px;
+    --sidebar-avatar-size: 36px;
+    --sidebar-user-font: 13px;
+    --sidebar-user-sub: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.agri-page-dashboard {
+    --sidebar-w: 240px;
+    --sidebar-gap: 24px;
+    --sidebar-item-font: 13px;
+    --sidebar-item-pad-y: 7px;
+    --sidebar-item-pad-x: 9px;
+    --sidebar-item-gap: 9px;
+    --sidebar-icon-size: 17px;
+    --sidebar-title-font: 9.5px;
+    --sidebar-title-letter: 0.14em;
+    --sidebar-footer-pad: 9px;
+    --sidebar-avatar-size: 34px;
+    --sidebar-user-font: 12.5px;
+    --sidebar-user-sub: 9.5px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.agri-page-dashboard {
+    --sidebar-item-font: clamp(11.5px, 1.55vh, 13.5px);
+    --sidebar-item-pad-y: clamp(4px, 0.82vh, 7px);
+    --sidebar-item-pad-x: clamp(9px, 2.6vw, 12px);
+    --sidebar-item-gap: clamp(9px, 2.3vw, 12px);
+    --sidebar-icon-size: clamp(16px, 2.35vh, 20px);
+    --sidebar-title-font: clamp(9px, 1.25vh, 10.5px);
+    --sidebar-title-letter: 0.16em;
+    --sidebar-footer-pad: clamp(8px, 1.35vh, 12px);
+    --sidebar-avatar-size: clamp(36px, 5.8vh, 48px);
+    --sidebar-user-font: clamp(12px, 1.65vh, 14px);
+    --sidebar-user-sub: clamp(9px, 1.35vh, 11px);
+  }
+
+  body.agri-page-dashboard .main-area {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  body.agri-page-dashboard .sidebar {
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    border-radius: 0 18px 18px 0 !important;
+    padding: clamp(10px, 1.7vh, 16px) clamp(10px, 3.2vw, 14px) !important;
+    gap: clamp(7px, 1.25vh, 11px) !important;
+    transform: translateX(-110%);
+  }
+
+  body.agri-page-dashboard .sidebar-nav {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: clamp(4px, 0.8vh, 8px) !important;
+    overflow: hidden !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-section {
+    padding-bottom: clamp(4px, 0.75vh, 7px) !important;
+    margin-bottom: clamp(4px, 0.75vh, 7px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-title {
+    padding: clamp(1px, 0.35vh, 3px) 10px clamp(4px, 0.62vh, 6px) !important;
+    margin-bottom: clamp(2px, 0.45vh, 4px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu {
+    gap: clamp(1px, 0.45vh, 4px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: clamp(36px, 5.4vh, 46px) !important;
+    padding-block: clamp(4px, 0.72vh, 7px) !important;
+    line-height: 1.12 !important;
+  }
+
+  body.agri-page-dashboard .lock-badge {
+    padding: clamp(3px, 0.55vh, 5px) clamp(7px, 1.8vw, 9px) !important;
+    font-size: clamp(8px, 1.15vh, 10px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    min-height: clamp(58px, 9vh, 78px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) and (max-height: 820px) {
+  body.agri-page-dashboard {
+    --sidebar-item-font: clamp(10.5px, 1.45vh, 12.5px);
+    --sidebar-item-pad-y: 3px;
+    --sidebar-item-gap: 8px;
+    --sidebar-icon-size: clamp(14px, 2.1vh, 18px);
+    --sidebar-title-font: 8.5px;
+    --sidebar-footer-pad: 7px;
+    --sidebar-avatar-size: clamp(32px, 5.2vh, 40px);
+    --sidebar-user-font: 11.5px;
+    --sidebar-user-sub: 8.5px;
+  }
+
+  body.agri-page-dashboard .sidebar {
+    padding-block: 8px !important;
+    gap: 6px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: clamp(31px, 5vh, 39px) !important;
+    border-radius: 12px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-section {
+    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-title {
+    padding-block: 1px 3px !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    min-height: 52px !important;
+  }
+}
+
+/* Mobile sidebar must fit without clipping the last item */
+@media (max-width: 768px) {
+  body.agri-page-dashboard .sidebar {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 9px 8px !important;
+    gap: 7px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-nav {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-section {
+    padding-bottom: 4px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-title {
+    padding: 1px 10px 4px !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu {
+    gap: 1px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: 36px !important;
+    padding-block: 4px !important;
+    line-height: 1.08 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    flex: 0 0 auto !important;
+    min-height: 66px !important;
+    margin-top: 4px !important;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 760px) {
+  body.agri-page-dashboard .sidebar {
+    padding-block: 7px !important;
+    gap: 5px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: 31px !important;
+    padding-block: 2px !important;
+    font-size: 10.8px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a i {
+    width: 15px !important;
+    height: 15px !important;
+    font-size: 15px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-title {
+    font-size: 8.2px !important;
+    padding-bottom: 2px !important;
+  }
+
+  body.agri-page-dashboard .lock-badge {
+    font-size: 7.8px !important;
+    padding: 2px 6px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    min-height: 50px !important;
+    padding: 6px !important;
+  }
+}
+
+/* Farm State dark-mode polish */
+body.theme-dark[data-page="farm-state"] .farm-panel {
+  background:
+    radial-gradient(420px 240px at 0% 0%, rgba(95, 177, 129, 0.12), transparent 62%),
+    radial-gradient(360px 260px at 100% 20%, rgba(214, 180, 93, 0.1), transparent 64%),
+    linear-gradient(180deg, rgba(31, 49, 40, 0.96), rgba(27, 43, 35, 0.96)) !important;
+  border-color: rgba(159, 221, 185, 0.2) !important;
+  box-shadow: 0 18px 44px rgba(4, 14, 9, 0.22) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-panel::before {
+  opacity: 0.32 !important;
+  background:
+    radial-gradient(360px 200px at 0% 0%, rgba(125, 219, 172, 0.14), transparent 62%),
+    radial-gradient(320px 200px at 100% 8%, rgba(214, 180, 93, 0.12), transparent 62%) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-summary {
+  background:
+    linear-gradient(135deg, rgba(42, 64, 54, 0.96), rgba(34, 53, 44, 0.95)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  box-shadow: 0 14px 30px rgba(4, 14, 9, 0.2) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-icon {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  color: #a9e4c0 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-summary h3,
+body.theme-dark[data-page="farm-state"] .farm-meta-grid strong,
+body.theme-dark[data-page="farm-state"] .insight-value,
+body.theme-dark[data-page="farm-state"] .field-block-crop {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-summary p,
+body.theme-dark[data-page="farm-state"] .farm-desc,
+body.theme-dark[data-page="farm-state"] .field-block-title,
+body.theme-dark[data-page="farm-state"] .field-block-meta,
+body.theme-dark[data-page="farm-state"] .field-progress,
+body.theme-dark[data-page="farm-state"] .insight-meta {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-location,
+body.theme-dark[data-page="farm-state"] .farm-desc {
+  background: rgba(125, 219, 172, 0.08) !important;
+  border-color: rgba(125, 219, 172, 0.2) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-meta-grid span {
+  background: rgba(232, 245, 238, 0.09) !important;
+  border-color: rgba(159, 221, 185, 0.16) !important;
+  color: #ddebe4 !important;
+  box-shadow: none !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-meta-grid i {
+  color: #96dfb4 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .summary-pill {
+  background: rgba(232, 245, 238, 0.09) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  color: #dcebe3 !important;
+  box-shadow: none !important;
+}
+
+body.theme-dark[data-page="farm-state"] .summary-pill:nth-child(1) {
+  background: rgba(104, 197, 243, 0.12) !important;
+  border-color: rgba(104, 197, 243, 0.22) !important;
+  color: #b8dce5 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .summary-pill:nth-child(2) {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.22) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="farm-state"] .summary-pill:nth-child(3) {
+  background: rgba(231, 207, 145, 0.12) !important;
+  border-color: rgba(231, 207, 145, 0.22) !important;
+  color: #e7cf91 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .zone-board {
+  background:
+    radial-gradient(420px 240px at 0% 0%, rgba(95, 177, 129, 0.14), transparent 64%),
+    radial-gradient(380px 260px at 100% 80%, rgba(214, 180, 93, 0.1), transparent 64%),
+    repeating-linear-gradient(120deg, rgba(125, 219, 172, 0.08) 0 6px, rgba(125, 219, 172, 0.025) 6px 14px),
+    linear-gradient(180deg, rgba(27, 45, 36, 0.98), rgba(34, 55, 44, 0.96)) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-canvas {
+  background:
+    radial-gradient(260px 160px at 10% 20%, rgba(125, 219, 172, 0.12), transparent 60%),
+    radial-gradient(240px 180px at 85% 72%, rgba(214, 180, 93, 0.1), transparent 62%),
+    repeating-linear-gradient(90deg, rgba(159, 221, 185, 0.1) 0 8px, rgba(159, 221, 185, 0.025) 8px 18px),
+    repeating-linear-gradient(0deg, rgba(159, 221, 185, 0.07) 0 8px, transparent 8px 18px),
+    linear-gradient(180deg, #1f382d, #253f33) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.18), 0 14px 28px rgba(4, 14, 9, 0.2) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-canvas::after {
+  border-color: rgba(159, 221, 185, 0.18) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-scale {
+  background: rgba(32, 48, 40, 0.92) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .insight-card {
+  background: linear-gradient(180deg, rgba(42, 64, 54, 0.96), rgba(34, 53, 44, 0.94)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  box-shadow: 0 12px 26px rgba(4, 14, 9, 0.18) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .insight-card.warn {
+  background: linear-gradient(180deg, rgba(62, 54, 35, 0.95), rgba(51, 45, 32, 0.94)) !important;
+  border-color: rgba(231, 207, 145, 0.2) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .insight-label {
+  color: #aec1b7 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .farm-legend {
+  background: rgba(34, 53, 44, 0.78) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-block {
+  background:
+    linear-gradient(180deg, rgba(45, 70, 58, 0.96), rgba(37, 58, 48, 0.96)),
+    radial-gradient(150px 90px at 20% 0%, rgba(125, 219, 172, 0.12), transparent 60%) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  box-shadow: 0 12px 26px rgba(4, 14, 9, 0.22) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-block::before {
+  opacity: 0.28 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-chip {
+  background: rgba(232, 245, 238, 0.08) !important;
+  border-color: rgba(159, 221, 185, 0.16) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-progress-bar {
+  background: rgba(232, 245, 238, 0.12) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-block.status-warn {
+  background:
+    linear-gradient(180deg, rgba(70, 57, 34, 0.96), rgba(58, 48, 31, 0.96)),
+    radial-gradient(150px 90px at 20% 0%, rgba(231, 207, 145, 0.12), transparent 60%) !important;
+  border-color: rgba(231, 207, 145, 0.28) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-block.status-irr {
+  background:
+    linear-gradient(180deg, rgba(34, 62, 70, 0.96), rgba(31, 52, 60, 0.96)),
+    radial-gradient(150px 90px at 20% 0%, rgba(104, 197, 243, 0.14), transparent 60%) !important;
+  border-color: rgba(104, 197, 243, 0.28) !important;
+}
+
+body.theme-dark[data-page="farm-state"] .field-block.status-risk {
+  background:
+    linear-gradient(180deg, rgba(73, 40, 36, 0.96), rgba(61, 35, 32, 0.96)),
+    radial-gradient(150px 90px at 20% 0%, rgba(231, 170, 160, 0.14), transparent 60%) !important;
+  border-color: rgba(231, 170, 160, 0.28) !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .moist-preview {
+  background:
+    radial-gradient(220px 110px at 0% 0%, rgba(104, 197, 243, 0.12), transparent 62%),
+    linear-gradient(180deg, rgba(36, 57, 48, 0.96), rgba(30, 48, 40, 0.94)) !important;
+  border-color: rgba(125, 219, 172, 0.22) !important;
+  color: #f2fbf6 !important;
+  box-shadow: 0 12px 26px rgba(4, 14, 9, 0.18) !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .moist-preview::before {
+  opacity: 0.28 !important;
+  background: radial-gradient(240px 100px at 0% 0%, rgba(104, 197, 243, 0.22), transparent 60%) !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .moist-preview span {
+  color: #f2fbf6 !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .moist-preview i {
+  color: #7ddbac !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .moist-badge {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.26) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .hint {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="fertilizer"] .hint i {
+  color: #e7cf91 !important;
+}
+
+/* Settings dark-mode polish */
+body.theme-dark[data-page="settings"] .settings-hero,
+body.theme-dark[data-page="settings"] .settings-panel {
+  background:
+    radial-gradient(420px 240px at 0% 0%, rgba(125, 219, 172, 0.1), transparent 62%),
+    radial-gradient(360px 220px at 100% 12%, rgba(214, 180, 93, 0.08), transparent 62%),
+    linear-gradient(180deg, rgba(36, 56, 47, 0.96), rgba(30, 48, 40, 0.95)) !important;
+  border-color: rgba(159, 221, 185, 0.2) !important;
+  box-shadow: 0 16px 38px rgba(4, 14, 9, 0.2) !important;
+}
+
+body.theme-dark[data-page="settings"] .settings-hero::before,
+body.theme-dark[data-page="settings"] .settings-panel::before {
+  opacity: 0.35 !important;
+}
+
+body.theme-dark[data-page="settings"] .hero-left h2,
+body.theme-dark[data-page="settings"] .hero-card-value,
+body.theme-dark[data-page="settings"] .setting-title,
+body.theme-dark[data-page="settings"] .plan-title,
+body.theme-dark[data-page="settings"] .billing-value,
+body.theme-dark[data-page="settings"] .support-title,
+body.theme-dark[data-page="settings"] .usage-title {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="settings"] .hero-left p,
+body.theme-dark[data-page="settings"] .hero-card-title,
+body.theme-dark[data-page="settings"] .hero-note,
+body.theme-dark[data-page="settings"] .setting-desc,
+body.theme-dark[data-page="settings"] .plan-sub,
+body.theme-dark[data-page="settings"] .price-cycle,
+body.theme-dark[data-page="settings"] .billing-label,
+body.theme-dark[data-page="settings"] .billing-meta,
+body.theme-dark[data-page="settings"] .support-list,
+body.theme-dark[data-page="settings"] .usage-row,
+body.theme-dark[data-page="settings"] .rec-empty {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="settings"] .hero-card,
+body.theme-dark[data-page="settings"] .setting-row,
+body.theme-dark[data-page="settings"] .usage-card,
+body.theme-dark[data-page="settings"] .plan-card,
+body.theme-dark[data-page="settings"] .billing-card,
+body.theme-dark[data-page="settings"] .support-card,
+body.theme-dark[data-page="settings"] .status-card,
+body.theme-dark[data-page="settings"] .settings-subscription .info-list > div {
+  background:
+    linear-gradient(180deg, rgba(43, 65, 55, 0.96), rgba(35, 54, 45, 0.94)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  color: #f2fbf6 !important;
+  box-shadow: 0 10px 24px rgba(4, 14, 9, 0.16) !important;
+}
+
+body.theme-dark[data-page="settings"] .plan-card.active {
+  background:
+    radial-gradient(240px 160px at 0% 0%, rgba(125, 219, 172, 0.12), transparent 65%),
+    linear-gradient(180deg, rgba(42, 72, 58, 0.98), rgba(35, 59, 48, 0.96)) !important;
+  border-color: rgba(125, 219, 172, 0.34) !important;
+  box-shadow: 0 18px 36px rgba(10, 82, 54, 0.24) !important;
+}
+
+body.theme-dark[data-page="settings"] .tag,
+body.theme-dark[data-page="settings"] .hero-pill,
+body.theme-dark[data-page="settings"] .plan-current,
+body.theme-dark[data-page="settings"] .info-pill {
+  background: rgba(125, 219, 172, 0.11) !important;
+  border-color: rgba(125, 219, 172, 0.22) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="settings"] .settings-tab {
+  background: linear-gradient(180deg, rgba(43, 65, 55, 0.96), rgba(35, 54, 45, 0.94)) !important;
+  border-color: rgba(159, 221, 185, 0.2) !important;
+  color: #dcebe3 !important;
+  box-shadow: 0 10px 22px rgba(4, 14, 9, 0.14) !important;
+}
+
+body.theme-dark[data-page="settings"] .settings-tab i {
+  color: #96dfb4 !important;
+}
+
+body.theme-dark[data-page="settings"] .settings-tab.active {
+  background: linear-gradient(135deg, #2bb079, #1d7a56) !important;
+  border-color: rgba(128, 224, 170, 0.42) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 30px rgba(16, 93, 63, 0.28) !important;
+}
+
+body.theme-dark[data-page="settings"] .settings-tab.active i {
+  color: #ffffff !important;
+}
+
+body.theme-dark[data-page="settings"] .form-control,
+body.theme-dark[data-page="settings"] .form-select,
+body.theme-dark[data-page="settings"] textarea {
+  background-color: rgba(18, 32, 25, 0.62) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+  color: #f5fbf7 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+body.theme-dark[data-page="settings"] .form-control::placeholder,
+body.theme-dark[data-page="settings"] textarea::placeholder {
+  color: rgba(207, 222, 214, 0.62) !important;
+}
+
+body.theme-dark[data-page="settings"] .form-control:focus,
+body.theme-dark[data-page="settings"] .form-select:focus,
+body.theme-dark[data-page="settings"] textarea:focus {
+  border-color: rgba(125, 219, 172, 0.5) !important;
+  box-shadow: 0 0 0 4px rgba(125, 219, 172, 0.12) !important;
+}
+
+body.theme-dark[data-page="settings"] .form-select {
+  background-image:
+    linear-gradient(135deg, rgba(125, 219, 172, 0.08), rgba(125, 219, 172, 0)),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 20 20' fill='none'><path d='M5 7L10 12L15 7' stroke='%237ddbac' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: left top, right 14px center !important;
+  background-size: 100% 100%, 18px 18px !important;
+}
+
+body.theme-dark[data-page="settings"] .switch-slider {
+  background: rgba(232, 245, 238, 0.12) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+}
+
+body.theme-dark[data-page="settings"] .switch-slider::before {
+  background: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="settings"] .switch input:checked + .switch-slider {
+  background: linear-gradient(135deg, #2bb079, #1d7a56) !important;
+  border-color: rgba(128, 224, 170, 0.42) !important;
+}
+
+body.theme-dark[data-page="settings"] .meter-bar {
+  background: rgba(232, 245, 238, 0.1) !important;
+  border-color: rgba(159, 221, 185, 0.16) !important;
+}
+
+body.theme-dark[data-page="settings"] .meter-bar span {
+  background: linear-gradient(135deg, #7ddbac, #2bb079) !important;
+}
+
+body.theme-dark[data-page="settings"] .plan-card::after {
+  background: rgba(214, 180, 93, 0.1) !important;
+}
+
+body.theme-dark[data-page="settings"] .plan-list {
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="settings"] .plan-list i,
+body.theme-dark[data-page="settings"] .support-list i,
+body.theme-dark[data-page="settings"] .settings-subscription .info-list i {
+  color: #7ddbac !important;
+}
+
+body.theme-dark[data-page="settings"] .plan-price,
+body.theme-dark[data-page="settings"] .price-amount {
+  color: #9ee7bb !important;
+}
+
+body.theme-dark[data-page="settings"] .table-clean {
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="settings"] .table-clean th {
+  color: #aec1b7 !important;
+}
+
+body.theme-dark[data-page="settings"] .table-clean td {
+  background: rgba(35, 54, 45, 0.94) !important;
+  border-color: rgba(159, 221, 185, 0.16) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="settings"] .confirm-card {
+  background: linear-gradient(180deg, rgba(43, 65, 55, 0.98), rgba(35, 54, 45, 0.96)) !important;
+  border-color: rgba(159, 221, 185, 0.2) !important;
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="settings"] .confirm-head {
+  border-bottom-color: rgba(159, 221, 185, 0.16) !important;
+}
+
+body.theme-dark[data-page="settings"] .confirm-head h3 {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="settings"] .confirm-head p {
+  color: #cfded6 !important;
+}
+
+/* Detection pages dark-mode media area */
+body.theme-dark[data-page="disease"] .media-stage,
+body.theme-dark[data-page="pest"] .media-stage,
+body.theme-dark[data-page="disease-pest"] .media-stage,
+body.theme-dark[data-page="plant-growth-stage"] .media-stage {
+  background:
+    radial-gradient(340px 220px at 18% 0%, rgba(125, 219, 172, 0.12), transparent 68%),
+    radial-gradient(320px 220px at 88% 100%, rgba(214, 180, 93, 0.1), transparent 70%),
+    linear-gradient(180deg, rgba(31, 49, 40, 0.96), rgba(27, 43, 35, 0.95)) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 14px 30px rgba(4, 14, 9, 0.2) !important;
+}
+
+body.theme-dark[data-page="disease"] .media-placeholder,
+body.theme-dark[data-page="pest"] .media-placeholder,
+body.theme-dark[data-page="disease-pest"] .media-placeholder,
+body.theme-dark[data-page="plant-growth-stage"] .media-placeholder {
+  background:
+    radial-gradient(360px 210px at 10% 0%, rgba(125, 219, 172, 0.12), transparent 62%),
+    radial-gradient(340px 220px at 92% 100%, rgba(214, 180, 93, 0.1), transparent 64%) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="disease"] .media-placeholder i,
+body.theme-dark[data-page="pest"] .media-placeholder i,
+body.theme-dark[data-page="disease-pest"] .media-placeholder i,
+body.theme-dark[data-page="plant-growth-stage"] .media-placeholder i {
+  color: #8ee3b0 !important;
+  filter: drop-shadow(0 8px 18px rgba(19, 97, 64, 0.22));
+}
+
+body.theme-dark[data-page="disease"] .media-placeholder h4,
+body.theme-dark[data-page="pest"] .media-placeholder h4,
+body.theme-dark[data-page="disease-pest"] .media-placeholder h4,
+body.theme-dark[data-page="plant-growth-stage"] .media-placeholder h4 {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="disease"] .media-placeholder p,
+body.theme-dark[data-page="pest"] .media-placeholder p,
+body.theme-dark[data-page="disease-pest"] .media-placeholder p,
+body.theme-dark[data-page="plant-growth-stage"] .media-placeholder p {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="disease"] .media-badge,
+body.theme-dark[data-page="pest"] .media-badge,
+body.theme-dark[data-page="disease-pest"] .media-badge,
+body.theme-dark[data-page="plant-growth-stage"] .media-badge {
+  background: rgba(125, 219, 172, 0.11) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  color: #bde8cc !important;
+  box-shadow: 0 10px 22px rgba(4, 14, 9, 0.16) !important;
+}
+
+body[data-page="crop"] .content-card,
+body[data-page="fertilizer"] .content-card,
+body[data-page="irrigation"] .content-card {
+  overflow: hidden !important;
+}
+
+body.theme-dark[data-page="crop"] .content-card,
+body.theme-dark[data-page="fertilizer"] .content-card,
+body.theme-dark[data-page="irrigation"] .content-card {
+  background:
+    radial-gradient(720px 360px at 0% 0%, rgba(125, 219, 172, 0.08), transparent 64%),
+    radial-gradient(620px 340px at 100% 8%, rgba(214, 180, 93, 0.07), transparent 62%),
+    linear-gradient(180deg, rgba(31, 49, 40, 0.96), rgba(27, 43, 35, 0.95)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+}
+
+body.theme-dark[data-page="crop"] .content-card::before,
+body.theme-dark[data-page="fertilizer"] .content-card::before,
+body.theme-dark[data-page="irrigation"] .content-card::before {
+  inset: 0 !important;
+  border-radius: inherit !important;
+  background:
+    linear-gradient(135deg, rgba(125, 219, 172, 0.045), transparent 42%),
+    radial-gradient(540px 220px at 8% 0%, rgba(125, 219, 172, 0.07), transparent 66%) !important;
+  opacity: 0.65 !important;
+}
+
+body.theme-dark[data-page="analytics"] .weather-icon-wrap {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(247, 232, 166, 0.24), transparent 46%),
+    linear-gradient(135deg, rgba(111, 178, 201, 0.24), rgba(140, 207, 172, 0.14)) !important;
+  border-color: rgba(185, 232, 245, 0.32) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 28px rgba(4, 14, 9, 0.18) !important;
+}
+
+body.theme-dark[data-page="analytics"] .weather-icon-wrap i {
+  color: #b9e8f5 !important;
+  text-shadow: 0 0 18px rgba(111, 178, 201, 0.38);
+  filter: drop-shadow(0 6px 12px rgba(2, 10, 7, 0.28));
+}
+
+body.theme-dark[data-page="analytics"] .weather-main .pill i {
+  color: #f7e8a6 !important;
+}
+
+/* Notifications page */
+.notifications-head {
+  align-items: center !important;
+}
+
+.notifications-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.notifications-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.notification-stat {
+  min-height: 92px;
+  border-radius: 20px;
+  border: 1px solid rgba(31, 122, 77, 0.12);
+  background:
+    radial-gradient(220px 110px at 100% 0%, rgba(255, 255, 255, 0.62), transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(238, 249, 243, 0.82));
+  box-shadow: 0 14px 30px rgba(11, 36, 27, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+}
+
+.notification-stat i {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.notification-stat span {
+  display: block;
+  color: var(--color-primary-dark);
+  font-size: 1.45rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.notification-stat p {
+  margin: 4px 0 0;
+  color: rgba(97, 117, 107, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.stat-critical i {
+  background: rgba(194, 102, 91, 0.12);
+  color: #b94d42;
+}
+
+.stat-warning i {
+  background: rgba(214, 180, 93, 0.16);
+  color: #9a6b10;
+}
+
+.stat-success i {
+  background: rgba(52, 178, 123, 0.14);
+  color: #1f7a4d;
+}
+
+.notifications-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.notifications-list,
+.notification-insights {
+  padding: 16px;
+}
+
+.notification-day {
+  margin: 2px 0 10px;
+  color: rgba(97, 117, 107, 0.82);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.notification-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  padding: 15px;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 122, 77, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 24px rgba(11, 36, 27, 0.06);
+  margin-bottom: 10px;
+}
+
+.notification-card.unread::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #34a86f;
+  box-shadow: 0 0 0 4px rgba(52, 168, 111, 0.12);
+}
+
+.notification-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 1px solid rgba(31, 122, 77, 0.14);
+}
+
+.notification-icon.danger {
+  background: rgba(194, 102, 91, 0.12);
+  color: #b94d42;
+  border-color: rgba(194, 102, 91, 0.22);
+}
+
+.notification-icon.warn {
+  background: rgba(214, 180, 93, 0.14);
+  color: #9a6b10;
+  border-color: rgba(214, 180, 93, 0.24);
+}
+
+.notification-icon.info {
+  background: rgba(111, 178, 201, 0.14);
+  color: #1e6e8c;
+  border-color: rgba(111, 178, 201, 0.26);
+}
+
+.notification-icon.ok {
+  background: rgba(52, 178, 123, 0.14);
+  color: #1f7a4d;
+  border-color: rgba(52, 178, 123, 0.24);
+}
+
+.notification-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.notification-topline h2 {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+}
+
+.notification-topline span {
+  flex: 0 0 auto;
+  color: rgba(97, 117, 107, 0.76);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.notification-content p {
+  margin: 6px 0 10px;
+  color: rgba(59, 81, 71, 0.92);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.notification-tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.notification-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(31, 122, 77, 0.08);
+  color: #1f7a4d;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.notification-insights {
+  position: sticky;
+  top: 96px;
+}
+
+.insight-card {
+  border-radius: 20px;
+  padding: 18px;
+  color: #fff;
+  background:
+    radial-gradient(220px 150px at 100% 0%, rgba(224, 178, 58, 0.26), transparent 62%),
+    linear-gradient(135deg, #1f7a4d, #0b2e22);
+  box-shadow: 0 18px 38px rgba(11, 46, 34, 0.2);
+}
+
+.insight-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  color: #f7e8a6;
+}
+
+.insight-card h2 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 950;
+}
+
+.insight-card p {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.insight-card .btn-brand {
+  width: 100%;
+  justify-content: center;
+}
+
+.insight-mini-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.insight-mini-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(31, 122, 77, 0.1);
+}
+
+.insight-mini-list span {
+  color: rgba(97, 117, 107, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.insight-mini-list strong {
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+body.theme-dark[data-page="notifications"] .notification-stat,
+body.theme-dark[data-page="notifications"] .notification-card,
+body.theme-dark[data-page="notifications"] .insight-mini-list div {
+  background: linear-gradient(180deg, rgba(43, 65, 55, 0.96), rgba(35, 54, 45, 0.94)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  box-shadow: 0 12px 28px rgba(4, 14, 9, 0.16) !important;
+}
+
+body.theme-dark[data-page="notifications"] .notification-stat span,
+body.theme-dark[data-page="notifications"] .notification-topline h2,
+body.theme-dark[data-page="notifications"] .insight-mini-list strong {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="notifications"] .notification-stat p,
+body.theme-dark[data-page="notifications"] .notification-day,
+body.theme-dark[data-page="notifications"] .notification-topline span,
+body.theme-dark[data-page="notifications"] .notification-content p,
+body.theme-dark[data-page="notifications"] .insight-mini-list span {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="notifications"] .notification-tags span {
+  background: rgba(125, 219, 172, 0.11) !important;
+  border: 1px solid rgba(125, 219, 172, 0.2) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="notifications"] .insight-card {
+  background:
+    radial-gradient(220px 150px at 100% 0%, rgba(214, 180, 93, 0.16), transparent 62%),
+    linear-gradient(135deg, rgba(35, 83, 60, 0.98), rgba(21, 42, 33, 0.98)) !important;
+  border: 1px solid rgba(159, 221, 185, 0.2);
+}
+
+@media (max-width: 900px) {
+  .notifications-head {
+    align-items: flex-start !important;
+  }
+
+  .notifications-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .notifications-actions .btn-soft {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+
+  .notifications-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .notification-stat {
+    min-height: 74px;
+    padding: 13px;
+    border-radius: 18px;
+  }
+
+  .notifications-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .notifications-list,
+  .notification-insights {
+    padding: 12px;
+  }
+
+  .notification-insights {
+    position: static;
+  }
+
+  .notification-card {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    padding: 13px;
+    border-radius: 17px;
+  }
+
+  .notification-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 15px;
+    font-size: 18px;
+  }
+
+  .notification-topline {
+    display: block;
+  }
+
+  .notification-topline h2 {
+    font-size: 0.94rem;
+    line-height: 1.28;
+  }
+
+  .notification-topline span {
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  .notification-content p {
+    font-size: 12.5px;
+  }
+}
+
+/* Site-wide UI/UX polish pass */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid rgba(52, 178, 123, 0.28) !important;
+  outline-offset: 3px !important;
+}
+
+:where(button, a, .btn-brand, .btn-primary, .btn-soft, .bottom-nav-item, .nav-icon-btn, .sidebar-menu a) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, .btn-brand, .btn-primary, .btn-soft, .nav-icon-btn, .bottom-nav-item, .sidebar-menu a):not(:disabled) {
+  cursor: pointer;
+}
+
+:where(button, input, select, textarea) {
+  font: inherit;
+}
+
+.agri-page-dashboard .content-card,
+.agri-page-dashboard .top-navbar,
+.agri-page-dashboard .main-footer,
+.agri-page-dashboard .panel,
+.agri-page-dashboard .kpi-card,
+.agri-page-dashboard .sensor-card,
+.agri-page-dashboard .profile-card,
+.agri-page-dashboard .settings-card,
+.agri-page-dashboard .farm-card,
+.agri-page-dashboard .field-card,
+.agri-page-dashboard .result-card,
+.agri-page-dashboard .recommendation-card {
+  border-color: rgba(31, 122, 77, 0.1) !important;
+}
+
+.agri-page-dashboard .content-card {
+  isolation: isolate;
+}
+
+.agri-page-dashboard .content-inner {
+  max-width: 1480px;
+  margin-inline: auto;
+}
+
+.agri-page-dashboard .page-head,
+.agri-page-dashboard .section-head,
+.agri-page-dashboard .panel-head {
+  min-width: 0;
+}
+
+.agri-page-dashboard .page-title,
+.agri-page-dashboard .section-title,
+.agri-page-dashboard .panel-title {
+  overflow-wrap: anywhere;
+}
+
+.agri-page-dashboard .btn-soft,
+.agri-page-dashboard .btn-brand,
+.agri-page-dashboard .btn-primary,
+.agri-page-auth .btn-primary,
+.agri-page-auth .btn-secondary {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.agri-page-dashboard .form-control,
+.agri-page-dashboard .form-select,
+.agri-page-dashboard textarea,
+.agri-page-auth .form-control {
+  caret-color: #1f7a4d;
+}
+
+.agri-page-dashboard .form-control::placeholder,
+.agri-page-dashboard textarea::placeholder,
+.agri-page-auth .form-control::placeholder {
+  opacity: 1;
+}
+
+.agri-page-dashboard .sidebar-menu a.active {
+  color: var(--color-primary) !important;
+  background:
+    linear-gradient(135deg, rgba(52, 178, 123, 0.16), rgba(52, 178, 123, 0.07)) !important;
+  border-color: rgba(52, 178, 123, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.agri-page-dashboard .sidebar-link-locked {
+  cursor: not-allowed !important;
+}
+
+.agri-page-dashboard .bottom-nav {
+  box-shadow: 0 -12px 28px rgba(11, 36, 27, 0.08);
+}
+
+.agri-page-dashboard .bottom-nav-item.active {
+  font-weight: 950;
+}
+
+.agri-page-dashboard .bottom-nav-item.active i {
+  transform: translateY(-1px);
+}
+
+.agri-page-dashboard .input-toggle {
+  box-shadow: 0 10px 24px rgba(11, 36, 27, 0.08);
+}
+
+.agri-page-dashboard .input-toggle button,
+.agri-page-dashboard .input-toggle .toggle-btn {
+  min-height: 42px;
+}
+
+.agri-page-dashboard .clear-btn,
+.agri-page-dashboard .btn-clear {
+  background: rgba(194, 102, 91, 0.08) !important;
+  border-color: rgba(194, 102, 91, 0.2) !important;
+  color: #b94d42 !important;
+}
+
+.agri-page-dashboard .clear-btn:hover,
+.agri-page-dashboard .btn-clear:hover {
+  background: rgba(194, 102, 91, 0.14) !important;
+  border-color: rgba(194, 102, 91, 0.3) !important;
+}
+
+.agri-page-dashboard .media-placeholder,
+.agri-page-dashboard .upload-zone,
+.agri-page-dashboard .drop-zone {
+  min-height: clamp(220px, 32vw, 360px);
+}
+
+.agri-page-landing .nav-link-custom,
+.agri-page-landing .bottom-nav-item,
+.agri-page-dashboard .bottom-nav-item {
+  min-height: 44px;
+}
+
+.agri-page-dashboard .sidebar-menu a {
+  min-height: 0 !important;
+  height: clamp(32px, 4.9vh, 38px) !important;
+  padding-block: 0 !important;
+  align-items: center !important;
+}
+
+body.theme-dark :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline-color: rgba(157, 231, 187, 0.34) !important;
+}
+
+body.theme-dark.agri-page-dashboard .sidebar-menu a.active {
+  color: #f5fbf7 !important;
+  background:
+    linear-gradient(135deg, rgba(125, 219, 172, 0.18), rgba(125, 219, 172, 0.08)) !important;
+  border-color: rgba(125, 219, 172, 0.26) !important;
+}
+
+body.theme-dark.agri-page-dashboard .top-navbar,
+body.theme-dark.agri-page-dashboard .content-card,
+body.theme-dark.agri-page-dashboard .main-footer {
+  border-color: rgba(159, 221, 185, 0.18) !important;
+}
+
+body.theme-dark.agri-page-dashboard .form-control,
+body.theme-dark.agri-page-dashboard .form-select,
+body.theme-dark.agri-page-dashboard textarea {
+  background-color: rgba(18, 32, 25, 0.56) !important;
+  border-color: rgba(159, 221, 185, 0.2) !important;
+  color: #f5fbf7 !important;
+  caret-color: #9ee7bb;
+}
+
+body.theme-dark.agri-page-dashboard .form-control::placeholder,
+body.theme-dark.agri-page-dashboard textarea::placeholder {
+  color: rgba(207, 222, 214, 0.66) !important;
+}
+
+body.theme-dark.agri-page-dashboard .clear-btn,
+body.theme-dark.agri-page-dashboard .btn-clear {
+  background: rgba(231, 170, 160, 0.11) !important;
+  border-color: rgba(231, 170, 160, 0.2) !important;
+  color: #f0b7ae !important;
+}
+
+body.theme-dark.agri-page-dashboard .input-toggle {
+  background: rgba(18, 32, 25, 0.48) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+}
+
+/* Profile page dark-mode readability */
+body.theme-dark[data-page="profile"] .profile-hero {
+  background:
+    radial-gradient(460px 240px at 0% 0%, rgba(125, 219, 172, 0.16), transparent 64%),
+    radial-gradient(420px 220px at 100% 0%, rgba(214, 180, 93, 0.1), transparent 62%),
+    linear-gradient(135deg, rgba(45, 69, 58, 0.98), rgba(32, 50, 42, 0.96)) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+}
+
+body.theme-dark[data-page="profile"] .profile-hero::before {
+  opacity: 0.35 !important;
+}
+
+body.theme-dark[data-page="profile"] .profile-avatar {
+  background: linear-gradient(135deg, #2bb079, #146a47) !important;
+  color: #ffffff !important;
+  box-shadow: 0 18px 34px rgba(4, 14, 9, 0.26) !important;
+}
+
+body.theme-dark[data-page="profile"] .profile-name,
+body.theme-dark[data-page="profile"] .panel-title,
+body.theme-dark[data-page="profile"] .kpi-value,
+body.theme-dark[data-page="profile"] .session-title,
+body.theme-dark[data-page="profile"] .activity-title,
+body.theme-dark[data-page="profile"] .robot-name,
+body.theme-dark[data-page="profile"] .action-card,
+body.theme-dark[data-page="profile"] .info-list li,
+body.theme-dark[data-page="profile"] .table-clean,
+body.theme-dark[data-page="profile"] .stat-row {
+  color: #f5fbf7 !important;
+}
+
+body.theme-dark[data-page="profile"] .page-sub,
+body.theme-dark[data-page="profile"] .panel-sub,
+body.theme-dark[data-page="profile"] .kpi-label,
+body.theme-dark[data-page="profile"] .kpi-meta,
+body.theme-dark[data-page="profile"] .robot-meta,
+body.theme-dark[data-page="profile"] .activity-item small,
+body.theme-dark[data-page="profile"] .session-item small,
+body.theme-dark[data-page="profile"] .table-clean th {
+  color: #cfded6 !important;
+}
+
+body.theme-dark[data-page="profile"] .chip,
+body.theme-dark[data-page="profile"] .role-badge,
+body.theme-dark[data-page="profile"] .pill,
+body.theme-dark[data-page="profile"] .plan-pill {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  color: #dcebe3 !important;
+  box-shadow: none !important;
+}
+
+body.theme-dark[data-page="profile"] .role-badge,
+body.theme-dark[data-page="profile"] .plan-pill {
+  background: rgba(214, 180, 93, 0.12) !important;
+  border-color: rgba(214, 180, 93, 0.24) !important;
+  color: #f3dc9a !important;
+}
+
+body.theme-dark[data-page="profile"] .chip i,
+body.theme-dark[data-page="profile"] .pill i,
+body.theme-dark[data-page="profile"] .info-list i,
+body.theme-dark[data-page="profile"] .action-card i {
+  color: #9ee7bb !important;
+}
+
+body.theme-dark[data-page="profile"] .kpi,
+body.theme-dark[data-page="profile"] .info-list li,
+body.theme-dark[data-page="profile"] .session-item,
+body.theme-dark[data-page="profile"] .activity-item,
+body.theme-dark[data-page="profile"] .robot-card,
+body.theme-dark[data-page="profile"] .action-card,
+body.theme-dark[data-page="profile"] .table-clean td {
+  background:
+    radial-gradient(220px 120px at 100% 0%, rgba(125, 219, 172, 0.07), transparent 64%),
+    linear-gradient(180deg, rgba(43, 65, 55, 0.96), rgba(35, 54, 45, 0.94)) !important;
+  border-color: rgba(159, 221, 185, 0.18) !important;
+  box-shadow: 0 10px 24px rgba(4, 14, 9, 0.14) !important;
+}
+
+body.theme-dark[data-page="profile"] .kpi::after {
+  background: rgba(125, 219, 172, 0.1) !important;
+}
+
+body.theme-dark[data-page="profile"] .kpi-icon,
+body.theme-dark[data-page="profile"] .activity-icon,
+body.theme-dark[data-page="profile"] .action-card i {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.22) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="profile"] .kpi-icon.wheat {
+  background: rgba(214, 180, 93, 0.13) !important;
+  border-color: rgba(214, 180, 93, 0.24) !important;
+  color: #f3dc9a !important;
+}
+
+body.theme-dark[data-page="profile"] .kpi-icon.sky {
+  background: rgba(111, 178, 201, 0.13) !important;
+  border-color: rgba(111, 178, 201, 0.24) !important;
+  color: #b9e8f5 !important;
+}
+
+body.theme-dark[data-page="profile"] .table-responsive {
+  background: rgba(18, 32, 25, 0.2) !important;
+  border-color: rgba(159, 221, 185, 0.14) !important;
+}
+
+body.theme-dark[data-page="profile"] .table-clean tbody tr:hover td,
+body.theme-dark[data-page="profile"] .action-card:hover,
+body.theme-dark[data-page="profile"] .session-item:hover {
+  background: linear-gradient(180deg, rgba(52, 78, 65, 0.98), rgba(39, 60, 50, 0.96)) !important;
+  border-color: rgba(159, 221, 185, 0.28) !important;
+}
+
+body.theme-dark[data-page="profile"] .profile-side .progress {
+  background: rgba(232, 245, 238, 0.12) !important;
+  border: 1px solid rgba(159, 221, 185, 0.14) !important;
+}
+
+body.theme-dark[data-page="profile"] .profile-side .progress-bar {
+  background: linear-gradient(90deg, #7ddbac, #2bb079, #e7cf91) !important;
+}
+
+body.theme-dark[data-page="profile"] .robot-status.online {
+  background: rgba(125, 219, 172, 0.12) !important;
+  border-color: rgba(125, 219, 172, 0.24) !important;
+  color: #bde8cc !important;
+}
+
+body.theme-dark[data-page="profile"] .robot-status.charging {
+  background: rgba(111, 178, 201, 0.13) !important;
+  border-color: rgba(111, 178, 201, 0.24) !important;
+  color: #b9e8f5 !important;
+}
+
+body.theme-dark[data-page="profile"] .robot-status.idle {
+  background: rgba(214, 180, 93, 0.13) !important;
+  border-color: rgba(214, 180, 93, 0.24) !important;
+  color: #f3dc9a !important;
+}
+
+body.theme-dark[data-page="profile"] .btn-soft {
+  background: rgba(232, 245, 238, 0.1) !important;
+  border-color: rgba(159, 221, 185, 0.22) !important;
+  color: #dcebe3 !important;
+}
+
+body.theme-dark[data-page="profile"] .btn-soft:hover {
+  background: rgba(125, 219, 172, 0.14) !important;
+  color: #f5fbf7 !important;
+}
+
+@media (max-width: 900px) {
+  body.agri-page-dashboard {
+    overflow-x: hidden !important;
+  }
+
+  .agri-page-dashboard .main-area {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding-bottom: calc(var(--bottom-nav-h, 64px) + 10px);
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-inline: 0 !important;
+  }
+
+  .agri-page-dashboard .top-navbar {
+    width: min(calc(100vw - 20px), 430px) !important;
+    max-width: min(calc(100vw - 20px), 430px) !important;
+    margin: 10px auto 0 !important;
+    padding: 10px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .agri-page-dashboard .content-card {
+    width: min(calc(100vw - 20px), 430px) !important;
+    max-width: min(calc(100vw - 20px), 430px) !important;
+    margin: 10px auto !important;
+    padding: 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .agri-page-dashboard .main-footer {
+    width: min(calc(100vw - 20px), 430px) !important;
+    max-width: min(calc(100vw - 20px), 430px) !important;
+    margin: 0 auto 14px !important;
+  }
+
+  .agri-page-dashboard .content-inner,
+  .agri-page-dashboard .footer-content {
+    width: 100% !important;
+  }
+
+  .agri-page-dashboard .page-head,
+  .agri-page-dashboard .section-head,
+  .agri-page-dashboard .panel-head {
+    gap: 12px !important;
+  }
+
+  .agri-page-dashboard .page-title {
+    font-size: clamp(1.55rem, 7vw, 2rem) !important;
+  }
+
+  .agri-page-dashboard .page-sub,
+  .agri-page-dashboard .section-sub,
+  .agri-page-dashboard .panel-sub {
+    font-size: 0.84rem !important;
+  }
+
+  .agri-page-dashboard .btn-soft,
+  .agri-page-dashboard .btn-brand,
+  .agri-page-dashboard .btn-primary {
+    min-height: 42px;
+    border-radius: 14px !important;
+  }
+
+  .agri-page-dashboard .footer-content {
+    width: 100% !important;
+    padding-bottom: 8px;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 18px !important;
+  }
+
+  .agri-page-dashboard .footer-brand {
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .agri-page-dashboard .main-footer .footer-info h6 {
+    justify-content: center !important;
+  }
+
+  .agri-page-dashboard .footer-info {
+    min-width: 0 !important;
+  }
+
+  .agri-page-dashboard .footer-links {
+    width: min(260px, 100%) !important;
+    margin-inline: auto !important;
+    justify-content: center !important;
+    gap: 12px 18px !important;
+  }
+
+  .agri-page-dashboard .footer-links a {
+    min-width: 98px !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .agri-page-dashboard .footer-social {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .agri-page-dashboard .content-card {
+    padding: 12px !important;
+  }
+
+  .agri-page-dashboard .crumb {
+    font-size: 11px !important;
+    gap: 6px !important;
+  }
+
+  .agri-page-dashboard .bottom-nav-content {
+    padding-inline: 8px !important;
+  }
+
+  .agri-page-dashboard .bottom-nav-item {
+    min-width: 64px !important;
+    padding-inline: 8px !important;
+  }
+}
+
+/* Unified AgriVision brand mark */
+.agri-page-dashboard .top-navbar .logo,
+.agri-page-landing .navbar-brand,
+.agri-page-landing .footer-logo,
+.agri-page-auth .form-section .logo {
+  align-items: center !important;
+}
+
+.agri-page-dashboard .top-navbar .logo,
+.agri-page-landing .navbar-brand,
+.agri-page-landing .footer-logo {
+  gap: 0.72rem !important;
+}
+
+.agri-page-auth .form-section .logo {
+  gap: 9px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.agri-page-dashboard .logo-image,
+.agri-page-landing .navbar-brand img,
+.agri-page-landing .footer-logo img,
+.agri-page-auth .logo-img,
+.agri-page-dashboard .main-footer .footer-logo img {
+  display: block !important;
+  width: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: drop-shadow(0 8px 16px rgba(7, 85, 52, 0.14)) !important;
+}
+
+.agri-page-dashboard .logo-image,
+.agri-page-landing .navbar-brand img {
+  height: 42px !important;
+}
+
+.agri-page-landing .footer-logo img {
+  height: 46px !important;
+}
+
+.agri-page-auth .logo-img {
+  width: clamp(162px, 18vw, 226px) !important;
+  max-width: 100% !important;
+}
+
+.logo-wordmark {
+  font-family: "Sora", "Plus Jakarta Sans", "Manrope", system-ui, sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.018em !important;
+  line-height: 0.95 !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(90deg, #075534 0%, #075534 42%, #47b91f 48%, #5fbd2a 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+}
+
+.agri-page-dashboard .top-navbar .logo-wordmark,
+.agri-page-landing .navbar-brand .logo-wordmark {
+  font-size: clamp(1.2rem, 1.7vw, 1.48rem) !important;
+}
+
+.agri-page-auth .form-section .logo-wordmark {
+  font-size: clamp(1.45rem, 2.5vw, 1.92rem) !important;
+}
+
+.agri-page-landing .footer-logo .logo-wordmark {
+  font-size: clamp(1.32rem, 1.8vw, 1.58rem) !important;
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #a7e35d 48%, #7fdc48 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+.agri-page-dashboard .main-footer .footer-logo {
+  width: 58px !important;
+  height: 38px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  flex: 0 0 auto !important;
+}
+
+.agri-page-dashboard .main-footer .footer-logo img {
+  height: 38px !important;
+}
+
+.agri-page-dashboard .main-footer .footer-info h6 {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+
+.agri-page-dashboard .main-footer .footer-info .logo-wordmark {
+  font-size: 0.92rem !important;
+}
+
+.agri-page-dashboard .crumb span:first-of-type {
+  font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+  color: #1f7a4d !important;
+}
+
+body.theme-dark .logo-wordmark {
+  background: linear-gradient(90deg, #e5f8ec 0%, #bde8cc 42%, #9ee75f 48%, #7fdc48 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.theme-dark.agri-page-dashboard .crumb span:first-of-type {
+  color: #bde8cc !important;
+}
+
+body.theme-dark.agri-page-dashboard .logo-image,
+body.theme-dark.agri-page-landing .navbar-brand img,
+body.theme-dark.agri-page-landing .footer-logo img,
+body.theme-dark.agri-page-auth .logo-img,
+body.theme-dark.agri-page-dashboard .main-footer .footer-logo img {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.26)) !important;
+}
+
+@media (max-width: 768px) {
+  .agri-page-dashboard .top-navbar .logo-image,
+  .agri-page-landing .navbar-brand img {
+    height: 36px !important;
+  }
+
+  .agri-page-dashboard .top-navbar .logo-wordmark,
+  .agri-page-landing .navbar-brand .logo-wordmark {
+    font-size: 1.08rem !important;
+    letter-spacing: 0.012em !important;
+  }
+
+  .agri-page-auth .form-section .logo-wordmark {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: clamp(1.04rem, 4.4vw, 1.26rem) !important;
+    letter-spacing: 0.015em !important;
+    text-shadow: 0 8px 18px rgba(5, 31, 21, 0.24) !important;
+  }
+
+  .agri-page-auth .logo-img {
+    width: clamp(92px, 27vw, 116px) !important;
+  }
+}
+
+/* Authentication mobile card polish */
+@media (max-width: 900px) {
+  body.agri-page-auth {
+    background:
+      radial-gradient(420px 260px at 10% 0%, rgba(52, 168, 111, 0.16), transparent 68%),
+      radial-gradient(360px 250px at 96% 5%, rgba(224, 178, 58, 0.13), transparent 64%),
+      linear-gradient(180deg, #f7fdf9 0%, #edf7f0 52%, #f8f4eb 100%) !important;
+  }
+
+  .agri-page-auth .page-wrapper {
+    padding: 18px 14px 30px !important;
+  }
+
+  .agri-page-auth .auth-card {
+    width: min(360px, calc(100vw - 28px)) !important;
+    max-width: 360px !important;
+    border-radius: 28px !important;
+    border: 1px solid rgba(18, 88, 56, 0.13) !important;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(252, 255, 253, 0.96)) !important;
+    box-shadow:
+      0 26px 58px rgba(11, 36, 27, 0.16),
+      0 4px 12px rgba(31, 122, 77, 0.08) !important;
+  }
+
+  .agri-page-auth .auth-card::before {
+    height: 154px !important;
+    background:
+      radial-gradient(170px 120px at 52% 20%, rgba(139, 218, 72, 0.24), transparent 62%),
+      radial-gradient(180px 130px at 92% 6%, rgba(224, 178, 58, 0.18), transparent 68%),
+      linear-gradient(135deg, #2b9a64 0%, #1f8154 48%, #0c3b28 100%) !important;
+    border-bottom-right-radius: 132px 54px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .agri-page-auth .auth-card::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: -42px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .agri-page-auth .form-section {
+    padding: 24px clamp(26px, 7vw, 34px) 32px !important;
+  }
+
+  .agri-page-auth .form-section > * {
+    max-width: 282px !important;
+  }
+
+  .agri-page-auth .form-section .logo {
+    margin-bottom: 48px !important;
+    gap: 8px !important;
+    position: relative !important;
+  }
+
+  .agri-page-auth .form-section .logo::before {
+    content: "";
+    position: absolute;
+    inset: -14px -28px -8px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(184, 233, 112, 0.18), transparent 68%);
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .agri-page-auth .logo-img {
+    width: clamp(112px, 33vw, 138px) !important;
+    filter:
+      drop-shadow(0 12px 18px rgba(3, 28, 18, 0.3))
+      drop-shadow(0 0 16px rgba(174, 230, 75, 0.18)) !important;
+  }
+
+  .agri-page-auth .form-section .logo-wordmark {
+    font-size: clamp(1.08rem, 4.8vw, 1.34rem) !important;
+    letter-spacing: 0.02em !important;
+    text-shadow: 0 10px 20px rgba(5, 31, 21, 0.3) !important;
+  }
+
+  .agri-page-auth .page-title {
+    margin-bottom: 8px !important;
+    color: #1f7a4d !important;
+    font-size: clamp(1.65rem, 7vw, 1.95rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.018em !important;
+  }
+
+  .agri-page-auth .subtitle-text {
+    max-width: 276px !important;
+    margin-bottom: 22px !important;
+    color: #6f8379 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.48 !important;
+  }
+
+  .agri-page-auth .form-group {
+    margin-bottom: 11px !important;
+  }
+
+  .agri-page-auth .form-control {
+    height: 42px !important;
+    border-radius: 15px !important;
+    border-color: rgba(31, 122, 77, 0.18) !important;
+    background: linear-gradient(180deg, rgba(230, 246, 236, 0.92), rgba(224, 242, 231, 0.82)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 8px 18px rgba(11, 36, 27, 0.05) !important;
+    color: #223a2e !important;
+    font-weight: 700 !important;
+  }
+
+  .agri-page-auth .form-control::placeholder {
+    color: #789188 !important;
+    font-weight: 700 !important;
+  }
+
+  .agri-page-auth .form-group::before {
+    background-color: #58ae81 !important;
+    opacity: 0.95 !important;
+  }
+
+  .agri-page-auth .checkbox-section {
+    margin: 2px 0 12px !important;
+    color: #233d31 !important;
+    font-size: 0.8rem !important;
+  }
+
+  .agri-page-auth input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 4px !important;
+    border-color: rgba(16, 38, 28, 0.34) !important;
+  }
+
+  .agri-page-auth .btn-primary,
+  .agri-page-auth .btn-secondary {
+    height: 42px !important;
+    min-height: 42px !important;
+    border-radius: 999px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .agri-page-auth .btn-primary {
+    margin: 14px auto 12px !important;
+    background: linear-gradient(135deg, #34aa70, #1f8254) !important;
+    box-shadow: 0 16px 28px rgba(31, 122, 77, 0.24) !important;
+  }
+
+  .agri-page-auth .btn-secondary {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid rgba(31, 122, 77, 0.14) !important;
+    box-shadow: 0 10px 22px rgba(11, 36, 27, 0.07) !important;
+    color: #146b45 !important;
+  }
+
+  .agri-page-auth .text-link {
+    color: #74877e !important;
+    font-size: 0.74rem !important;
+  }
+
+  .agri-page-auth .text-link a {
+    color: #1f7a4d !important;
+    font-weight: 900 !important;
+  }
+}
+
+/* Final mobile sidebar fit override */
+@media (max-width: 768px) {
+  body.agri-page-dashboard .sidebar {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 8px 8px 9px !important;
+    gap: 6px !important;
+    overflow: hidden !important;
+  }
+
+  body.agri-page-dashboard .sidebar-nav {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 3px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-section {
+    flex: 0 0 auto !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-title {
+    font-size: clamp(8px, 1.1vh, 10px) !important;
+    letter-spacing: 0.15em !important;
+    padding: 1px 10px 3px !important;
+    margin-bottom: 1px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu {
+    gap: 1px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: 0 !important;
+    height: clamp(30px, 4.45vh, 38px) !important;
+    padding: 0 10px !important;
+    gap: 9px !important;
+    font-size: clamp(10.5px, 1.55vh, 13px) !important;
+    line-height: 1.05 !important;
+    border-radius: 12px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a i {
+    width: clamp(15px, 2.25vh, 19px) !important;
+    height: clamp(15px, 2.25vh, 19px) !important;
+    font-size: clamp(15px, 2.25vh, 19px) !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.agri-page-dashboard .lock-badge {
+    padding: 2px 6px !important;
+    font-size: clamp(7.5px, 1.05vh, 9px) !important;
+    gap: 4px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    flex: 0 0 auto !important;
+    min-height: 56px !important;
+    margin-top: 4px !important;
+    padding: 7px !important;
+    gap: 8px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-avatar {
+    width: clamp(34px, 5.4vh, 42px) !important;
+    height: clamp(34px, 5.4vh, 42px) !important;
+    font-size: clamp(11px, 1.65vh, 14px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-user h6 {
+    font-size: clamp(11px, 1.55vh, 13px) !important;
+    line-height: 1.1 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-user small {
+    font-size: clamp(8px, 1.1vh, 9.5px) !important;
+    line-height: 1.1 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-logout {
+    width: clamp(30px, 4.7vh, 36px) !important;
+    height: clamp(30px, 4.7vh, 36px) !important;
+    border-radius: 11px !important;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 780px) {
+  body.agri-page-dashboard .sidebar-menu a {
+    height: clamp(27px, 4.05vh, 32px) !important;
+    font-size: clamp(9.5px, 1.42vh, 11.5px) !important;
+    gap: 7px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a i {
+    width: clamp(13px, 2vh, 16px) !important;
+    height: clamp(13px, 2vh, 16px) !important;
+    font-size: clamp(13px, 2vh, 16px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    min-height: 48px !important;
+    padding: 6px !important;
+  }
+}
+
+/* Hard override for the opened mobile drawer */
+body.agri-page-dashboard .sidebar.show {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  align-content: stretch !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  padding: 8px 7px !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-header {
+  display: none !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-nav {
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: hidden !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-section {
+  padding-bottom: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-title {
+  font-size: 8.5px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.14em !important;
+  padding: 0 9px 3px !important;
+  margin-bottom: 1px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-menu {
+  gap: 0 !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-menu a {
+  height: 31px !important;
+  min-height: 31px !important;
+  max-height: 31px !important;
+  padding: 0 9px !important;
+  gap: 8px !important;
+  border-radius: 11px !important;
+  font-size: 11px !important;
+  line-height: 1.02 !important;
+  overflow: hidden !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-menu a i {
+  width: 15px !important;
+  height: 15px !important;
+  min-width: 15px !important;
+  font-size: 15px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .lock-badge {
+  font-size: 7.5px !important;
+  line-height: 1 !important;
+  padding: 2px 5px !important;
+  gap: 3px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .lock-badge i {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  font-size: 8px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-footer {
+  min-height: 52px !important;
+  height: 52px !important;
+  max-height: 52px !important;
+  padding: 6px !important;
+  margin: 0 !important;
+  gap: 7px !important;
+  overflow: hidden !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-avatar {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-user h6 {
+  font-size: 11.5px !important;
+  line-height: 1.05 !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-user small {
+  font-size: 8.2px !important;
+  line-height: 1.05 !important;
+}
+
+body.agri-page-dashboard .sidebar.show .sidebar-logout {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  border-radius: 10px !important;
+}
+
+/* Final sidebar sizing correction: desktop issue, mobile stays comfortable */
+@media (min-width: 769px) {
+  body.agri-page-dashboard .sidebar {
+    overflow: hidden !important;
+    gap: 10px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-nav {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.agri-page-dashboard .sidebar-section {
+    padding-bottom: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu {
+    gap: 2px !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a {
+    min-height: 0 !important;
+    height: clamp(38px, 4.55vh, 45px) !important;
+    max-height: 45px !important;
+    padding: 0 11px !important;
+    font-size: clamp(13px, 1.52vh, 14.5px) !important;
+    line-height: 1.12 !important;
+  }
+
+  body.agri-page-dashboard .sidebar-menu a i {
+    width: clamp(18px, 2.22vh, 21px) !important;
+    height: clamp(18px, 2.22vh, 21px) !important;
+    min-width: clamp(18px, 2.22vh, 21px) !important;
+    font-size: clamp(18px, 2.22vh, 21px) !important;
+  }
+
+  body.agri-page-dashboard .sidebar-footer {
+    flex: 0 0 auto !important;
+    min-height: 62px !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.agri-page-dashboard .sidebar.show {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 12px 12px !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-header {
+    display: flex !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-nav {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: block !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-menu {
+    gap: 3px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-menu a {
+    min-height: 0 !important;
+    height: 40px !important;
+    max-height: 40px !important;
+    padding: 0 11px !important;
+    gap: 10px !important;
+    font-size: 13px !important;
+    line-height: 1.12 !important;
+    border-radius: 13px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-menu a i {
+    width: 19px !important;
+    height: 19px !important;
+    min-width: 19px !important;
+    font-size: 19px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-title {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.16em !important;
+    padding: 3px 10px 5px !important;
+    margin-bottom: 3px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-footer {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 64px !important;
+    max-height: none !important;
+    padding: 10px !important;
+    gap: 9px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    font-size: 13px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-user h6 {
+    font-size: 13px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-user small {
+    font-size: 10px !important;
+  }
+
+  body.agri-page-dashboard .sidebar.show .sidebar-logout {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+}
+
+/* Recommendation dropdown polish */
+body[data-page="fertilizer"] .recommendation-layout,
+body[data-page="irrigation"] .recommendation-layout,
+body[data-page="fertilizer"] .form-grid,
+body[data-page="irrigation"] .form-grid {
+  min-width: 0 !important;
+}
+
+body[data-page="fertilizer"] .form-grid > div,
+body[data-page="irrigation"] .form-grid > div,
+body[data-page="fertilizer"] .sensor-card,
+body[data-page="irrigation"] .sensor-card {
+  min-width: 0 !important;
+}
+
+body[data-page="fertilizer"] app-agri-select,
+body[data-page="irrigation"] app-agri-select {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+body.agri-page-dashboard app-agri-select {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+body.agri-page-dashboard .farm-select app-agri-select {
+  min-width: 220px !important;
+}
+
+body.agri-page-dashboard .setting-row app-agri-select {
+  flex: 0 1 320px !important;
+  min-width: 180px !important;
+}
+
+body.agri-page-dashboard .modal-grid app-agri-select,
+body.agri-page-dashboard .form-grid app-agri-select {
+  min-width: 0 !important;
+}
+
+body[data-page="fertilizer"] .panel:has(app-agri-select),
+body[data-page="irrigation"] .panel:has(app-agri-select),
+body[data-page="fertilizer"] .content-inner,
+body[data-page="irrigation"] .content-inner {
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  body[data-page="fertilizer"] .form-grid,
+  body[data-page="irrigation"] .form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body[data-page="fertilizer"] .panel,
+  body[data-page="irrigation"] .panel {
+    overflow: visible !important;
+  }
+
+  body.agri-page-dashboard .farm-select app-agri-select,
+  body.agri-page-dashboard .setting-row app-agri-select {
+    flex-basis: auto !important;
+    min-width: 0 !important;
+  }
+}

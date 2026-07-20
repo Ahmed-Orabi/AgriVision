@@ -1,0 +1,64 @@
+<div class="sidebar-backdrop" id="sidebarBackdrop" [class.show]="ui.sidebarOpen" (click)="ui.closeSidebar()"></div>
+
+<aside class="sidebar" id="sidebar" aria-label="Sidebar navigation" [class.show]="ui.sidebarOpen">
+  <div class="sidebar-header">
+    <h5>Navigation</h5>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar" (click)="ui.closeSidebar()">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Monitoring &amp; Control</div>
+      <ul class="sidebar-menu">
+        <li><a routerLink="/dashboard/analytics" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-graph-up"></i> Analytics</a></li>
+        <li>
+          <a href="#" class="sidebar-link-locked" aria-disabled="true">
+            <i class="bi bi-robot"></i>
+            Robots &amp; Automation
+            <span class="lock-badge"><i class="bi bi-lock-fill"></i> Coming</span>
+          </a>
+        </li>
+        <li><a routerLink="/dashboard/farm/state" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-map"></i> Farm State</a></li>
+        <li>
+          <a href="#" class="sidebar-link-locked" aria-disabled="true">
+            <i class="bi bi-file-earmark-bar-graph"></i>
+            Reports
+            <span class="lock-badge"><i class="bi bi-lock-fill"></i> Coming</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">AI Tools</div>
+      <ul class="sidebar-menu">
+        <li><a routerLink="/dashboard/ai/crop-recommendation" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-flower3"></i> Crop Recommendation</a></li>
+        <li><a routerLink="/dashboard/ai/fertilizer-recommendation" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-droplet-half"></i> Fertilizer Recommendation</a></li>
+        <li><a routerLink="/dashboard/ai/irrigation-recommendation" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-water"></i> Irrigation Recommendation</a></li>
+        <li><a routerLink="/dashboard/ai/plant-growth-stage" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-flower1"></i> Plant Growth Stage</a></li>
+        <li><a routerLink="/dashboard/ai/disease-detection" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-shield-plus"></i> Disease Detection</a></li>
+        <li><a routerLink="/dashboard/ai/pest-detection" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-bug"></i> Insect Detection</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">System</div>
+      <ul class="sidebar-menu">
+        <li><a routerLink="/dashboard/user/settings" routerLinkActive="active" (click)="ui.closeSidebar()"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-avatar" id="sidebarUserAvatar">AM</div>
+    <div class="sidebar-user">
+      <h6 id="sidebarUserName">Ahmed Mansour</h6>
+      <small id="sidebarUserRole">Field Manager</small>
+    </div>
+    <button class="sidebar-logout" aria-label="Logout" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+    </button>
+  </div>
+</aside>

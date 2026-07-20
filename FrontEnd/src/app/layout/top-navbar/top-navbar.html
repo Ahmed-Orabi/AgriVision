@@ -1,0 +1,66 @@
+<nav class="top-navbar" aria-label="Top navigation">
+  <div class="navbar-content">
+    <a routerLink="/dashboard/analytics" class="logo" aria-label="AgriVision home">
+      <img src="/assets/images/Logo.png" alt="AgriVision logo" class="logo-image" />
+      <span class="logo-wordmark">AgriVision</span>
+    </a>
+
+    <div class="navbar-search" role="search">
+      <div class="search-wrapper">
+        <i class="bi bi-search search-icon" aria-hidden="true"></i>
+        <input type="text" placeholder="Search sensors, farms, reports..." aria-label="Search" />
+      </div>
+    </div>
+
+    <div class="navbar-actions">
+      <app-theme-toggle class="nav-theme-toggle"></app-theme-toggle>
+
+      <div class="notif-wrap">
+        <button class="nav-icon-btn" aria-label="Notifications" id="deskNotifBtn" aria-haspopup="true" [attr.aria-expanded]="ui.notificationsOpen" (click)="ui.toggleNotifications()">
+          <span class="notif-dot" aria-hidden="true"></span>
+          <i class="bi bi-bell"></i>
+        </button>
+        <div class="notif-dropdown" id="notifDropdown" role="menu" aria-label="Notifications" [class.show]="ui.notificationsOpen">
+          <div class="notif-head">
+            <div>
+              <strong>Notifications</strong>
+              <small>Latest alerts from your farm</small>
+            </div>
+            <button class="notif-clear" type="button">Mark all read</button>
+          </div>
+          <div class="notif-list">
+            <div class="notif-item">
+              <div class="notif-icon ok"><i class="bi bi-droplet"></i></div>
+              <div>
+                <strong>Irrigation done</strong>
+                <p>Moisture stabilized at 42% in Field A.</p>
+                <span>2 min ago</span>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-icon warn"><i class="bi bi-cloud-drizzle"></i></div>
+              <div>
+                <strong>Rainfall expected</strong>
+                <p>Heavy rain predicted for tonight. Secure equipment.</p>
+                <span>1 hour ago</span>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-icon info"><i class="bi bi-cpu"></i></div>
+              <div>
+                <strong>AI model updated</strong>
+                <p>Fertilizer recommendations improved v1.2.</p>
+                <span>Yesterday</span>
+              </div>
+            </div>
+          </div>
+          <a class="notif-footer" routerLink="/dashboard/notifications" (click)="ui.closeAll()">View all notifications</a>
+        </div>
+      </div>
+
+      <a class="user-avatar" routerLink="/dashboard/user/profile" aria-label="User profile">
+        <i class="bi bi-person-fill"></i>
+      </a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,95 @@
+<!-- Ambient Background -->
+    <div class="ambient-layer" aria-hidden="true">
+        <span class="ambient-blob blob-1"></span>
+        <span class="ambient-blob blob-2"></span>
+        <span class="ambient-blob blob-3"></span>
+    </div>
+
+    <!-- Main Page Wrapper -->
+    <div class="page-wrapper">
+        <div class="auth-card">
+            <div class="card-content">
+                <!-- Description Section -->
+                <div class="auth-description-panel">
+                    <div class="auth-description-content">
+                        <p class="auth-eyebrow">Secure AgriVision workspace</p>
+                        <h2>Monitor every farm decision from one intelligent dashboard.</h2>
+                        <p>Access crop analytics, sensor readings, disease detection, and recommendations with a protected account built for daily field work.</p>
+                        <div class="auth-feature-list" aria-label="Authentication benefits">
+                            <span>AI insights</span>
+                            <span>Sensor data</span>
+                            <span>Farm control</span>
+                        </div>
+                        <div class="auth-assurance-list" aria-label="Platform security details">
+                            <span><strong>24/7</strong> Field visibility</span>
+                            <span><strong>Secure</strong> Account access</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="form-section">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <img class="logo-img" src="/assets/images/Logo.png" alt="AgriVision Logo"><span class="logo-wordmark">AgriVision</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="page-title">Resend Verification Email</h1>
+
+                    <!-- Helper Text -->
+                    <p class="subtitle-text">
+                        Enter your email and we will resend the verification link.
+                    </p>
+
+                    <!-- Success Message (Hidden by default) -->
+                    <div class="success-message" id="successMessage" role="alert">
+                        Verification email sent. Please check your inbox.
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message" id="serverError" role="alert" style="display:none;">
+                        Something went wrong. Please try again.
+                    </div>
+
+                    <!-- Resend Verification Form -->
+                    <form id="resendVerificationForm" novalidate>
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="email" 
+                                placeholder="Email"
+                                required
+                                autocomplete="email"
+                                aria-label="Email Address"
+                            >
+                            <div class="error-message" id="emailError" role="alert">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+
+                        <!-- Resend Button -->
+                        <button type="submit" class="btn-primary" aria-label="Resend verification email">
+                            Resend Email
+                        </button>
+                    </form>
+
+                    <!-- Back to Login Link -->
+                    <div class="text-link">
+                        <a routerLink="/auth/login">Back to Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    
+    
+    <!-- Common JS -->
+    
+    
+    <!-- Page Specific JS -->
+

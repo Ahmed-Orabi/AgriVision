@@ -1,0 +1,337 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="app-shell main-area">
+    <app-top-navbar></app-top-navbar>
+
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-leaf-fill"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>Settings</span>
+            </div>
+            <h1 class="page-title">Workspace Settings</h1>
+            <p class="page-sub">Manage preferences, security, and system automation.</p>
+          </div>
+
+          <div class="head-actions">
+            <button class="btn-brand" type="button" id="settingsSaveBtn">
+              <i class="bi bi-check-circle"></i> Save Changes
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-hero panel mb-3">
+          <div class="hero-left">
+            <span class="hero-pill"><i class="bi bi-sliders"></i> Live controls</span>
+            <h2>Personalize the way your farm runs.</h2>
+            <p>Adjust automations, notifications, and data sync so everything stays in rhythm.</p>
+            <div class="hero-tags">
+              <span class="tag">Auto irrigation</span>
+              <span class="tag">Security</span>
+              <span class="tag">Reports</span>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-title">Profile completeness</div>
+            <div class="hero-card-value" id="settingsProfileCompletion">--</div>
+            <div class="hero-meters">
+              <div class="meter">
+                <span>Profile data</span>
+                <div class="meter-bar"><span id="settingsProfileBar" style="width:0%"></span></div>
+              </div>
+            </div>
+            <div class="hero-note" id="settingsProfileMissing">Missing: --</div>
+          </div>
+        </div>
+
+        <div class="settings-tabs" role="tablist" aria-label="Settings categories">
+          <button class="settings-tab active" type="button" data-tab="profile" role="tab" aria-selected="true">
+            <i class="bi bi-person-circle"></i> Profile
+          </button>
+          <button class="settings-tab" type="button" data-tab="subscription" role="tab" aria-selected="false">
+            <i class="bi bi-credit-card"></i> Subscription
+          </button>
+        </div>
+
+        <div class="settings-panels">
+          <section class="panel settings-panel active" data-section="profile" role="tabpanel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Profile Settings</h3>
+                <p class="panel-sub">Account details, preferences, and security</p>
+              </div>
+              <span class="pill"><i class="bi bi-patch-check"></i> Verified</span>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Display name</div>
+                <div class="setting-desc">Shown on reports and team logs</div>
+              </div>
+              <input class="form-control" type="text" id="settingsDisplayName" value="Ahmed Mansour" />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Primary email</div>
+                <div class="setting-desc">Used for account access</div>
+              </div>
+              <input class="form-control" type="email" id="settingsEmail" value="ahmed.mansour&#6;4;agrivision.ai" />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Phone number</div>
+                <div class="setting-desc">Used for alerts and verification</div>
+              </div>
+              <input class="form-control" type="tel" id="settingsPhone" value="+20 100 234 9901" />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Country</div>
+                <div class="setting-desc">Used for regional services</div>
+              </div>
+              <app-agri-select selectId="settingsCountry" placeholder="Select country" [options]="countryOptions"></app-agri-select>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">City</div>
+                <div class="setting-desc">Shown on your profile</div>
+              </div>
+              <input class="form-control" type="text" id="settingsCity" placeholder="Enter city" />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Address</div>
+                <div class="setting-desc">Visible in profile details</div>
+              </div>
+              <textarea class="form-control textarea" id="settingsAddress" rows="3" placeholder="Street, district, building"></textarea>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Notifications</div>
+                <div class="setting-desc">Enable or disable alerts</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="settingsNotifications" checked />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-title">Password</div>
+                <div class="setting-desc">Last updated 2 weeks ago</div>
+              </div>
+              <a class="btn-soft" routerLink="/dashboard/user/settings-password">
+                <i class="bi bi-key"></i> Change
+              </a>
+            </div>
+          </section>
+
+          <section class="panel settings-panel settings-subscription" data-section="subscription" role="tabpanel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Subscription Settings</h3>
+                <p class="panel-sub">Plans, billing, and usage overview</p>
+              </div>
+              <span class="pill" id="settingsPlanPill"><i class="bi bi-award"></i> Basic</span>
+            </div>
+
+            <!-- Status/Price removed per request -->
+            <div class="status-card action-message" id="settingsActionMessage" style="display:none;"></div>
+
+            <div class="plan-grid">
+              <div class="plan-card" data-plan="Free">
+                <div class="plan-head">
+                  <div>
+                    <div class="plan-title">Free</div>
+                    <div class="plan-sub">Starter access</div>
+                  </div>
+                  <div class="plan-price">
+                    <span class="price-amount">0</span>
+                    <span class="price-cycle">/mo</span>
+                  </div>
+                </div>
+                <ul class="plan-list">
+                  <li><i class="bi bi-check-circle"></i> 1 farm</li>
+                  <li><i class="bi bi-check-circle"></i> 3/month Crop Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> 3/month Fertilizer Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> 3/month Irrigation Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> 3/month Disease &amp; Insect Detection</li>
+                </ul>
+                <div class="plan-actions" data-plan-actions="Free"></div>
+              </div>
+
+              <div class="plan-card active" data-plan="Basic">
+                <div class="plan-ribbon">Current</div>
+                <div class="plan-head">
+                  <div>
+                    <div class="plan-title">Basic</div>
+                    <div class="plan-sub">Best for small teams</div>
+                  </div>
+                  <div class="plan-price">
+                    <span class="price-amount">3.99</span>
+                    <span class="price-cycle">/mo</span>
+                  </div>
+                </div>
+                <ul class="plan-list">
+                  <li><i class="bi bi-check-circle-fill"></i> 3 farms</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 10/month Crop Recommendation</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 10/month Fertilizer Recommendation</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 10/month Irrigation Recommendation</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 10/month Disease &amp; Insect Detection</li>
+                </ul>
+                <div class="plan-actions d-grid gap-2" data-plan-actions="Basic"></div>
+              </div>
+
+              <div class="plan-card" data-plan="Advanced">
+                <div class="plan-head">
+                  <div>
+                    <div class="plan-title">Advanced</div>
+                    <div class="plan-sub">Full automation</div>
+                  </div>
+                  <div class="plan-price">
+                    <span class="price-amount">9.99</span>
+                    <span class="price-cycle">/mo</span>
+                  </div>
+                </div>
+                <ul class="plan-list">
+                  <li><i class="bi bi-check-circle"></i> 10 farms</li>
+                  <li><i class="bi bi-check-circle"></i> Unlimited Crop Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> Unlimited Fertilizer Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> Unlimited Irrigation Recommendation</li>
+                  <li><i class="bi bi-check-circle"></i> Unlimited Disease &amp; Insect Detection</li>
+                </ul>
+                <div class="plan-actions d-grid gap-2" data-plan-actions="Advanced"></div>
+              </div>
+            </div>
+
+            <div class="support-grid">
+              <div class="support-card">
+                <div class="support-title">Billing details</div>
+                <ul class="support-list">
+                  <li><i class="bi bi-currency-dollar"></i> Charged monthly in USD</li>
+                  <li><i class="bi bi-arrow-repeat"></i> Auto-renew anytime</li>
+                  <li><i class="bi bi-shield-lock"></i> Secure Stripe checkout</li>
+                </ul>
+              </div>
+              <div class="support-card">
+                <div class="support-title">Need help?</div>
+                <ul class="support-list">
+                  <li><i class="bi bi-envelope"></i> support&#6;4;agrivision.ai</li>
+                  <li><i class="bi bi-clock"></i> Response in 24 hours</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="billing-grid mt-3">
+              <div class="billing-card">
+                <div class="billing-label">Subscription date</div>
+                <div class="billing-value" id="settingsSubscriptionStart">12 Jan 2026</div>
+                <div class="billing-meta">Activated on Basic plan</div>
+              </div>
+              <div class="billing-card">
+                <div class="billing-label">Expiry date</div>
+                <div class="billing-value" id="settingsSubscriptionEnd">12 Feb 2026</div>
+                <div class="billing-meta">Auto-renew enabled</div>
+              </div>
+              <div class="billing-card">
+                <div class="billing-label">Payment method</div>
+                <div class="billing-value" id="settingsPaymentMethod">Visa &bull;&bull;&bull;&bull; 2480</div>
+                <div class="billing-meta" id="settingsNextInvoice">Next invoice: 12 Feb 2026</div>
+              </div>
+            </div>
+
+            <div class="usage-card">
+              <div class="usage-title">Usage</div>
+              <div class="usage-row">
+                <span>Farms</span>
+                <span id="settingsFarmsUsage">0 / 0</span>
+              </div>
+              <div class="meter-bar"><span id="settingsFarmsBar" style="width:0%"></span></div>
+              <div class="usage-row mt-2">
+                <span>Crop Recommendation</span>
+                <span id="settingsCropUsage">0 / 0</span>
+              </div>
+              <div class="meter-bar"><span id="settingsCropBar" style="width:0%"></span></div>
+              <div class="usage-row mt-2">
+                <span>Fertilizer Recommendation</span>
+                <span id="settingsFertilizerUsage">0 / 0</span>
+              </div>
+              <div class="meter-bar"><span id="settingsFertilizerBar" style="width:0%"></span></div>
+              <div class="usage-row mt-2">
+                <span>Irrigation Recommendation</span>
+                <span>0 / 0</span>
+              </div>
+              <div class="meter-bar"><span style="width:0%"></span></div>
+              <div class="usage-row mt-2">
+                <span>Disease &amp; Insect Detection</span>
+                <span id="settingsDiseaseUsage">0 / 0</span>
+              </div>
+              <div class="meter-bar"><span id="settingsDiseaseBar" style="width:0%"></span></div>
+            </div>
+
+            <div class="panel mt-3">
+              <div class="panel-head">
+                <div>
+                  <h3 class="panel-title">Invoices</h3>
+                  <p class="panel-sub">Latest payments from Stripe</p>
+                </div>
+                <span class="pill"><i class="bi bi-receipt"></i> Billing</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-clean">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Invoice</th>
+                    </tr>
+                  </thead>
+                  <tbody id="settingsPaymentsBody"></tbody>
+                </table>
+              </div>
+              <div class="rec-empty" id="settingsPaymentsEmpty">No invoices yet.</div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+  <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
+    <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="confirm-head">
+        <div>
+          <h3 id="confirmTitle">Cancel subscription?</h3>
+          <p>This will move your plan to Free immediately.</p>
+        </div>
+        <button class="confirm-close" type="button" id="confirmClose"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="confirm-actions">
+        <button class="btn-soft" type="button" id="confirmNo">Keep plan</button>
+        <button class="btn-danger" type="button" id="confirmYes">Cancel subscription</button>
+      </div>
+    </div>
+  </div>
+
+  <app-bottom-nav></app-bottom-nav>

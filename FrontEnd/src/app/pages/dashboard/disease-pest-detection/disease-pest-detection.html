@@ -1,0 +1,119 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="app-shell main-area">
+    <!-- ===== TOP NAVBAR ===== -->
+    <app-top-navbar></app-top-navbar>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-shield-plus"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>AI Tools</span>
+              <span style="opacity:.5">/</span>
+              <span>Disease &amp; Insect Detection</span>
+            </div>
+            <h1 class="page-title">Disease &amp; Insect Detection</h1>
+            <p class="page-sub">
+              Upload media or connect your robot to scan crops for diseases and insects.
+            </p>
+          </div>
+
+          <div class="status-pill disconnected" id="connectStatus">
+            <span class="status-dot"></span>
+            Idle
+          </div>
+        </div>
+
+        <div class="detection-layout">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Detection Controls</h3>
+                <p class="panel-sub">Choose the input source for your AI model.</p>
+              </div>
+              <span class="pill"><i class="bi bi-cpu"></i> CV Model</span>
+            </div>
+
+            <div class="action-row">
+              <button class="btn-brand" type="button" id="btnCaptureImage">
+                <i class="bi bi-camera"></i>
+                Capture Image
+              </button>
+            </div>
+
+            <input type="file" id="imageInput" accept="image/*" capture="environment" hidden />
+
+            <div class="media-stage" id="mediaStage">
+              <div class="media-placeholder" id="mediaPlaceholder">
+                <i class="bi bi-image"></i>
+                <h4>No image selected</h4>
+                <p>Upload an image or capture one with your camera.</p>
+              </div>
+
+              <img id="mediaImage" class="media-frame d-none" alt="Captured crop" />
+              <button class="btn-brand ask-ai-btn d-none" type="button" id="btnAskAi">
+                <i class="bi bi-stars"></i>
+                Ask Ai
+              </button>
+
+              <div class="media-badge" id="mediaBadge">Idle</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Detection Results</h3>
+                <p class="panel-sub">Summary of the model output.</p>
+              </div>
+              <span class="pill"><i class="bi bi-activity"></i> AI Output</span>
+            </div>
+
+            <div class="result-card">
+              <div class="result-status" id="resultStatus">No detection yet</div>
+              <p class="result-detail" id="resultDetail">Select an input to start scanning.</p>
+              <div class="result-tags" id="resultTags">
+                <span class="tag">Confidence: --</span>
+                <span class="tag">Status: Waiting</span>
+              </div>
+            </div>
+
+            <div class="locked-card" aria-live="polite">
+              <div class="locked-content">
+                <h4>Solution Steps</h4>
+                <ul>
+                  <li>Remove affected leaves and isolate the plant.</li>
+                  <li>Apply the recommended organic treatment.</li>
+                  <li>Monitor humidity and irrigation levels.</li>
+                </ul>
+              </div>
+              <div class="locked-overlay">
+                <i class="bi bi-lock"></i>
+                <span>Unlock to see solution</span>
+              </div>
+            </div>
+
+            <div class="hint">
+              <i class="bi bi-info-circle"></i>
+              Front-end only: wire this page to your detection API later.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+  <app-bottom-nav></app-bottom-nav>

@@ -1,0 +1,277 @@
+<div class="ambient-layer" aria-hidden="true">
+    <span class="ambient-blob blob-1"></span>
+    <span class="ambient-blob blob-2"></span>
+    <span class="ambient-blob blob-3"></span>
+  </div>
+  <app-sidebar></app-sidebar>
+  <div class="app-shell main-area">
+    <app-top-navbar></app-top-navbar>
+    <main class="content-card" role="main">
+      <div class="content-inner">
+        <div class="page-head">
+          <div>
+            <div class="crumb">
+              <i class="bi bi-leaf-fill"></i>
+              <span>AgriVision</span>
+              <span style="opacity:.5">/</span>
+              <span>Dashboard</span>
+            </div>
+            <h1 class="page-title">Farm Overview</h1>
+            <p class="page-sub">Real-time monitoring, AI insights, and field performance at a glance.</p>
+          </div>
+          <div class="head-actions">
+            <div class="farm-select">
+              <label class="farm-label" for="farmSelect">Select Farm</label>
+              <app-agri-select selectId="farmSelect" placeholder="Select farm" [options]="farmOptions" value="Farm 1 - North"></app-agri-select>
+            </div>
+          </div>
+        </div>
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Today's Weather</h2>
+            <p class="section-sub">Conditions for the selected farm.</p>
+          </div>
+          <button class="btn-soft btn-compact" type="button">
+            <i class="bi bi-cloud-sun me-1"></i> Forecast
+          </button>
+        </div>
+        <div class="weather-grid">
+          <div class="panel weather-panel weather-main">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Clear Sky</h3>
+                <p class="panel-sub">Field 1 - Updated 5 min ago</p>
+              </div>
+              <span class="pill"><i class="bi bi-sun"></i> Sunny</span>
+            </div>
+            <div class="weather-main-body">
+              <div class="weather-temp">
+                <div class="temp-value">27&deg;C</div>
+                <div class="temp-meta">Feels like 28&deg;C</div>
+              </div>
+              <div class="weather-icon-wrap">
+                <i class="bi bi-cloud-sun"></i>
+              </div>
+            </div>
+            <div class="weather-tags">
+              <span class="pill soft-pill"><i class="bi bi-droplet"></i> Humidity 48%</span>
+              <span class="pill soft-pill"><i class="bi bi-wind"></i> Wind 8 km/h</span>
+              <span class="pill soft-pill"><i class="bi bi-cloud-rain"></i> Rain 10%</span>
+            </div>
+          </div>
+          <div class="panel weather-panel sensor-panel">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Live Sensor Snapshot</h3>
+                <p class="panel-sub">Key readings right now.</p>
+              </div>
+              <div class="section-actions">
+                <span class="section-pill"><i class="bi bi-broadcast-pin"></i> Live</span>
+                <button class="btn-brand btn-compact" type="button">
+                  <i class="bi bi-arrow-clockwise me-1"></i> Update Sensors
+                </button>
+              </div>
+            </div>
+            <div class="sensor-grid sensor-grid-compact">
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Soil Temp</div>
+                    <div class="sensor-value">22<span class="sensor-unit">&deg;C</span></div>
+                  </div>
+                  <div class="sensor-icon soil"><i class="bi bi-thermometer-half"></i></div>
+                </div>
+                <div class="sensor-meta">Optimal: 20-26&deg;C</div>
+              </div>
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Soil Moisture</div>
+                    <div class="sensor-value">61<span class="sensor-unit">%</span></div>
+                  </div>
+                  <div class="sensor-icon water"><i class="bi bi-droplet"></i></div>
+                </div>
+                <div class="sensor-meta">Stable in range</div>
+              </div>
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Air Temp</div>
+                    <div class="sensor-value">27<span class="sensor-unit">&deg;C</span></div>
+                  </div>
+                  <div class="sensor-icon sky"><i class="bi bi-sun"></i></div>
+                </div>
+                <div class="sensor-meta">Feels like 28&deg;C</div>
+              </div>
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Humidity</div>
+                    <div class="sensor-value">48<span class="sensor-unit">%</span></div>
+                  </div>
+                  <div class="sensor-icon sky"><i class="bi bi-cloud-drizzle"></i></div>
+                </div>
+                <div class="sensor-meta">Low humidity</div>
+              </div>
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Rainfall</div>
+                    <div class="sensor-value">4.2<span class="sensor-unit">mm</span></div>
+                  </div>
+                  <div class="sensor-icon rain"><i class="bi bi-cloud-rain"></i></div>
+                </div>
+                <div class="sensor-meta">Last 24 hours</div>
+              </div>
+              <div class="sensor-card">
+                <div class="sensor-top">
+                  <div>
+                    <div class="sensor-label">Windspeed</div>
+                    <div class="sensor-value">8.4<span class="sensor-unit">km/h</span></div>
+                  </div>
+                  <div class="sensor-icon wind"><i class="bi bi-wind"></i></div>
+                </div>
+                <div class="sensor-meta">Gusts 12 km/h</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="farm-condition panel farm-condition-risk">
+          <div class="farm-condition-main">
+            <div class="farm-condition-icon">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+            <div>
+              <div class="farm-condition-kicker">Farm Condition</div>
+              <h2 class="farm-condition-title">Needs attention</h2>
+              <p class="farm-condition-text">
+                The selected farm is showing early stress signs. Soil moisture is below the safe range, humidity is low, and rainfall has not recovered the root zone enough.
+              </p>
+            </div>
+          </div>
+
+          <div class="farm-condition-score" aria-label="Farm health score">
+            <span class="score-value">42%</span>
+            <span class="score-label">Health Score</span>
+          </div>
+
+          <div class="farm-condition-details">
+            <div class="condition-chip danger">
+              <span>Soil Moisture</span>
+              <strong>Low</strong>
+            </div>
+            <div class="condition-chip warn">
+              <span>Humidity</span>
+              <strong>Dry Air</strong>
+            </div>
+            <div class="condition-chip warn">
+              <span>Rainfall</span>
+              <strong>Limited</strong>
+            </div>
+          </div>
+
+          <div class="farm-condition-actions">
+            <div class="condition-action">
+              <i class="bi bi-droplet-half"></i>
+              <span>Start irrigation within the next 2 hours.</span>
+            </div>
+            <div class="condition-action">
+              <i class="bi bi-thermometer-sun"></i>
+              <span>Recheck exposed zones after peak sunlight.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Trend Charts</h2>
+            <p class="section-sub">Visual history from the last 12 hours.</p>
+          </div>
+          <button class="btn-soft btn-compact" type="button">
+            <i class="bi bi-calendar2-week me-1"></i> Change Range
+          </button>
+        </div>
+        <div class="chart-grid">
+          <div class="panel chart-card chart-card-temp">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Air Temperature</h3>
+                <p class="panel-sub">Last 12 hours</p>
+              </div>
+              <span class="pill"><i class="bi bi-thermometer-sun"></i> 27&deg;C</span>
+            </div>
+            <div class="chart-canvas">
+              <svg class="trend-chart chart-temp" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Air temperature rising over the last 12 hours">
+                <path class="chart-area chart-area-temp" d="M2 30 L14 26 L26 28 L38 22 L50 18 L62 20 L74 14 L86 16 L98 12 L98 38 L2 38 Z"/>
+                <path class="chart-line chart-line-temp" d="M2 30 L14 26 L26 28 L38 22 L50 18 L62 20 L74 14 L86 16 L98 12"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span>Min 22&deg;C</span>
+              <span>Max 30&deg;C</span>
+            </div>
+          </div>
+          <div class="panel chart-card chart-card-humidity">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Air Humidity</h3>
+                <p class="panel-sub">Last 12 hours</p>
+              </div>
+              <span class="pill"><i class="bi bi-droplet-half"></i> 48%</span>
+            </div>
+            <div class="chart-canvas">
+              <svg class="trend-chart chart-humidity" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Air humidity changing over the last 12 hours">
+                <path class="chart-area chart-area-humidity" d="M2 18 L14 20 L26 16 L38 22 L50 26 L62 24 L74 28 L86 26 L98 30 L98 38 L2 38 Z"/>
+                <path class="chart-line chart-line-humidity" d="M2 18 L14 20 L26 16 L38 22 L50 26 L62 24 L74 28 L86 26 L98 30"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span>Min 40%</span>
+              <span>Max 58%</span>
+            </div>
+          </div>
+          <div class="panel chart-card chart-card-soil-temp">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Soil Temperature</h3>
+                <p class="panel-sub">Root zone - Last 12 hours</p>
+              </div>
+              <span class="pill"><i class="bi bi-thermometer-half"></i> 22&deg;C</span>
+            </div>
+            <div class="chart-canvas">
+              <svg class="trend-chart chart-soil-temp" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Soil temperature trend over the last 12 hours">
+                <path class="chart-area chart-area-soil-temp" d="M2 26 L14 24 L26 22 L38 24 L50 20 L62 18 L74 19 L86 16 L98 18 L98 38 L2 38 Z"/>
+                <path class="chart-line chart-line-soil-temp" d="M2 26 L14 24 L26 22 L38 24 L50 20 L62 18 L74 19 L86 16 L98 18"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span>Min 19&deg;C</span>
+              <span>Max 25&deg;C</span>
+            </div>
+          </div>
+          <div class="panel chart-card chart-card-moisture">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Soil Moisture</h3>
+                <p class="panel-sub">Last 12 hours</p>
+              </div>
+              <span class="pill"><i class="bi bi-droplet-half"></i> 61%</span>
+            </div>
+            <div class="chart-canvas">
+              <svg class="trend-chart chart-moisture" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Soil moisture trend over the last 12 hours">
+                <path class="chart-area chart-area-moisture" d="M2 20 L14 18 L26 22 L38 18 L50 20 L62 16 L74 18 L86 14 L98 16 L98 38 L2 38 Z"/>
+                <path class="chart-line chart-line-moisture" d="M2 20 L14 18 L26 22 L38 18 L50 20 L62 16 L74 18 L86 14 L98 16"/>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <span>Min 55%</span>
+              <span>Max 68%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <app-footer></app-footer>
+  </div>
+  <app-bottom-nav></app-bottom-nav>
