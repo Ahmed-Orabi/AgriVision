@@ -1,0 +1,31 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual Environments
+venv/
+.venv/
+env/
+agri_env/
+pytrch_env/
+
+# PyTorch/Deep Learning Models
+*.pth
+*.pt
+*.h5
+*.weights
+*.onnx
+
+# Datasets
+datasets/
+data/
+*.zip
+*.tar.gz
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

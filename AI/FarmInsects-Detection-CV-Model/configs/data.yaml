@@ -1,0 +1,14 @@
+path: ../dataset
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 15
+names: ['Africanized Honey Bees', 'Aphids', 'Armyworms', 'Brown Marmorated Stink Bugs', 'Cabbage Loopers', 'Citrus-Canker', 'Colorado Potato Beetles', 'Corn Borers', 'Corn Earworms', 'Fall armyworm', 'Fruit Flies', 'Spider Mites', 'Thrips', 'Tomato Hornworms', 'Western Corn Rootworms']
+
+roboflow:
+  workspace: 4702
+  project: dangerous-farm-insects-dataset
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/4702/dangerous-farm-insects-dataset/dataset/2

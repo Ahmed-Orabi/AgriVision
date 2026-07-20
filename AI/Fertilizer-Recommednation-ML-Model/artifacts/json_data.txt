@@ -1,0 +1,26 @@
+[
+    {
+        "Temperature": 25.38578878,
+        "Moisture": 0.398843879,
+        "Rainfall": 182.0611454,
+        "PH": 7.049864303,
+        "Nitrogen": 71.22304264,
+        "Phosphorous": 135.1388053,
+        "Potassium": 147.4572035,
+        "Carbon": 0.800911123,
+        "Soil": "Neutral Soil",
+        "Crop": "papaya"
+    },
+    {
+        "Temperature": 18.79026727,
+        "Moisture": 0.457291727,
+        "Rainfall": 38.39551897,
+        "PH": 6.313310604,
+        "Nitrogen": 52.73819251,
+        "Phosphorous": 42.25293593,
+        "Potassium": 52.56910836,
+        "Carbon": 0.894318288,
+        "Soil": "Acidic Soil",
+        "Crop": "Peas"
+    }
+]

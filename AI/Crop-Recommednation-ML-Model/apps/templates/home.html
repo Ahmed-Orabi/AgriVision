@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crop Recommendation - AgriVision</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .header-title {
+            color: #2c3e50;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .results-container {
+            margin-top: 30px;
+            animation: scaleIn 0.5s ease-out;
+            display: none;
+        }
+
+        .results-container.show {
+            display: block;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .result-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-header-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .result-header-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .result-header-subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .crop-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .crop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .crop-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px 0 0 15px;
+        }
+
+        .crop-card.rank-1::before {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            width: 8px;
+        }
+
+        .crop-info {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .crop-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #667eea;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .crop-card.rank-1 .crop-rank {
+            color: #f39c12;
+        }
+
+        .crop-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: capitalize;
+            margin-bottom: 5px;
+        }
+
+        .crop-card.rank-1 .crop-name {
+            font-size: 2rem;
+        }
+
+        .crop-confidence {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+        }
+
+        .confidence-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .confidence-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+            width: 0;
+        }
+
+        .crop-card.rank-1 .confidence-bar {
+            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .crop-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            min-width: 80px;
+            text-align: right;
+            padding-left: 15px;
+        }
+
+        .crop-card.rank-1 .crop-percentage {
+            color: #f39c12;
+            font-size: 1.8rem;
+        }
+
+        .badge-best {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4);
+        }
+
+        .alert {
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .form-card {
+                padding: 25px;
+            }
+
+            .btn-submit {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .crop-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .crop-info {
+                padding-left: 0;
+                margin-top: 10px;
+            }
+
+            .crop-percentage {
+                text-align: center;
+                margin-top: 10px;
+                padding-left: 0;
+            }
+
+            .crop-rank {
+                margin-bottom: 10px;
+            }
+        }
+
+        .btn-submit.loading {
+            pointer-events: none;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .btn-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" class="btn-back" onclick="goBack(event)">← Back to Home</a>
+    <div class="container">
+        <div class="header-card">
+            <div class="header-icon">🌱</div>
+            <h1 class="header-title">Crop Recommendation System</h1>
+            <p class="header-subtitle">Enter your soil and climate data for personalized recommendations</p>
+        </div>
+        <div class="form-card">
+            <form id="cropForm" onsubmit="handleSubmit(event)">
+                <div class="mb-4">
+                    <h3 class="section-title">🧪 Soil Nutrients (NPK)</h3>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-4">
+                            <label for="N" class="form-label">Nitrogen (N)</label>
+                            <input type="number" step="0.01" class="form-control" id="N" name="N" placeholder="0-140"
+                                min="0" max="140" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="P" class="form-label">Phosphorous (P)</label>
+                            <input type="number" step="0.01" class="form-control" id="P" name="P" placeholder="5-145"
+                                min="5" max="145" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="K" class="form-label">Potassium (K)</label>
+                            <input type="number" step="0.01" class="form-control" id="K" name="K" placeholder="5-205"
+                                min="5" max="205" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="section-title">🌤️ Climate Conditions</h3>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <label for="temperature" class="form-label">Temperature (°C)</label>
+                            <input type="number" step="0.01" class="form-control" id="temperature" name="temperature"
+                                placeholder="8-45" min="8" max="45" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="humidity" class="form-label">Humidity (%)</label>
+                            <input type="number" step="0.01" class="form-control" id="humidity" name="humidity"
+                                placeholder="14-100" min="14" max="100" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="section-title">💧 Soil & Water Conditions</h3>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <label for="ph" class="form-label">Soil pH Level</label>
+                            <input type="number" step="0.01" class="form-control" id="ph" name="ph"
+                                placeholder="3.5-9.9" min="3.5" max="9.9" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rainfall" class="form-label">Rainfall (mm)</label>
+                            <input type="number" step="0.01" class="form-control" id="rainfall" name="rainfall"
+                                placeholder="20-300" min="20" max="300" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="section-title">🎯 Preferences</h3>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-12">
+                            <label for="top_n" class="form-label">Number of Crop Recommendations</label>
+                            <select class="form-select" id="top_n" name="top_n">
+                                <option value="1">Best Crop Only</option>
+                                <option value="3" selected>Top 3 Crops</option>
+                                <option value="5">Top 5 Crops</option>
+                                <option value="10">Top 10 Crops</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-submit">🔍 Analyze & Recommend</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="results-container" id="resultsContainer">
+            <div class="result-header">
+                <div class="result-header-icon">🎯</div>
+                <h2 class="result-header-title">Recommended Crops for Your Farm</h2>
+                <p class="result-header-subtitle">Based on your soil and climate conditions</p>
+            </div>
+            <div id="cropResults"></div>
+        </div>
+
+        <div id="errorAlert" class="alert alert-danger" style="display: none;" role="alert"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function goBack(event) {
+            event.preventDefault();
+            window.history.back();
+        }
+
+        // ✨ 1. تعديل دالة الإرسال لتستخدم fetch
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const btn = form.querySelector('.btn-submit');
+            const errorAlert = document.getElementById('errorAlert');
+            const resultsContainer = document.getElementById('resultsContainer');
+
+            // 1.1: تهيئة الواجهة مع كل إرسال
+            btn.classList.add('loading');
+            btn.innerHTML = 'Analyzing...';
+            errorAlert.style.display = 'none'; // إخفاء أي خطأ قديم
+            resultsContainer.classList.remove('show'); // إخفاء النتائج القديمة
+
+            const formData = new FormData(form);
+
+            try {
+                // 1.2: إرسال البيانات للـ backend
+                const response = await fetch('/submit_prediction', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // 1.3: لو النجاح، اعرض النتائج
+                    displayResults(data);
+                } else {
+                    // 1.4: لو فشل، اعرض الخطأ اللي راجع من الـ JSON
+                    showError(data.error || 'An unknown error occurred.');
+                }
+
+            } catch (error) {
+                // 1.5: لو حصل خطأ في الشبكة
+                console.error('Fetch error:', error);
+                showError('A network error occurred. Please check your connection and try again.');
+            } finally {
+                // 1.6: رجّع الزرار لوضعه الطبيعي في كل الحالات
+                btn.classList.remove('loading');
+                btn.innerHTML = '🔍 Analyze & Recommend';
+            }
+        }
+
+        // ✨ 2. تعديل دالة عرض النتائج لتستقبل البيانات
+        function displayResults(results) {
+            // 2.1: حذف الداتا التجريبية
+            // const demoResults = [ ... ];
+
+            if (!results || results.length === 0) {
+                showError("No recommendations could be generated for the given data.");
+                return;
+            }
+
+            const cropResultsHTML = results.map((crop, index) => {
+                const rank = index + 1;
+                const isFirst = rank === 1;
+                // 2.2: استخدام البيانات الحقيقية "crop.name" و "crop.probability"
+                return `
+                    <div class="crop-card ${isFirst ? 'rank-1' : ''}" data-prob="${crop.probability}">
+                        ${isFirst ? '<span class="badge-best">⭐ Best Match</span>' : ''}
+                        <div class="crop-rank">#${rank}</div>
+                        <div class="crop-info">
+                            <div class="crop-name">${crop.name}</div>
+                            <div class="crop-confidence">Confidence Level</div>
+                            <div class="confidence-bar-container">
+                                <div class="confidence-bar"></div>
+                            </div>
+                        </div>
+                        <div class="crop-percentage">${crop.probability.toFixed(1)}%</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cropResults').innerHTML = cropResultsHTML;
+            document.getElementById('resultsContainer').classList.add('show');
+
+            // 2.3: انزل للنتائج
+            setTimeout(() => {
+                document.getElementById('resultsContainer').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+
+            // 2.4: تفعيل الأنيميشن بتاع شريط الثقة
+            setTimeout(() => {
+                document.querySelectorAll('.crop-card').forEach(card => {
+                    const bar = card.querySelector('.confidence-bar');
+                    const prob = card.getAttribute('data-prob');
+                    bar.style.width = prob + '%';
+                });
+            }, 400);
+        }
+
+        // ✨ 3. إضافة دالة لإظهار الأخطاء
+        function showError(message) {
+            const errorAlert = document.getElementById('errorAlert');
+            errorAlert.textContent = message;
+            errorAlert.style.display = 'block';
+            // انزل لعند الخطأ عشان المستخدم يشوفه
+            errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Hide error alert on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('errorAlert').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

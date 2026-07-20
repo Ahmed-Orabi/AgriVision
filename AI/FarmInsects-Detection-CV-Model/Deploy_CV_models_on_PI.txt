@@ -1,0 +1,78 @@
+Commands:
+	# 1 - Install Ulrtalytics on Raspberry PI
+	# 2 - Setting up YOLO model
+	# 3 - Run Inference
+######################################################################################
+######### 1 - Install Ulrtalytics on Raspberry PI ####################################
+######################################################################################
+	# Update the Raspberry PI OS takes a few minutes 
+	sudo apt update && sudo apt upgrade -y
+
+	# Create a directory for CV models name: yolo
+	mkdir yolo
+	# Go on this directory
+	cd yolo
+
+	# Create a Virual Environment to instll needed Python libraries
+	# Virual Environment allow to avoid the conflicts from existing Python libraries
+	python3 -m venv --system-site-packages agrivision_venv
+	# Activate the virual environment
+	source agrivision_venv/bin/activate
+
+	# Install the Libraries ==> takes 50 min to 60 min 
+	pip install ultraltyics ncnn
+
+	# plug off the PI before connect camera
+	# When connect the camera make sure the vidoe0 and video1 appears
+	ls /dev/video*
+
+######################################################################################
+######### 2 - Setting up YOLO model ==> Two Options ##################################
+######################################################################################
+	# Option 1: Off-the-shelf model  ==>  detect 80 common objects
+	# Option 2: Custom-trained model ==>  detect custom objects
+	# We will use the second option
+	# move the trained model into yolo folder: yolo/runs/
+					           yolo/agrivision_venv/
+						   yolo/best.pt
+
+	# By defualt YOLO ultralytics stores the model in ==> PyTorch Format ==> ncnn
+	# Convert the model into ncnn format 
+	yolo export model=best.pt format=ncnn
+	# The new model will save in folder ==> yolo/best_ncnn_model
+						yolo/best_ncnn_model/metadata.yaml
+						yolo/best_ncnn_model/model.ncnn.bin
+						yolo/best_ncnn_model/model.ncnn.param
+						yolo/best_ncnn_model/model_ncnn.py
+
+######################################################################################
+######### 3 - Run Inference ##########################################################
+######################################################################################
+	# Download the Python script yolo_detect.py
+	wget https://github.com/Basem0/AgriVision/tree/Orabi/AI/PlantDiseases-Detection-CV-Model/yolo_detect.py
+	
+	# Run the Python script
+	# THE SOURCE FORM CAMERA MODULE OR USB
+	# 1- Enter the path of Model
+	# 2- Enter the index of USB camera (usb0 or picamera0 if using a Raspberry PI Camera Module)
+	# 3- Enter the resolution
+	python yolo_detect.py --model=best_ncnn_model --souce=usb0 --resolution=1280x720
+
+	# THE SOURCE FORM EXISTING TEST IMAGES
+	# Folder = test_imgs
+	python yolo_detect.py --model=best_ncnn_model --souce=test_imgs --resolution=1280x720
+
+	# To get help
+	python yolo_detect.py --help
+
+	
+
+
+
+
+
+
+
+ 
+	
+

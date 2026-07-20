@@ -1,0 +1,13 @@
+train: /content/drive/MyDrive/00_GradProject/YOLO/train/images
+val: /content/drive/MyDrive/00_GradProject/YOLO/valid/images
+test: /content/drive/MyDrive/00_GradProject/YOLO/test/images
+
+nc: 23
+names: ['Chili___Anthracnose_fruit', 'Chili___Bacterial_leaf_spot', 'Chili___Healthy_fruit', 'Chili___Healthy_leaf', 'Chili___Mosaic_virus_leaf', 'Eggplant___Cercospora_leaf_spot', 'Eggplant___Colorado_potato_beetle', 'Eggplant___Fruit_rot', 'Eggplant___Healthy_fruit', 'Eggplant___Healthy_leaf', 'Potato___Alternaria_solani_leaf', 'Potato___Common_scab_fruit', 'Potato___Healthy_fruit', 'Potato___Healthy_leaf', 'Potato___Phytopthora_infestans_leaf', 'Tomato___Antrhacnose_fruit', 'Tomato___Bacterial_spot_leaf', 'Tomato___Early_blight_leaf', 'Tomato___Healthy_fruit', 'Tomato___Healthy_leaf', 'Tomato___Late_blight_leaf', 'Tomato___Leaf_mold', 'Tomato___Tomato_yellow_leaf_curl_virus']
+
+roboflow:
+  workspace: ahmed-orabi-6qfab
+  project: plant-disease-detection-4htzn-rlgu6
+  version: 1
+  license: Public Domain
+  url: https://universe.roboflow.com/ahmed-orabi-6qfab/plant-disease-detection-4htzn-rlgu6/dataset/1

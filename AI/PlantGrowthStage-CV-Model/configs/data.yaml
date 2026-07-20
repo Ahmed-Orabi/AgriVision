@@ -1,0 +1,12 @@
+train: /teamspace/studios/this_studio/AI/PlantGrowthStage-CV-Model/data/combined_v3/train/images
+val: /teamspace/studios/this_studio/AI/PlantGrowthStage-CV-Model/data/combined_v3/valid/images
+test: /teamspace/studios/this_studio/AI/PlantGrowthStage-CV-Model/data/combined_v3/test/images
+nc: 7
+names:
+- Tomato_Early_Vegetative
+- Tomato_Flowering_Initiation
+- Tomato_Unripe
+- Tomato_Ripe
+- Cotton_Early_Stage
+- Cotton_Mid_Stage
+- Cotton_Late_Stage
